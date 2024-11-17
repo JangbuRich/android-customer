@@ -23,6 +23,11 @@ class SplashFragment : Fragment() {
         binding = FragmentSplashBinding.inflate(layoutInflater)
 
         Handler().postDelayed({
+            val nextFragment = Onboarding1Fragment()
+
+            val transaction = mainActivity.manager.beginTransaction()
+            transaction.replace(R.id.fragmentContainerView_main, nextFragment)
+            transaction.commit()
         }, 1000)
 
         return binding.root

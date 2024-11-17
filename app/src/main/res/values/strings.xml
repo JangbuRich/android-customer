@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">JangbuRich</string>
+
+    <!-- onboarding -->
+    <string name="onboarding1">장부를 함께 사용할 그룹을\n개설하거나 참여해요!</string>
+    <string name="onboarding2">원하는 제휴 매장을 선택 후\n간편한 선결제부터 예약까지!</string>
+    <string name="onboarding3">쉽고 빠른 장부 결제,\n장부리치와 함께 시작해요!</string>
 </resources>
