@@ -132,7 +132,7 @@
     <style name="NextButtonGray" parent="Label1">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/gray_100</item>
-        <item name="cornerRadius">50dp</item>
+        <item name="cornerRadius">10dp</item>
         <item name="android:backgroundTint">@drawable/selector_button_gray</item>
         <item name="android:paddingVertical">12dp</item>
     </style>
@@ -140,7 +140,7 @@
     <style name="NextButtonOrange" parent="Label1">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/gray_100</item>
-        <item name="cornerRadius">50dp</item>
+        <item name="cornerRadius">10dp</item>
         <item name="android:backgroundTint">@drawable/selector_button_orange</item>
         <item name="android:paddingVertical">12dp</item>
     </style>
