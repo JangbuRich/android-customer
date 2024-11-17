@@ -2,4 +2,24 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00FFFFFFFF</color>
+
+    <!-- color scale -->
+    <color name="main_orange">#FF7048</color>
+    <color name="sub_y">#FFD400</color>
+    <color name="sub_py">#FFF1B8</color>
+    <color name="sub_b">#89C2FF</color>
+
+    <!-- gray scale -->
+    <color name="gray_10">#171719</color>
+    <color name="gray_20">#21232A</color>
+    <color name="gray_30">#353C49</color>
+    <color name="gray_40">#585E70</color>
+    <color name="gray_50">#71788C</color>
+    <color name="gray_60">#A4ADBE</color>
+    <color name="gray_70">#D2D6DE</color>
+    <color name="gray_80">#E2E5EB</color>
+    <color name="gray_90">#EFF1F5</color>
+    <color name="gray_95">#F7F8FB</color>
+    <color name="gray_100">#FFFFFF</color>
 </resources>
