@@ -1,6 +1,13 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+}
+
+val properties = Properties().apply {
+    load(FileInputStream(rootProject.file("local.properties")))
 }
 
 android {
@@ -13,6 +20,8 @@ android {
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
+
+        buildConfigField("String", "KAKAO_MAP_KEY", properties.getProperty("KAKAO_MAP_KEY"))
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -59,4 +68,7 @@ dependencies {
 
     // circle Image
     implementation("de.hdodenhof:circleimageview:3.1.0")
+
+    // 카카오 map
+    implementation("com.kakao.maps.open:android:2.9.5")
 }

@@ -9,7 +9,7 @@ import com.project.jangburich.ui.group.GroupFragment
 import com.project.jangburich.ui.home.HomeFragment
 import com.project.jangburich.ui.mypage.MypageFragment
 import com.project.jangburich.ui.reserve.ReserveFragment
-import com.project.jangburich.ui.store.StoreFragment
+import com.project.jangburich.ui.store.StoreMapFragment
 
 class MainActivity : AppCompatActivity() {
     val manager = supportFragmentManager
@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 R.id.menu_store -> {
-                    val nextFragment = StoreFragment()
+                    val nextFragment = StoreMapFragment()
 
                     val transaction = supportFragmentManager.beginTransaction()
                     transaction.replace(R.id.fragmentContainerView_main, nextFragment)
