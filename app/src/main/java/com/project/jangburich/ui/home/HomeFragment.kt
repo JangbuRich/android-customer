@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), HomeGroupBottomSheetListener {
 
     lateinit var binding: FragmentHomeBinding
     lateinit var mainActivity: MainActivity
@@ -53,5 +53,8 @@ class HomeFragment : Fragment() {
                 }
             }
         }
+    }
+
+    override fun onButtonClicked() {
     }
 }

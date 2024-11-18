@@ -15,4 +15,8 @@
     <string name="agreement3">[필수] 위치기반서비스 이용 약관</string>
     <string name="agreement4">[선택] 마케팅 활용 동의</string>
     <string name="agreement5">[선택] 광고성 정보 수신 동의</string>
+
+    <!-- 그룹 생성 bottomsheet -->
+    <string name="bottomsheet_title">장부리치에 오신 것을 환영해요!</string>
+    <string name="bottomsheet_description">그룹을 생성하거나 입장한 후에 매장을 선택할 수 있어요.</string>
 </resources>
