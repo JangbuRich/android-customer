@@ -53,4 +53,10 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    // gif
+    implementation("com.airbnb.android:lottie:5.0.2")
+
+    // circle Image
+    implementation("de.hdodenhof:circleimageview:3.1.0")
 }

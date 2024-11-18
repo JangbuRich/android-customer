@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 배경 색상 -->
+    <item>
+        <shape>
+            <solid android:color="@color/gray_100" />
+        </shape>
+    </item>
+
+    <!-- 상단 stroke -->
+    <item>
+        <shape>
+            <solid android:color="@android:color/transparent" />
+            <stroke
+                android:color="@color/gray_90"
+                android:width="1dp" />
+        </shape>
+    </item>
+
+    <!-- 컨텐츠 inset으로 조정 -->
+    <item android:top="1dp">
+        <shape>
+            <solid android:color="@color/gray_100" />
+        </shape>
+    </item>
+</layer-list>

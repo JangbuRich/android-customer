@@ -98,7 +98,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:src="@drawable/ic_arrow_right" />
+            android:src="@drawable/ic_arrow_right_gray80" />
     </LinearLayout>
 
     <LinearLayout
@@ -134,7 +134,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:src="@drawable/ic_arrow_right" />
+            android:src="@drawable/ic_arrow_right_gray80" />
     </LinearLayout>
 
     <LinearLayout
@@ -170,7 +170,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:src="@drawable/ic_arrow_right" />
+            android:src="@drawable/ic_arrow_right_gray80" />
     </LinearLayout>
 
     <LinearLayout
@@ -206,7 +206,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:src="@drawable/ic_arrow_right" />
+            android:src="@drawable/ic_arrow_right_gray80" />
     </LinearLayout>
 
     <LinearLayout
@@ -242,7 +242,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:src="@drawable/ic_arrow_right" />
+            android:src="@drawable/ic_arrow_right_gray80" />
     </LinearLayout>
 
     <Button

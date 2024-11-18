@@ -1,4 +1,4 @@
-package com.project.jangburich.ui.login
+package com.project.jangburich.ui.group
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,13 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.project.jangburich.R
-import com.project.jangburich.databinding.FragmentLoginMainBinding
+import com.project.jangburich.databinding.FragmentGroupBinding
 import com.project.jangburich.ui.MainActivity
 
+class GroupFragment : Fragment() {
 
-class LoginMainFragment : Fragment() {
-
-    lateinit var binding: FragmentLoginMainBinding
+    lateinit var binding: FragmentGroupBinding
     lateinit var mainActivity: MainActivity
 
     override fun onCreateView(
@@ -20,18 +19,11 @@ class LoginMainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = FragmentLoginMainBinding.inflate(layoutInflater)
+        binding = FragmentGroupBinding.inflate(layoutInflater)
         mainActivity = activity as MainActivity
 
-        mainActivity.hideBottomNavigation(true)
-
-        binding.run {
-            buttonKakao.setOnClickListener {
-                // 카카오 로그인
-            }
-        }
+        mainActivity.hideBottomNavigation(false)
 
         return binding.root
     }
-
 }

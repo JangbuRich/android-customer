@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="20dp"
+    android:paddingVertical="15dp"
+    android:layout_marginRight="10dp"
+    android:background="@drawable/background_home_jangbu">
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:src="@drawable/example"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView_group_name"
+        style="@style/Detail2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:text="그룹"
+        android:textColor="@color/gray_10"
+        app:layout_constraintStart_toEndOf="@+id/profile_image"
+        app:layout_constraintTop_toTopOf="@+id/profile_image" />
+
+    <ImageView
+        android:id="@+id/imageView_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/textView_group_name"
+        app:layout_constraintTop_toBottomOf="@+id/textView_group_name"
+        app:srcCompat="@drawable/ic_star_selected" />
+
+    <TextView
+        android:id="@+id/textView_store_name"
+        style="@style/body2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:text="매장명"
+        android:textColor="@color/gray_40"
+        app:layout_constraintStart_toEndOf="@+id/imageView_star"
+        app:layout_constraintTop_toBottomOf="@+id/textView_group_name" />
+
+    <ImageView
+        android:id="@+id/button_open"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_arrow_right_gray60" />
+
+    <TextView
+        android:id="@+id/progress_indicator"
+        android:layout_width="0dp"
+        android:layout_height="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/background_progress_indicator_unselected"
+        app:layout_constraintTop_toBottomOf="@+id/profile_image" />
+
+    <TextView
+        android:id="@+id/progress_indicator_selected"
+        android:layout_width="0dp"
+        android:layout_height="8dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/background_progress_indicator_selected"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_image"
+        app:layout_constraintWidth_percent="0.5" />
+
+    <TextView
+        android:id="@+id/textView_my_point"
+        style="@style/Detail2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="3dp"
+        android:text="원"
+        android:textColor="@color/gray_20"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_total_point"
+        app:layout_constraintEnd_toStartOf="@+id/textView_total_point" />
+
+    <TextView
+        android:id="@+id/textView_total_point"
+        style="@style/Label3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="/ 원"
+        android:textColor="@color/gray_60"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progress_indicator" />
+</androidx.constraintlayout.widget.ConstraintLayout>
