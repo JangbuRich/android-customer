@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="store_category">
+        <item>전체</item>
+        <item>한식</item>
+        <item>중식</item>
+        <item>일식</item>
+        <item>양식</item>
+        <item>분식</item>
+        <item>육류</item>
+        <item>해산물</item>
+        <item>베트남</item>
+        <item>멕시코</item>
+        <item>인도</item>
+        <item>기타</item>
+    </array>
+</resources>
