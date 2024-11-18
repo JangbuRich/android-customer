@@ -144,4 +144,16 @@
         <item name="android:backgroundTint">@drawable/selector_button_orange</item>
         <item name="android:paddingVertical">12dp</item>
     </style>
+
+    <!--  EditText -->
+    <style name="OneLineEditText" parent="Detail4">
+        <item name="android:layout_height">47dp</item>
+        <item name="android:maxLength">15</item>
+        <item name="android:inputType">text</item>
+        <item name="android:paddingVertical">12dp</item>
+        <item name="android:paddingHorizontal">15dp</item>
+        <item name="android:textColor">@color/gray_20</item>
+        <item name="android:textColorHint">@color/gray_60</item>
+        <item name="android:background">@drawable/selector_edittext</item>
+    </style>
 </resources>
