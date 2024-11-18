@@ -8,4 +8,11 @@
 
     <!-- slogan -->
     <string name="slogan">소상공인과 소비자를 위한\n손쉬운 장부 관리의 시작!</string>
+
+    <!-- 약관 동의 -->
+    <string name="agreement1">[필수] 장부리치 이용약관</string>
+    <string name="agreement2">[필수] 개인정보 수집 및 이용 동의</string>
+    <string name="agreement3">[필수] 위치기반서비스 이용 약관</string>
+    <string name="agreement4">[선택] 마케팅 활용 동의</string>
+    <string name="agreement5">[선택] 광고성 정보 수신 동의</string>
 </resources>
