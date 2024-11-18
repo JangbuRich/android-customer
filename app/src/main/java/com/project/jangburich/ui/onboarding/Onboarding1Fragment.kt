@@ -23,6 +23,8 @@ class Onboarding1Fragment : Fragment() {
         binding = FragmentOnboarding1Binding.inflate(layoutInflater)
         mainActivity = activity as MainActivity
 
+        mainActivity.hideBottomNavigation(true)
+
         binding.run {
             buttonNext.setOnClickListener {
                 val nextFragment = Onboarding2Fragment()

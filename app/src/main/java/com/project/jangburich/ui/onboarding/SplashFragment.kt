@@ -21,6 +21,9 @@ class SplashFragment : Fragment() {
     ): View? {
 
         binding = FragmentSplashBinding.inflate(layoutInflater)
+        mainActivity = activity as MainActivity
+
+        mainActivity.hideBottomNavigation(true)
 
         Handler().postDelayed({
             val nextFragment = Onboarding1Fragment()

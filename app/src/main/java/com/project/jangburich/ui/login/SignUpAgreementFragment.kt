@@ -8,10 +8,12 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import com.project.jangburich.R
 import com.project.jangburich.databinding.FragmentSignUpAgreementBinding
+import com.project.jangburich.ui.MainActivity
 
 class SignUpAgreementFragment : Fragment() {
 
     lateinit var binding: FragmentSignUpAgreementBinding
+    lateinit var mainActivity: MainActivity
 
     val isAgree = MutableList(6) { false }
 
@@ -21,6 +23,7 @@ class SignUpAgreementFragment : Fragment() {
     ): View? {
 
         binding = FragmentSignUpAgreementBinding.inflate(layoutInflater)
+        mainActivity = activity as MainActivity
 
         initView()
 
@@ -103,6 +106,8 @@ class SignUpAgreementFragment : Fragment() {
     }
 
     fun initView() {
+        mainActivity.hideBottomNavigation(true)
+
         binding.run {
             toolbar.run {
                 buttonBack.setOnClickListener {

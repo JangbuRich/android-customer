@@ -8,10 +8,12 @@ import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import com.project.jangburich.R
 import com.project.jangburich.databinding.FragmentSignUpUserInfoBinding
+import com.project.jangburich.ui.MainActivity
 
 class SignUpUserInfoFragment : Fragment() {
 
     lateinit var binding: FragmentSignUpUserInfoBinding
+    lateinit var mainActivity: MainActivity
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -19,6 +21,7 @@ class SignUpUserInfoFragment : Fragment() {
     ): View? {
 
         binding = FragmentSignUpUserInfoBinding.inflate(layoutInflater)
+        mainActivity = activity as MainActivity
 
         initView()
 
@@ -50,6 +53,8 @@ class SignUpUserInfoFragment : Fragment() {
     }
 
     fun initView() {
+        mainActivity.hideBottomNavigation(true)
+
         binding.run {
             toolbar.run {
                 buttonBack.setOnClickListener {
