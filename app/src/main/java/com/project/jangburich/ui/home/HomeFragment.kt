@@ -8,6 +8,9 @@ import android.view.ViewGroup
 import com.project.jangburich.R
 import com.project.jangburich.databinding.FragmentHomeBinding
 import com.project.jangburich.ui.MainActivity
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class HomeFragment : Fragment() {
 
@@ -24,6 +27,31 @@ class HomeFragment : Fragment() {
 
         mainActivity.hideBottomNavigation(false)
 
+        initView()
+
+        binding.run {
+            buttonMap.setOnClickListener { mainActivity.binding.bottomNavigation.selectedItemId = R.id.menu_store }
+            buttonGroup.setOnClickListener { mainActivity.binding.bottomNavigation.selectedItemId = R.id.menu_group }
+            buttonReserve.setOnClickListener { mainActivity.binding.bottomNavigation.selectedItemId = R.id.menu_reserve }
+
+
+        }
+
         return binding.root
+    }
+
+    fun getCurrentDate(): String {
+        val dateFormat = SimpleDateFormat("yyyy.MM.dd", Locale.getDefault())
+        return dateFormat.format(Date())
+    }
+
+    fun initView() {
+        binding.run {
+            toolbar.run {
+                buttonWallet.setOnClickListener {
+                    // 나의 지갑 화면
+                }
+            }
+        }
     }
 }
