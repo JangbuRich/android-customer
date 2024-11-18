@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.project.jangburich.R
 import com.project.jangburich.databinding.FragmentOnboarding3Binding
 import com.project.jangburich.ui.MainActivity
+import com.project.jangburich.ui.login.LoginMainFragment
 
 class Onboarding3Fragment : Fragment() {
     lateinit var binding: FragmentOnboarding3Binding
@@ -25,12 +26,12 @@ class Onboarding3Fragment : Fragment() {
 
         binding.run {
             buttonNext.setOnClickListener {
-//                val nextFragment = Onboarding2Fragment()
-//
-//                val transaction = mainActivity.manager.beginTransaction()
-//                transaction.replace(R.id.fragmentContainerView_main, nextFragment)
-//                transaction.addToBackStack("")
-//                transaction.commit()
+                val nextFragment = LoginMainFragment()
+
+                val transaction = mainActivity.manager.beginTransaction()
+                transaction.replace(R.id.fragmentContainerView_main, nextFragment)
+                transaction.addToBackStack("")
+                transaction.commit()
             }
         }
 
