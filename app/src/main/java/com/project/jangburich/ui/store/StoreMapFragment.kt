@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kakao.vectormap.KakaoMap
 import com.kakao.vectormap.KakaoMapReadyCallback
-import com.project.jangburich.BuildConfig
 import com.kakao.vectormap.KakaoMapSdk
 import com.kakao.vectormap.MapLifeCycleCallback
 import com.kakao.vectormap.MapView
@@ -54,6 +53,17 @@ class StoreMapFragment : Fragment() {
             resources.getStringArray(R.array.store_category).toMutableList()
 
         showMapView()
+
+        binding.run {
+            buttonList.setOnClickListener {
+                val nextFragment = StoreListFragment()
+
+                val transaction = mainActivity.manager.beginTransaction()
+                transaction.replace(R.id.fragmentContainerView_main, nextFragment)
+                transaction.addToBackStack("")
+                transaction.commit()
+            }
+        }
 
         return binding.root
     }

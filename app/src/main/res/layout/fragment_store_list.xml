@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.store.StoreListFragment">
+
+    <EditText
+        android:id="@+id/editText_search"
+        style="@style/Label1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_search"
+        android:ems="10"
+        android:inputType="text"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="10dp"
+        android:hint="맛집을 검색하세요"
+        android:textColorHint="@color/gray_60"
+        android:textColor="@color/gray_20"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_search"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editText_search"
+        app:layout_constraintEnd_toEndOf="@+id/editText_search"
+        app:layout_constraintTop_toTopOf="@+id/editText_search" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_store_category"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/editText_search"
+        app:layout_constraintTop_toBottomOf="@+id/editText_search" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/button_map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/gray_100"
+        android:clickable="true"
+        android:padding="10dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginRight="20dp"
+        android:src="@drawable/ic_map"
+        app:borderWidth="0dp"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:maxImageSize="20dp"
+        app:rippleColor="@color/transparent"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.ExtraLarge"
+        app:tint="@null" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_store_list"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView_store_category"
+        app:layout_constraintVertical_bias="0.0" />
+</androidx.constraintlayout.widget.ConstraintLayout>
