@@ -145,6 +145,30 @@
         <item name="android:paddingVertical">12dp</item>
     </style>
 
+    <style name="ButtonGray70" parent="Label1">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/gray_20</item>
+        <item name="cornerRadius">10dp</item>
+        <item name="android:background">@drawable/background_button_gray70</item>
+        <item name="android:paddingVertical">12dp</item>
+    </style>
+
+    <style name="ButtonGray20" parent="Label1">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/gray_100</item>
+        <item name="cornerRadius">10dp</item>
+        <item name="android:background">@drawable/background_button_gray20</item>
+        <item name="android:paddingVertical">12dp</item>
+    </style>
+
+    <style name="ButtonOrange" parent="Label1">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/gray_100</item>
+        <item name="cornerRadius">10dp</item>
+        <item name="android:background">@drawable/background_button_orange</item>
+        <item name="android:paddingVertical">12dp</item>
+    </style>
+
     <!--  EditText -->
     <style name="OneLineEditText" parent="Detail4">
         <item name="android:layout_height">47dp</item>
@@ -155,5 +179,24 @@
         <item name="android:textColor">@color/gray_20</item>
         <item name="android:textColorHint">@color/gray_60</item>
         <item name="android:background">@drawable/selector_edittext</item>
+    </style>
+
+
+
+    <!-- 이미지 rounded corner -->
+    <style name="RoundSector10">
+        <item name="cornerSizeTopLeft">10dp</item>
+        <item name="cornerSizeTopRight">10dp</item>
+        <item name="cornerSizeBottomRight">10dp</item>
+        <item name="cornerSizeBottomLeft">10dp</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
+
+    <style name="RoundSector12">
+        <item name="cornerSizeTopLeft">12dp</item>
+        <item name="cornerSizeTopRight">12dp</item>
+        <item name="cornerSizeBottomRight">12dp</item>
+        <item name="cornerSizeBottomLeft">12dp</item>
+        <item name="cornerFamily">rounded</item>
     </style>
 </resources>

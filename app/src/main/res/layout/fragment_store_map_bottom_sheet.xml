@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="10dp"
+    android:paddingHorizontal="20dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.store.StoreMapBottomSheetFragment">
+
+    <View
+        android:id="@+id/bottomsheet_handle"
+        android:layout_width="38dp"
+        android:layout_height="6dp"
+        android:background="@drawable/background_bottomsheet_handle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageView_store"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bottomsheet_handle"
+        app:shapeAppearanceOverlay="@style/RoundSector12"
+        app:srcCompat="@drawable/example" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_store"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView_store"
+        app:layout_constraintTop_toTopOf="@+id/imageView_store">
+
+        <TextView
+            android:id="@+id/textView_store_name"
+            style="@style/Detail2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="매장명"
+            android:textColor="@color/gray_20"
+            app:layout_constraintEnd_toStartOf="@+id/imageView_star"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView_star"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView_store_name"
+            app:srcCompat="@drawable/ic_star_unselected" />
+
+        <TextView
+            android:id="@+id/textView_store_category"
+            style="@style/body3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="카테고리"
+            android:textColor="@color/gray_60"
+            app:layout_constraintStart_toStartOf="@+id/textView_store_name"
+            app:layout_constraintTop_toBottomOf="@+id/textView_store_name" />
+
+        <ImageView
+            android:id="@+id/imageView_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="@+id/textView_store_category"
+            app:layout_constraintTop_toBottomOf="@+id/textView_store_category"
+            app:srcCompat="@drawable/ic_time" />
+
+        <TextView
+            android:id="@+id/textView_time_open"
+            style="@style/body5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:text="영업중"
+            android:textColor="@color/main_orange"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView_time"
+            app:layout_constraintStart_toEndOf="@+id/imageView_time"
+            app:layout_constraintTop_toTopOf="@+id/imageView_time" />
+
+        <TextView
+            android:id="@+id/textView_time_open_close"
+            style="@style/body3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="영업 종료"
+            android:textColor="@color/gray_40"
+            app:layout_constraintBottom_toBottomOf="@+id/textView_time_open"
+            app:layout_constraintStart_toEndOf="@+id/textView_time_open"
+            app:layout_constraintTop_toTopOf="@+id/textView_time_open" />
+
+        <ImageView
+            android:id="@+id/imageView_phonenum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            app:layout_constraintStart_toStartOf="@+id/imageView_time"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_time"
+            app:srcCompat="@drawable/ic_phonenum" />
+
+        <TextView
+            android:id="@+id/textView_phonenum_value"
+            style="@style/body3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:text="02-123-4567"
+            android:textColor="@color/gray_40"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView_phonenum"
+            app:layout_constraintStart_toEndOf="@+id/imageView_phonenum"
+            app:layout_constraintTop_toTopOf="@+id/imageView_phonenum" />
+
+        <TextView
+            android:id="@+id/textView_chip"
+            style="@style/body3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/background_chip_store_reserve"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="3dp"
+            android:text="예약 가능"
+            android:textColor="@color/main_orange"
+            app:layout_constraintStart_toStartOf="@+id/imageView_phonenum"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_phonenum" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_store"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/button_pay_before"
+            style="@style/ButtonGray70"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@null"
+            android:text="선결제"
+            android:textAlignment="center"
+            android:textColor="@color/main_orange" />
+
+        <TextView
+            android:id="@+id/button_reserve"
+            style="@style/ButtonOrange"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="1"
+            android:text="예약"
+            android:textAlignment="center" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
