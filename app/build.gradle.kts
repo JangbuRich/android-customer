@@ -9,6 +9,7 @@ plugins {
 val properties = Properties().apply {
     load(FileInputStream(rootProject.file("local.properties")))
 }
+val kakaoNativeKey = properties.getProperty("kakao_app_key")
 
 android {
     namespace = "com.project.jangburich"
@@ -22,6 +23,10 @@ android {
         versionName = "1.0"
 
         buildConfigField("String", "KAKAO_MAP_KEY", properties.getProperty("KAKAO_MAP_KEY"))
+        buildConfigField("String", "KAKAO_APP_KEY", "\"${properties["kakao_key"]}\"")
+        buildConfigField("String", "SERVER_URL", properties.getProperty("SERVER_URL"))
+
+        manifestPlaceholders["kakao_native_key"] = kakaoNativeKey
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -74,6 +79,9 @@ dependencies {
 
     // 카카오 map
     implementation("com.kakao.maps.open:android:2.9.5")
+    // 카카오 로그인
+    implementation("com.kakao.sdk:v2-user:2.20.6")
+
     // api
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0") // JSON 변환
