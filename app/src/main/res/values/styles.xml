@@ -180,4 +180,23 @@
         <item name="android:textColorHint">@color/gray_60</item>
         <item name="android:background">@drawable/selector_edittext</item>
     </style>
+
+
+
+    <!-- 이미지 rounded corner -->
+    <style name="RoundSector10">
+        <item name="cornerSizeTopLeft">10dp</item>
+        <item name="cornerSizeTopRight">10dp</item>
+        <item name="cornerSizeBottomRight">10dp</item>
+        <item name="cornerSizeBottomLeft">10dp</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
+
+    <style name="RoundSector12">
+        <item name="cornerSizeTopLeft">12dp</item>
+        <item name="cornerSizeTopRight">12dp</item>
+        <item name="cornerSizeBottomRight">12dp</item>
+        <item name="cornerSizeBottomLeft">12dp</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
 </resources>

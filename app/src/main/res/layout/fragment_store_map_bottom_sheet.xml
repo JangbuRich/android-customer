@@ -24,7 +24,7 @@
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bottomsheet_handle"
-        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Large"
+        app:shapeAppearanceOverlay="@style/RoundSector12"
         app:srcCompat="@drawable/example" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
