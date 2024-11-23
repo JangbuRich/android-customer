@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.project.jangburich.R
 import com.project.jangburich.databinding.FragmentHomeBinding
 import com.project.jangburich.ui.MainActivity
+import com.project.jangburich.ui.onboarding.Onboarding3Fragment
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -32,7 +33,7 @@ class HomeFragment : Fragment(), HomeGroupBottomSheetListener {
         binding.run {
             buttonMap.setOnClickListener { mainActivity.binding.bottomNavigation.selectedItemId = R.id.menu_store }
             buttonGroup.setOnClickListener { mainActivity.binding.bottomNavigation.selectedItemId = R.id.menu_group }
-            buttonReserve.setOnClickListener { mainActivity.binding.bottomNavigation.selectedItemId = R.id.menu_reserve }
+//            buttonReserve.setOnClickListener { mainActivity.binding.bottomNavigation.selectedItemId = R.id.menu_reserve }
 
 
         }
@@ -55,6 +56,11 @@ class HomeFragment : Fragment(), HomeGroupBottomSheetListener {
         }
     }
 
-    override fun onButtonClicked() {
+    override fun onButtonClicked(position: Int) {
+        if(position == 0) {
+
+        } else {
+
+        }
     }
 }

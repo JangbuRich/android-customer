@@ -76,6 +76,19 @@
             app:layout_constraintStart_toStartOf="@+id/imageView_logo_type"
             app:layout_constraintTop_toBottomOf="@+id/imageView_logo_type" />
 
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/imageView_gif"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="74dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_slogan"
+            app:lottie_autoPlay="true"
+            app:lottie_repeatMode="restart"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/login" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

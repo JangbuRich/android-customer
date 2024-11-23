@@ -13,7 +13,7 @@ import com.project.jangburich.databinding.FragmentHomeGroupBottomSheetBinding
 import com.project.jangburich.ui.MainActivity
 
 interface HomeGroupBottomSheetListener {
-    fun onButtonClicked()
+    fun onButtonClicked(position: Int)
 }
 class HomeGroupBottomSheetFragment : BottomSheetDialogFragment() {
     private lateinit var listener: HomeGroupBottomSheetListener
@@ -33,14 +33,15 @@ class HomeGroupBottomSheetFragment : BottomSheetDialogFragment() {
         mainActivity = activity as MainActivity
 
         binding.run {
-            buttonMakeGroup.setOnClickListener { onItemClicked() }
+            buttonEnterGroup.setOnClickListener { onItemClicked(0) }
+            buttonMakeGroup.setOnClickListener { onItemClicked(1) }
         }
 
         return binding.root
     }
 
-    private fun onItemClicked() {
-        listener.onButtonClicked()
+    private fun onItemClicked(position: Int) {
+        listener.onButtonClicked(position)
 
         dismiss()
     }
