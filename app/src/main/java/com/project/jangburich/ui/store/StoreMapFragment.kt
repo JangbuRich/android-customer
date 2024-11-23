@@ -8,18 +8,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.res.ResourcesCompat
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.gms.maps.model.Marker
 import com.kakao.vectormap.KakaoMap
 import com.kakao.vectormap.KakaoMapReadyCallback
 import com.kakao.vectormap.KakaoMapSdk
+import com.kakao.vectormap.LatLng
 import com.kakao.vectormap.MapLifeCycleCallback
 import com.kakao.vectormap.MapView
 import com.project.jangburich.BuildConfig.KAKAO_MAP_KEY
 import com.project.jangburich.R
+import com.project.jangburich.api.response.store.Store
 import com.project.jangburich.databinding.FragmentStoreMapBinding
 import com.project.jangburich.ui.MainActivity
+import com.project.jangburich.ui.login.viewModel.LoginViewModel
 import com.project.jangburich.ui.store.adapter.StoreCategoryAdapter
+import com.project.jangburich.ui.store.viewModel.StoreViewModel
 import com.skydoves.balloon.ArrowOrientation
 import com.skydoves.balloon.ArrowPositionRules
 import com.skydoves.balloon.Balloon
@@ -31,6 +37,7 @@ class StoreMapFragment : Fragment() {
 
     lateinit var binding: FragmentStoreMapBinding
     lateinit var mainActivity: MainActivity
+    lateinit var viewModel: StoreViewModel
 
     private lateinit var storeCategoryAdapter: StoreCategoryAdapter
 
@@ -46,6 +53,7 @@ class StoreMapFragment : Fragment() {
     ): View? {
         binding = FragmentStoreMapBinding.inflate(layoutInflater)
         mainActivity = activity as MainActivity
+        viewModel = ViewModelProvider(mainActivity)[StoreViewModel::class.java]
 
         mainActivity.hideBottomNavigation(false)
 
@@ -55,6 +63,8 @@ class StoreMapFragment : Fragment() {
         showMapView()
 
         binding.run {
+
+            viewModel.getStoreList(mainActivity, "ALL")
             buttonList.setOnClickListener {
                 val nextFragment = StoreListFragment()
 
@@ -123,29 +133,28 @@ class StoreMapFragment : Fragment() {
         }
     }
 
-
-    private fun showMapView(){
-
+    private fun showMapView() {
         mapView = binding.mapView
 
-        // KakaoMapSDK 초기화!!
+        // KakaoMapSDK 초기화
         KakaoMapSdk.init(requireContext(), KAKAO_MAP_KEY)
 
         mapView.start(object : MapLifeCycleCallback() {
 
             override fun onMapDestroy() {
-                // 지도 API가 정상적으로 종료될 때 호출
                 Log.d("KakaoMap", "onMapDestroy")
             }
 
             override fun onMapError(p0: Exception?) {
-                // 인증 실패 및 지도 사용 중 에러가 발생할 때 호출
                 Log.e("KakaoMap", "onMapError")
             }
-        }, object : KakaoMapReadyCallback(){
+
+        }, object : KakaoMapReadyCallback() {
             override fun onMapReady(kakaomap: KakaoMap) {
-                // 정상적으로 인증이 완료되었을 때 호출
                 kakaoMap = kakaomap
+
+                // 마커 추가
+
             }
         })
     }
