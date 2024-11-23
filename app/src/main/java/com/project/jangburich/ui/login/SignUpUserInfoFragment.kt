@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
+import com.project.jangburich.MyApplication
 import com.project.jangburich.R
 import com.project.jangburich.databinding.FragmentSignUpUserInfoBinding
 import com.project.jangburich.ui.MainActivity
@@ -27,6 +28,9 @@ class SignUpUserInfoFragment : Fragment() {
 
         binding.run {
             buttonNext.setOnClickListener {
+                MyApplication.signUpName = editTextName.text.toString()
+                MyApplication.signUpPhoneNum = editTextPhoneNumber.text.toString()
+
                 val nextFragment = SignUpAgreementFragment()
 
                 val transaction = mainActivity.supportFragmentManager.beginTransaction()

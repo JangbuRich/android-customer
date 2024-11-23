@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:id="@+id/layout_home_jangbu"
     android:paddingHorizontal="20dp"
     android:paddingVertical="15dp"
     android:layout_marginRight="10dp"
