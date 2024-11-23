@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.group.CreateGroupInviteFragment">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_back"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_intro"
+        style="@style/Headline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="그룹에 함께할 그룹원에게\n비밀 코드를 보내 초대해주세요!"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <TextView
+        android:id="@+id/textView_title_name"
+        style="@style/Detail1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="그룹 비밀 코드"
+        android:layout_marginTop="40dp"
+        android:textColor="@color/gray_40"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_intro" />
+
+    <TextView
+        android:id="@+id/textView_code"
+        style="@style/Detail1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:text="비밀 코드"
+        android:paddingVertical="12dp"
+        android:paddingHorizontal="15dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/selector_edittext"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_title_name" />
+
+    <TextView
+        android:id="@+id/button_copy"
+        style="@style/Detail1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="복사하기"
+        android:textColor="@color/main_orange"
+        android:layout_marginRight="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_code"
+        app:layout_constraintEnd_toEndOf="@+id/textView_code"
+        app:layout_constraintTop_toTopOf="@+id/textView_code" />
+
+    <Button
+        android:id="@+id/button_next"
+        style="@style/NextButtonGray"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="다음"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
