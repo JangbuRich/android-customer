@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.group.CreateGroupCompleteFragment">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_back"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_intro"
+        style="@style/Headline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="그룹 생성 완료!"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <TextView
+        android:id="@+id/textView_description"
+        style="@style/body4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="이제 매장을 선택해서\n장부 결제를 진행할 수 있어요"
+        android:textColor="@color/gray_40"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_intro" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/imageView_gif"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_description"
+        app:lottie_autoPlay="true"
+        app:lottie_repeatMode="restart"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/create_group" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/button_my_group"
+            style="@style/ButtonGray70"
+            android:backgroundTint="@null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:text="그룹 입장" />
+
+        <TextView
+            android:id="@+id/button_accept"
+            style="@style/ButtonGray20"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:text="확인" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
