@@ -68,6 +68,8 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
 
+                // 예약 확인 탭
+                /*
                 R.id.menu_reserve -> {
                     val nextFragment = ReserveFragment()
 
@@ -77,6 +79,7 @@ class MainActivity : AppCompatActivity() {
                     transaction.commit()
                     true
                 }
+                */
 
                 R.id.menu_mypage -> {
                     val nextFragment = MypageFragment()
