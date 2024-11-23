@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.group.PrePaymentIndividualFragment">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_back_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_store_name"
+        style="@style/Detail2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="매장명"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <TextView
+        android:id="@+id/textView_store_category"
+        style="@style/Detail4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="카테고리"
+        android:textColor="@color/gray_60"
+        android:layout_marginTop="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_store_name" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray_90"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_store_category" />
+
+    <TextView
+        android:id="@+id/textView_intro"
+        style="@style/Detail2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1인당 사용 가능 금액을\n설정해주세요"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+    <EditText
+        android:id="@+id/editText_individual_price"
+        style="@style/OneLineEditTextUnderLine"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="100,000"
+        android:inputType="text"
+        android:textAppearance="end"
+        android:gravity="right"
+        android:paddingRight="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_intro" />
+
+    <TextView
+        android:id="@+id/textView_price"
+        style="@style/body8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="원"
+        android:textColor="@color/gray_60"
+        app:layout_constraintBottom_toBottomOf="@+id/editText_individual_price"
+        app:layout_constraintEnd_toEndOf="@+id/editText_individual_price"
+        app:layout_constraintTop_toTopOf="@+id/editText_individual_price" />
+
+    <TextView
+        android:id="@+id/textView_total_price_description"
+        style="@style/Detail4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="잔여 선결제 금액:"
+        android:textColor="@color/gray_60"
+        android:layout_marginRight="5dp"
+        app:layout_constraintTop_toTopOf="@+id/textView_total_price_value"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_total_price_value"
+        app:layout_constraintEnd_toStartOf="@+id/textView_total_price_value" />
+
+    <TextView
+        android:id="@+id/textView_total_price_value"
+        style="@style/Detail1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="100,000"
+        android:textColor="@color/gray_40"
+        app:layout_constraintTop_toTopOf="@+id/textView_total_price"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_total_price"
+        app:layout_constraintEnd_toStartOf="@+id/textView_total_price" />
+
+    <TextView
+        android:id="@+id/textView_total_price"
+        style="@style/Detail1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="원"
+        android:textColor="@color/gray_60"
+        app:layout_constraintTop_toBottomOf="@+id/editText_individual_price"
+        app:layout_constraintEnd_toEndOf="@+id/editText_individual_price" />
+
+    <Button
+        android:id="@+id/button_next"
+        style="@style/NextButtonGray"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="다음"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
