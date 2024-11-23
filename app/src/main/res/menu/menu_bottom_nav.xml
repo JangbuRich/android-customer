@@ -17,11 +17,11 @@
         android:title="내 그룹"
         app:showAsAction="withText" />
 
-    <item
-        android:id="@+id/menu_reserve"
-        android:icon="@drawable/ic_menu_reserve"
-        android:title="예약 확인"
-        app:showAsAction="withText" />
+<!--    <item-->
+<!--        android:id="@+id/menu_reserve"-->
+<!--        android:icon="@drawable/ic_menu_reserve"-->
+<!--        android:title="예약 확인"-->
+<!--        app:showAsAction="withText" />-->
 
     <item
         android:id="@+id/menu_mypage"
