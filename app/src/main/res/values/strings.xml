@@ -19,4 +19,14 @@
     <!-- 그룹 생성 bottomsheet -->
     <string name="bottomsheet_title">장부리치에 오신 것을 환영해요!</string>
     <string name="bottomsheet_description">그룹을 생성하거나 입장한 후에 매장을 선택할 수 있어요.</string>
+
+    <!-- 그룹 유형 -->
+    <string name="group1">개인</string>
+    <string name="group2">모임</string>
+    <string name="group3">가족</string>
+    <string name="group4">회사</string>
+    <string name="group5">동아리</string>
+    <string name="group6">동호회</string>
+    <string name="group7">학생회</string>
+    <string name="group8">기타</string>
 </resources>
