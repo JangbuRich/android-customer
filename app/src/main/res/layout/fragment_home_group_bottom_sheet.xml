@@ -19,16 +19,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView_bottomsheet"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/imageView_gif"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:src="@drawable/img_bottomsheet_group"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/bottomsheet_handle"
-        tools:layout_editor_absoluteY="10dp" />
+        app:layout_constraintTop_toBottomOf="@+id/bottomsheet_handle"
+        app:lottie_autoPlay="true"
+        app:lottie_repeatMode="restart"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/home_bottom_sheet" />
 
     <TextView
         android:id="@+id/textView_bottomsheet_title"
@@ -40,7 +42,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView_bottomsheet" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView_gif" />
 
     <TextView
         android:id="@+id/textView_bottomsheet_description"
@@ -55,15 +57,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_bottomsheet_title" />
 
-    <Button
-        android:id="@+id/button_make_group"
-        style="@style/NextButtonGray"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="그룹 생성하기"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_bottomsheet_description" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_bottomsheet_description">
+
+        <TextView
+            android:id="@+id/button_enter_group"
+            style="@style/ButtonGray70"
+            android:backgroundTint="@null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:text="그룹 입장" />
+
+        <TextView
+            android:id="@+id/button_make_group"
+            style="@style/ButtonGray20"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:text="그룹 생성" />
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

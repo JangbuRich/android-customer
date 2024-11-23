@@ -27,7 +27,12 @@ class SignUpUserInfoFragment : Fragment() {
 
         binding.run {
             buttonNext.setOnClickListener {
+                val nextFragment = SignUpAgreementFragment()
 
+                val transaction = mainActivity.supportFragmentManager.beginTransaction()
+                transaction.replace(R.id.fragmentContainerView_main, nextFragment)
+                transaction.addToBackStack(null)
+                transaction.commit()
             }
 
             editTextName.addTextChangedListener {
