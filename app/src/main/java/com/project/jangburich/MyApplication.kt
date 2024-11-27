@@ -13,7 +13,7 @@ class MyApplication: Application() {
         var signUpPhoneNum = ""
         var agreement4 = false
         var agreement5 = false
-    }}
+
         // 그룹 생성
         var groupType = ""
         var groupName = ""
@@ -36,3 +36,9 @@ class MyApplication: Application() {
         var prepaymentGroupId = 2L
         var prepaymentTotalPrice = 0
         var prepaymentIndividualPrice = 0
+
+        // 코드 정보
+        var code = ""
+        var codeGroupInfo = GetGroupInfoWithCodeResponse("","","",0,null,"")
+    }
+}
