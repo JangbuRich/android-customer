@@ -27,9 +27,9 @@ class TeamAdapter(
     }
 
     fun updateList(
-        newteamList: List<Team>
+        newTeamList: List<Team>
     ) {
-        teamList = newteamList
+        teamList = newTeamList
         notifyDataSetChanged()
     }
 
@@ -52,7 +52,7 @@ class TeamAdapter(
         val constraintSet = ConstraintSet()
         constraintSet.clone(holder.layout) // ConstraintLayout의 현재 제약 조건 복사
 
-        var layoutPercent = ((teamList[position].currentAmount.toDouble()) / (teamList[position].totalAmount)) * 100
+        var layoutPercent = ((teamList[position].currentAmount.toDouble()) / (teamList[position].totalAmount))
 
 
         Log.d("##", "layoutPercent : ${layoutPercent}")
@@ -87,12 +87,6 @@ class TeamAdapter(
             binding.root.setOnClickListener {
                 itemClickListener?.onItemClick(adapterPosition)
 
-                val previousPosition = selectedPosition
-                selectedPosition = position
-
-                // 이전 선택된 항목과 현재 선택된 항목을 갱신
-                notifyItemChanged(previousPosition)
-                notifyItemChanged(selectedPosition)
                 true
             }
         }

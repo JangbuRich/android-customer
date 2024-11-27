@@ -300,7 +300,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/background_group_unselected"
-            android:paddingHorizontal="19dp"
+            android:paddingHorizontal="25dp"
             android:paddingVertical="18dp">
 
             <ImageView

@@ -31,8 +31,8 @@
         style="@style/Detail1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="그룹 유형"
         android:layout_marginTop="40dp"
+        android:text="그룹 이름"
         android:textColor="@color/gray_40"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_intro" />

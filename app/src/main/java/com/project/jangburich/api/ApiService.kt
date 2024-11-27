@@ -63,14 +63,14 @@ interface ApiService {
     ): Call<BaseResponse<GetStoreDetailResponse>>
 
     // 비밀 코드로 팀 정보 조회
-    @GET("/teams/secretCode/{secretCode}")
+    @GET("/teams/info/secretcode/{secretCode}")
     fun getGroupInfoWithCode(
         @Header("Authorization") token: String,
         @Path("secretCode") secretCode: String
     ): Call<BaseResponse<GetGroupInfoWithCodeResponse>>
 
     // 비밀 코드로 팀 입장
-    @GET("/teams/join/{joinCode}")
+    @POST("/teams/join/{joinCode}")
     fun enterGroup(
         @Header("Authorization") token: String,
         @Path("joinCode") joinCode: String
