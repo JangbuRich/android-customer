@@ -2,6 +2,7 @@ package com.project.jangburich.api
 
 import com.project.jangburich.api.request.login.SaveSignUpInfoRequest
 import com.project.jangburich.api.response.BaseResponse
+import com.project.jangburich.api.response.home.GetHomeDataResponse
 import com.project.jangburich.api.response.login.LoginResponse
 import com.project.jangburich.api.response.login.MessageResponse
 import okhttp3.RequestBody
@@ -26,4 +27,10 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Body parameters: SaveSignUpInfoRequest
     ): Call<BaseResponse<MessageResponse>>
+
+    // 홈화면
+    @GET("/user/home")
+    fun getHomeData(
+        @Header("Authorization") token: String
+    ): Call<BaseResponse<GetHomeDataResponse>>
 }
