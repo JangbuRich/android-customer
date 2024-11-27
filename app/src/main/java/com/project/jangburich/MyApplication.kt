@@ -26,3 +26,8 @@ class MyApplication: Application() {
         var lat = 37.49757415
         var long = 127.0278389
         var category = "ALL"
+
+        var storeId = 0L
+        var storeName = ""
+        var storeCategory = ""
+        var storeImage = ""

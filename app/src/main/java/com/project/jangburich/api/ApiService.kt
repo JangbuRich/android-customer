@@ -8,6 +8,7 @@ import com.project.jangburich.api.response.group.GetGroupResponse
 import com.project.jangburich.api.response.home.GetHomeDataResponse
 import com.project.jangburich.api.response.login.LoginResponse
 import com.project.jangburich.api.response.login.MessageResponse
+import com.project.jangburich.api.response.store.GetStoreDetailResponse
 import com.project.jangburich.api.response.store.GetStoreListResponse
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -52,6 +53,14 @@ interface ApiService {
     fun getGroup(
         @Header("Authorization") token: String
     ): Call<BaseResponse<List<GetGroupResponse>>>
+
+    // 매장 상세 페이지
+    @GET("/store/{storeId}")
+    fun getStoreDetail(
+        @Header("Authorization") token: String,
+        @Path("storeId") storeId: Long
+    ): Call<BaseResponse<GetStoreDetailResponse>>
+
     // 비밀 코드로 팀 정보 조회
     @GET("/teams/secretCode/{secretCode}")
     fun getGroupInfoWithCode(

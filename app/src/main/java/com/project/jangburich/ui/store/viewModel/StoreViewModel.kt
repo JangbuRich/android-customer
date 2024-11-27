@@ -14,6 +14,7 @@ import com.project.jangburich.api.response.BaseResponse
 import com.project.jangburich.api.response.home.GetHomeDataResponse
 import com.project.jangburich.api.response.home.Team
 import com.project.jangburich.api.response.login.MessageResponse
+import com.project.jangburich.api.response.store.GetStoreDetailResponse
 import com.project.jangburich.api.response.store.GetStoreListResponse
 import com.project.jangburich.api.response.store.Store
 import com.project.jangburich.api.response.store.StoreMenu
@@ -115,4 +116,73 @@ class StoreViewModel : ViewModel() {
         })
     }
 
+    fun getStoreDetail(activity: MainActivity, storeId: Long) {
+        val apiClient = ApiClient(activity)
+        val tokenManager = TokenManager(activity)
+
+        var tempMenuList = mutableListOf<StoreMenu>()
+
+        apiClient.apiService.getStoreDetail("Bearer ${tokenManager.getAccessToken()}", storeId).enqueue(object :
+            Callback<BaseResponse<GetStoreDetailResponse>> {
+            override fun onResponse(
+                call: Call<BaseResponse<GetStoreDetailResponse>>,
+                response: Response<BaseResponse<GetStoreDetailResponse>>
+            ) {
+                Log.d("##", "onResponse 성공: " + response.body().toString())
+                if (response.isSuccessful) {
+                    // 정상적으로 통신이 성공된 경우
+                    val result: BaseResponse<GetStoreDetailResponse>? = response.body()
+                    Log.d("##", "onResponse 성공: " + result?.toString())
+
+                    storeDetailData.value = GetStoreDetailResponse(
+                        result?.data?.reservable!!,
+                        result.data.isLiked,
+                        result.data.category,
+                        result.data.address,
+                        result.data.operationStatus,
+                        result.data.closeTime,
+                        result.data.contactNumber,
+                        result.data.representativeImg,
+                        null
+                    )
+
+                    if (!(result?.data?.storeMenus.isNullOrEmpty())) {
+                        for (i in 0 until result?.data?.storeMenus?.size!!) {
+                            var menuName = result.data.storeMenus[i].menuName
+                            var isSignature = result.data.storeMenus[i].isSignatureMenu
+                            var price = result.data.storeMenus[i].price
+                            var menuImage = result.data.storeMenus[i].menuImgUrl
+                            var menuDescription = result.data.storeMenus[i].description
+
+                            var m1 = StoreMenu(
+                                menuName,
+                                isSignature,
+                                menuDescription,
+                                price,
+                                menuImage)
+
+                            tempMenuList.add(m1)
+                        }
+                    }
+
+                    menuList.value = tempMenuList
+
+                } else {
+                    // 통신이 실패한 경우(응답코드 3xx, 4xx 등)
+                    var result: BaseResponse<GetStoreDetailResponse>? = response.body()
+                    Log.d("##", "onResponse 실패")
+                    Log.d("##", "onResponse 실패: " + response.code())
+                    Log.d("##", "onResponse 실패: " + response.body())
+                    val errorBody = response.errorBody()?.string() // 에러 응답 데이터를 문자열로 얻음
+                    Log.d("##", "Error Response: $errorBody")
+
+                }
+            }
+
+            override fun onFailure(call: Call<BaseResponse<GetStoreDetailResponse>>, t: Throwable) {
+                // 통신 실패
+                Log.d("##", "onFailure 에러: " + t.message.toString())
+            }
+        })
+    }
 }
