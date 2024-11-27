@@ -120,4 +120,49 @@ class GroupViewModel: ViewModel() {
             }
         })
     }
+
+    fun enterGroup(activity: MainActivity) {
+
+        val apiClient = ApiClient(activity)
+        val tokenManager = TokenManager(activity)
+
+        apiClient.apiService.enterGroup("Bearer ${tokenManager.getAccessToken()}", MyApplication.code).enqueue(object :
+            Callback<BaseResponse<MessageResponse>> {
+            override fun onResponse(
+                call: Call<BaseResponse<MessageResponse>>,
+                response: Response<BaseResponse<MessageResponse>>
+            ) {
+                Log.d("##", "onResponse 성공: " + response.body().toString())
+                if (response.isSuccessful) {
+                    // 정상적으로 통신이 성공된 경우
+                    val result: BaseResponse<MessageResponse>? = response.body()
+                    Log.d("##", "onResponse 성공: " + result?.toString())
+
+
+                    activity.fragmentManager?.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+
+                    val nextFragment = HomeFragment()
+
+                    val transaction = activity.manager.beginTransaction()
+                    transaction.replace(R.id.fragmentContainerView_main, nextFragment)
+                    transaction.addToBackStack("")
+                    transaction.commit()
+                } else {
+                    // 통신이 실패한 경우(응답코드 3xx, 4xx 등)
+                    var result: BaseResponse<MessageResponse>? = response.body()
+                    Log.d("##", "onResponse 실패")
+                    Log.d("##", "onResponse 실패: " + response.code())
+                    Log.d("##", "onResponse 실패: " + response.body())
+                    val errorBody = response.errorBody()?.string() // 에러 응답 데이터를 문자열로 얻음
+                    Log.d("##", "Error Response: $errorBody")
+
+                }
+            }
+
+            override fun onFailure(call: Call<BaseResponse<MessageResponse>>, t: Throwable) {
+                // 통신 실패
+                Log.d("##", "onFailure 에러: " + t.message.toString())
+            }
+        })
+    }
 }

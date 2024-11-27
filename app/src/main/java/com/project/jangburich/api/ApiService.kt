@@ -49,4 +49,11 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Path("secretCode") secretCode: String
     ): Call<BaseResponse<GetGroupInfoWithCodeResponse>>
+
+    // 비밀 코드로 팀 입장
+    @GET("/teams/join/{joinCode}")
+    fun enterGroup(
+        @Header("Authorization") token: String,
+        @Path("joinCode") joinCode: String
+    ): Call<BaseResponse<MessageResponse>>
 }
