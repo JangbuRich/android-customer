@@ -6,14 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.project.jangburich.api.response.store.Store
 import com.project.jangburich.databinding.RowStoreListBinding
 import com.project.jangburich.ui.MainActivity
 
 class StoreListAdapter (
     private var activity: MainActivity,
-    private var stores: List<Store>
+    private var stores: List<String>
 ) :
     RecyclerView.Adapter<StoreListAdapter.ViewHolder>() {
 
@@ -25,7 +23,7 @@ class StoreListAdapter (
         onItemClickListener = listener
     }
 
-    fun updateList(newStores: List<Store>) {
+    fun updateList(newStores: List<String>) {
         stores = newStores
         notifyDataSetChanged()
     }
@@ -45,17 +43,7 @@ class StoreListAdapter (
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.storeName.text = stores[position].name
-        holder.storeCategory.text = stores[position].category
-        if(stores[position].businessStatus == "open") {
-            holder.isStoreOpen.text = "영업중"
-        } else {
-            holder.isStoreOpen.text = "영업 종료"
-        }
-        holder.storeTimeOpenClose.text = "${stores[position].closeTime} 영업 종료"
-        holder.storePhoneNumber.text = stores[position].phoneNumber
 
-        Glide.with(activity).load(stores[position].imageUrl).into(holder.storeImage)
     }
 
     override fun getItemCount() = stores.size

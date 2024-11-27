@@ -67,7 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAlignment="center"
-            android:text="내 그룹 보기" />
+            android:text="그룹 입장" />
 
         <TextView
             android:id="@+id/button_accept"

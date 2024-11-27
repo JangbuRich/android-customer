@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/gray_95"
+    android:paddingHorizontal="20dp"
     tools:context=".ui.home.HomeFragment">
 
     <include
@@ -12,8 +13,6 @@
         layout="@layout/toolbar_main"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginHorizontal="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,7 +23,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="42dp"
-        android:layout_marginLeft="20dp"
         android:text="2024.11.23"
         android:textColor="@color/gray_50"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,19 +33,27 @@
         style="@style/Headline4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
         android:text="소비자님 반가워요!"
         android:textColor="@color/gray_20"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_date" />
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/imageView_gif"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="-5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView_date"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/home_dog" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_jangbu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:clipToPadding="false"
-        android:paddingRight="20dp"
-        android:layout_marginLeft="20dp"
         android:layout_marginTop="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,21 +64,21 @@
         android:layout_width="190dp"
         android:layout_height="154dp"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
         android:src="@drawable/img_button_map"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView_banner" />
+        app:layout_constraintTop_toBottomOf="@+id/layout_banner" />
 
-    <ImageView
-        android:id="@+id/imageView_banner"
-        android:layout_width="0dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_banner"
+        android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_marginTop="20dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/banner"
+        android:background="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView_jangbu"/>
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView_jangbu">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/button_point"
@@ -114,7 +120,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
-        android:layout_marginEnd="20dp"
         android:background="@drawable/background_home_menu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button_map"
@@ -156,7 +161,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
         android:layout_marginTop="13dp"
-        android:layout_marginEnd="20dp"
         android:background="@drawable/background_home_menu"
         app:layout_constraintBottom_toBottomOf="@+id/button_point"
         app:layout_constraintEnd_toEndOf="parent"
@@ -192,18 +196,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/imageView_gif"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="-5dp"
-        android:layout_marginEnd="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView_date"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/home_dog" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

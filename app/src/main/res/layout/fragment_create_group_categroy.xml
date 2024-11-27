@@ -115,7 +115,8 @@
 
         <Space
             android:layout_width="7dp"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/button_group3"
@@ -149,7 +150,8 @@
 
         <Space
             android:layout_width="7dp"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/button_group4"
@@ -198,8 +200,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/background_group_unselected"
-            android:paddingHorizontal="19dp"
-            android:paddingVertical="18dp">
+            android:paddingHorizontal="25dp"
+            android:paddingVertical="19dp">
 
             <ImageView
                 android:id="@+id/imageView_group5"
@@ -232,8 +234,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/background_group_unselected"
-            android:paddingHorizontal="19dp"
-            android:paddingVertical="18dp">
+            android:paddingHorizontal="25dp"
+            android:paddingVertical="19dp">
 
             <ImageView
                 android:id="@+id/imageView_group6"
@@ -258,7 +260,8 @@
 
         <Space
             android:layout_width="7dp"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/button_group7"
@@ -266,8 +269,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/background_group_unselected"
-            android:paddingHorizontal="19dp"
-            android:paddingVertical="18dp">
+            android:paddingHorizontal="25dp"
+            android:paddingVertical="19dp">
 
             <ImageView
                 android:id="@+id/imageView_group7"
@@ -292,7 +295,8 @@
 
         <Space
             android:layout_width="7dp"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/button_group8"
@@ -300,8 +304,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/background_group_unselected"
-            android:paddingHorizontal="19dp"
-            android:paddingVertical="18dp">
+            android:paddingHorizontal="25dp"
+            android:paddingVertical="19dp">
 
             <ImageView
                 android:id="@+id/imageView_group8"

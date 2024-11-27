@@ -65,6 +65,7 @@
         android:ems="10"
         android:hint="100,000"
         android:inputType="text"
+        android:textAppearance="end"
         android:gravity="right"
         android:paddingRight="30dp"
         app:layout_constraintEnd_toEndOf="parent"

@@ -106,7 +106,8 @@
                 android:maxWidth="34dp"
                 android:minWidth="34dp"
                 android:text="1"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textAppearance="center" />
 
             <ImageView
                 android:id="@+id/button_plus"

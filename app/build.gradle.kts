@@ -64,7 +64,6 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-    implementation(libs.play.services.maps)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -78,13 +77,8 @@ dependencies {
     // circle Image
     implementation("de.hdodenhof:circleimageview:3.1.0")
 
-    // glide
-    implementation("com.github.bumptech.glide:glide:4.13.0")
-    annotationProcessor("com.github.bumptech.glide:compiler:4.13.0")
-
     // 카카오 map
     implementation("com.kakao.maps.open:android:2.9.5")
-
     // 카카오 로그인
     implementation("com.kakao.sdk:v2-user:2.20.6")
 
