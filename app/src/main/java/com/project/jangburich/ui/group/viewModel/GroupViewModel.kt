@@ -264,13 +264,6 @@ class GroupViewModel: ViewModel() {
                     Log.d("##", "onResponse 실패: " + response.body())
                     val errorBody = response.errorBody()?.string() // 에러 응답 데이터를 문자열로 얻음
                     Log.d("##", "Error Response: $errorBody")
-
-                    val nextFragment = PrePaymentCompleteFragment()
-
-                    val transaction = activity.manager.beginTransaction()
-                    transaction.replace(R.id.fragmentContainerView_main, nextFragment)
-                    transaction.addToBackStack("")
-                    transaction.commit()
                 }
             }
 

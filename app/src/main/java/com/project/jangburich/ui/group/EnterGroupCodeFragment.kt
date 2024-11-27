@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.Group
+import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
 import com.project.jangburich.MyApplication
 import com.project.jangburich.R
@@ -35,6 +36,10 @@ class EnterGroupCodeFragment : Fragment() {
             buttonNext.setOnClickListener {
                 MyApplication.code = editTextCode.text.toString()
                 viewModel.getGroupInfoWithCode(mainActivity, MyApplication.code)
+            }
+
+            editTextCode.addTextChangedListener {
+                textViewCodeCount.text = "${editTextCode.text.length}/10"
             }
         }
 

@@ -203,8 +203,6 @@
         <item name="backgroundTint">@drawable/selector_edittext_underline</item>
     </style>
 
-
-
     <!-- 이미지 rounded corner -->
     <style name="RoundSector10">
         <item name="cornerSizeTopLeft">10dp</item>
