@@ -8,6 +8,7 @@ import com.project.jangburich.api.response.group.GetGroupResponse
 import com.project.jangburich.api.response.home.GetHomeDataResponse
 import com.project.jangburich.api.response.login.LoginResponse
 import com.project.jangburich.api.response.login.MessageResponse
+import com.project.jangburich.api.response.store.GetStoreListResponse
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.Body
@@ -64,4 +65,11 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Path("joinCode") joinCode: String
     ): Call<BaseResponse<MessageResponse>>
+    // 매장 정보 가져오기
+    @Multipart
+    @POST("/store/category")
+    fun getStoreList(
+        @Header("Authorization") token: String,
+        @PartMap parameters: Map<String, @JvmSuppressWildcards RequestBody>
+    ): Call<BaseResponse<GetStoreListResponse>>
 }

@@ -21,3 +21,8 @@ class MyApplication: Application() {
         var groupSecretCode = ""
         var groupAccountNumber = ""
         var groupBankName = ""
+
+        // 내 위치
+        var lat = 37.49757415
+        var long = 127.0278389
+        var category = "ALL"
