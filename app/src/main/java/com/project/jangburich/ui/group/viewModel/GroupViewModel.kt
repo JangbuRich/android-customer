@@ -11,6 +11,8 @@ import com.project.jangburich.api.TokenManager
 import com.project.jangburich.api.request.group.CreateGroupRequest
 import com.project.jangburich.api.response.BaseResponse
 import com.project.jangburich.api.response.group.GetGroupInfoWithCodeResponse
+import com.project.jangburich.api.response.group.GetGroupResponse
+import com.project.jangburich.api.response.home.GetHomeDataResponse
 import com.project.jangburich.api.response.home.Team
 import com.project.jangburich.api.response.login.MessageResponse
 import com.project.jangburich.ui.MainActivity
@@ -74,6 +76,69 @@ class GroupViewModel: ViewModel() {
             }
         })
     }
+
+    fun getGroupList(activity: MainActivity) {
+
+        var tempGroupList = mutableListOf<GetGroupResponse>()
+
+        val apiClient = ApiClient(activity)
+        val tokenManager = TokenManager(activity)
+
+        apiClient.apiService.getGroup("Bearer ${tokenManager.getAccessToken()}").enqueue(object :
+            Callback<BaseResponse<List<GetGroupResponse>>> {
+            override fun onResponse(
+                call: Call<BaseResponse<List<GetGroupResponse>>>,
+                response: Response<BaseResponse<List<GetGroupResponse>>>
+            ) {
+                Log.d("##", "onResponse 성공: " + response.body().toString())
+                if (response.isSuccessful) {
+                    // 정상적으로 통신이 성공된 경우
+                    val result: BaseResponse<List<GetGroupResponse>>? = response.body()
+                    Log.d("##", "onResponse 성공: " + result?.toString())
+
+                    if (!(result?.data.isNullOrEmpty())) {
+                        for (i in 0 until result?.data?.size!!) {
+                            var teamName = result.data[i].teamName
+                            var teamType = result.data[i].teamType
+                            var date = result.data[i].createdDate
+                            var isLike = result.data[i].isLiked
+                            var peopleCount = result.data[i].peopleCount
+                            var isLeader = result.data[i].isMeLeader
+
+                            var g1 = GetGroupResponse(
+                                teamName,
+                                teamType,
+                                date,
+                                isLike,
+                                peopleCount,
+                                isLeader,
+                                null)
+
+                            tempGroupList.add(g1)
+                        }
+                    }
+
+                    groupList.value = tempGroupList
+
+                } else {
+                    // 통신이 실패한 경우(응답코드 3xx, 4xx 등)
+                    var result: BaseResponse<List<GetGroupResponse>>? = response.body()
+                    Log.d("##", "onResponse 실패")
+                    Log.d("##", "onResponse 실패: " + response.code())
+                    Log.d("##", "onResponse 실패: " + response.body())
+                    val errorBody = response.errorBody()?.string() // 에러 응답 데이터를 문자열로 얻음
+                    Log.d("##", "Error Response: $errorBody")
+
+                }
+            }
+
+            override fun onFailure(call: Call<BaseResponse<List<GetGroupResponse>>>, t: Throwable) {
+                // 통신 실패
+                Log.d("##", "onFailure 에러: " + t.message.toString())
+            }
+        })
+    }
+
     fun getGroupInfoWithCode(activity: MainActivity, code: String) {
 
         val apiClient = ApiClient(activity)

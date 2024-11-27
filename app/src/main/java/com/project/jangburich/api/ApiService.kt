@@ -4,6 +4,7 @@ import com.project.jangburich.api.request.group.CreateGroupRequest
 import com.project.jangburich.api.request.login.SaveSignUpInfoRequest
 import com.project.jangburich.api.response.BaseResponse
 import com.project.jangburich.api.response.group.GetGroupInfoWithCodeResponse
+import com.project.jangburich.api.response.group.GetGroupResponse
 import com.project.jangburich.api.response.home.GetHomeDataResponse
 import com.project.jangburich.api.response.login.LoginResponse
 import com.project.jangburich.api.response.login.MessageResponse
@@ -11,9 +12,11 @@ import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.PartMap
+import retrofit2.http.Path
 
 interface ApiService {
     // 로그인
@@ -43,6 +46,11 @@ interface ApiService {
         @Body parameters: CreateGroupRequest
     ): Call<BaseResponse<MessageResponse>>
 
+    // 그룹 정보 가져오기
+    @GET("/teams")
+    fun getGroup(
+        @Header("Authorization") token: String
+    ): Call<BaseResponse<List<GetGroupResponse>>>
     // 비밀 코드로 팀 정보 조회
     @GET("/teams/secretCode/{secretCode}")
     fun getGroupInfoWithCode(
