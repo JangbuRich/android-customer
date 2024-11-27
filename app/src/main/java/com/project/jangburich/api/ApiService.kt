@@ -1,5 +1,6 @@
 package com.project.jangburich.api
 
+import com.project.jangburich.api.request.group.CreateGroupRequest
 import com.project.jangburich.api.request.login.SaveSignUpInfoRequest
 import com.project.jangburich.api.response.BaseResponse
 import com.project.jangburich.api.response.home.GetHomeDataResponse
@@ -33,4 +34,11 @@ interface ApiService {
     fun getHomeData(
         @Header("Authorization") token: String
     ): Call<BaseResponse<GetHomeDataResponse>>
+
+    // 그룹 생성
+    @POST("/teams")
+    fun createGroup(
+        @Header("Authorization") token: String,
+        @Body parameters: CreateGroupRequest
+    ): Call<BaseResponse<MessageResponse>>
 }

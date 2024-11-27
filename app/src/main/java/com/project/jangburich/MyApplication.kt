@@ -14,3 +14,10 @@ class MyApplication: Application() {
         var agreement4 = false
         var agreement5 = false
     }}
+        // 그룹 생성
+        var groupType = ""
+        var groupName = ""
+        var groupDescription = ""
+        var groupSecretCode = ""
+        var groupAccountNumber = ""
+        var groupBankName = ""
