@@ -31,3 +31,8 @@ class MyApplication: Application() {
         var storeName = ""
         var storeCategory = ""
         var storeImage = ""
+
+        // 선결제
+        var prepaymentGroupId = 2L
+        var prepaymentTotalPrice = 0
+        var prepaymentIndividualPrice = 0

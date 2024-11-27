@@ -2,6 +2,7 @@ package com.project.jangburich.api
 
 import com.project.jangburich.api.request.group.CreateGroupRequest
 import com.project.jangburich.api.request.login.SaveSignUpInfoRequest
+import com.project.jangburich.api.request.store.PrepayRequest
 import com.project.jangburich.api.response.BaseResponse
 import com.project.jangburich.api.response.group.GetGroupInfoWithCodeResponse
 import com.project.jangburich.api.response.group.GetGroupResponse
@@ -74,6 +75,14 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Path("joinCode") joinCode: String
     ): Call<BaseResponse<MessageResponse>>
+
+    // 선결제
+    @POST("/prepay")
+    fun prepay(
+        @Header("Authorization") token: String,
+        @Body parameters: PrepayRequest
+    ): Call<BaseResponse<MessageResponse>>
+
     // 매장 정보 가져오기
     @Multipart
     @POST("/store/category")
