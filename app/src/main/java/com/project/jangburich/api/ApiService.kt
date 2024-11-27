@@ -3,6 +3,7 @@ package com.project.jangburich.api
 import com.project.jangburich.api.request.group.CreateGroupRequest
 import com.project.jangburich.api.request.login.SaveSignUpInfoRequest
 import com.project.jangburich.api.response.BaseResponse
+import com.project.jangburich.api.response.group.GetGroupInfoWithCodeResponse
 import com.project.jangburich.api.response.home.GetHomeDataResponse
 import com.project.jangburich.api.response.login.LoginResponse
 import com.project.jangburich.api.response.login.MessageResponse
@@ -41,4 +42,11 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Body parameters: CreateGroupRequest
     ): Call<BaseResponse<MessageResponse>>
+
+    // 비밀 코드로 팀 정보 조회
+    @GET("/teams/secretCode/{secretCode}")
+    fun getGroupInfoWithCode(
+        @Header("Authorization") token: String,
+        @Path("secretCode") secretCode: String
+    ): Call<BaseResponse<GetGroupInfoWithCodeResponse>>
 }
