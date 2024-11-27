@@ -43,12 +43,21 @@ class LoginViewModel : ViewModel() {
                         Log.d("##", "onResponse 성공: " + result?.toString())
                         tokenManager.saveTokens(result?.data?.accessToken!!, result.data.refreshToken!!)
 
-                        val nextFragment = SignUpUserInfoFragment()
+                        if(result?.data.alreadyExists) {
+                            val nextFragment = HomeFragment()
 
-                        val transaction = activity.supportFragmentManager.beginTransaction()
-                        transaction.replace(R.id.fragmentContainerView_main, nextFragment)
-                        transaction.addToBackStack(null)
-                        transaction.commit()
+                            val transaction = activity.supportFragmentManager.beginTransaction()
+                            transaction.replace(R.id.fragmentContainerView_main, nextFragment)
+                            transaction.addToBackStack(null)
+                            transaction.commit()
+                        } else {
+                            val nextFragment = SignUpUserInfoFragment()
+
+                            val transaction = activity.supportFragmentManager.beginTransaction()
+                            transaction.replace(R.id.fragmentContainerView_main, nextFragment)
+                            transaction.addToBackStack(null)
+                            transaction.commit()
+                        }
 
                     } else {
                         // 통신이 실패한 경우(응답코드 3xx, 4xx 등)
