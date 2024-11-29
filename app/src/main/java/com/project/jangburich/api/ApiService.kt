@@ -4,6 +4,7 @@ import com.project.jangburich.api.request.group.CreateGroupRequest
 import com.project.jangburich.api.request.login.SaveSignUpInfoRequest
 import com.project.jangburich.api.request.store.PrepayRequest
 import com.project.jangburich.api.response.BaseResponse
+import com.project.jangburich.api.response.group.CreateGroupResponse
 import com.project.jangburich.api.response.group.GetGroupInfoWithCodeResponse
 import com.project.jangburich.api.response.group.GetGroupResponse
 import com.project.jangburich.api.response.home.GetHomeDataResponse
@@ -47,7 +48,7 @@ interface ApiService {
     fun createGroup(
         @Header("Authorization") token: String,
         @Body parameters: CreateGroupRequest
-    ): Call<BaseResponse<MessageResponse>>
+    ): Call<BaseResponse<CreateGroupResponse>>
 
     // 그룹 정보 가져오기
     @GET("/teams")
