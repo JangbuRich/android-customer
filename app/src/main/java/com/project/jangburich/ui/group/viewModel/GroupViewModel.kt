@@ -11,6 +11,7 @@ import com.project.jangburich.api.TokenManager
 import com.project.jangburich.api.request.group.CreateGroupRequest
 import com.project.jangburich.api.request.store.PrepayRequest
 import com.project.jangburich.api.response.BaseResponse
+import com.project.jangburich.api.response.group.CreateGroupResponse
 import com.project.jangburich.api.response.group.GetGroupInfoWithCodeResponse
 import com.project.jangburich.api.response.group.GetGroupResponse
 import com.project.jangburich.api.response.home.GetHomeDataResponse
@@ -39,19 +40,21 @@ class GroupViewModel: ViewModel() {
         val apiClient = ApiClient(activity)
         val tokenManager = TokenManager(activity)
 
-        var groupInfo = CreateGroupRequest(MyApplication.groupType, MyApplication.groupName, MyApplication.groupDescription, MyApplication.groupSecretCode, MyApplication.groupAccountNumber, MyApplication.groupBankName)
+        var groupInfo = CreateGroupRequest(MyApplication.groupType, MyApplication.groupName, MyApplication.groupDescription, MyApplication.groupAccountNumber, MyApplication.groupBankName)
 
         apiClient.apiService.createGroup("Bearer ${tokenManager.getAccessToken()}", groupInfo).enqueue(object :
-            Callback<BaseResponse<MessageResponse>> {
+            Callback<BaseResponse<CreateGroupResponse>> {
             override fun onResponse(
-                call: Call<BaseResponse<MessageResponse>>,
-                response: Response<BaseResponse<MessageResponse>>
+                call: Call<BaseResponse<CreateGroupResponse>>,
+                response: Response<BaseResponse<CreateGroupResponse>>
             ) {
                 Log.d("##", "onResponse 성공: " + response.body().toString())
                 if (response.isSuccessful) {
                     // 정상적으로 통신이 성공된 경우
-                    val result: BaseResponse<MessageResponse>? = response.body()
+                    val result: BaseResponse<CreateGroupResponse>? = response.body()
                     Log.d("##", "onResponse 성공: " + result?.toString())
+
+                    MyApplication.groupSecretCode = result?.data?.uuid!!
 
                     val nextFragment = CreateGroupInviteFragment()
 
@@ -61,7 +64,7 @@ class GroupViewModel: ViewModel() {
                     transaction.commit()
                 } else {
                     // 통신이 실패한 경우(응답코드 3xx, 4xx 등)
-                    var result: BaseResponse<MessageResponse>? = response.body()
+                    var result: BaseResponse<CreateGroupResponse>? = response.body()
                     Log.d("##", "onResponse 실패")
                     Log.d("##", "onResponse 실패: " + response.code())
                     Log.d("##", "onResponse 실패: " + response.body())
@@ -71,7 +74,7 @@ class GroupViewModel: ViewModel() {
                 }
             }
 
-            override fun onFailure(call: Call<BaseResponse<MessageResponse>>, t: Throwable) {
+            override fun onFailure(call: Call<BaseResponse<CreateGroupResponse>>, t: Throwable) {
                 // 통신 실패
                 Log.d("##", "onFailure 에러: " + t.message.toString())
             }

@@ -36,20 +36,10 @@ class CreateGroupInfoFragment : Fragment() {
                 checkEnable()
                 textViewDescriptionCount.text = "${editTextDescription.length()}/100"
             }
-            editTextCode.addTextChangedListener {
-                checkEnable()
-                textViewCodeCount.text = "${editTextCode.length()}/10"
-                if(isValidInput(editTextCode.text.toString())) {
-                    textViewCodeError.visibility = View.INVISIBLE
-                } else {
-                    textViewCodeError.visibility = View.VISIBLE
-                }
-            }
 
             buttonNext.setOnClickListener {
                 MyApplication.groupName = editTextName.text.toString()
                 MyApplication.groupDescription = editTextDescription.text.toString()
-                MyApplication.groupSecretCode = editTextCode.text.toString()
 
                 val nextFragment = CreateGroupAccountFragment()
 
@@ -66,7 +56,7 @@ class CreateGroupInfoFragment : Fragment() {
 
     fun checkEnable() {
         binding.run {
-            if(editTextName.text.isNotEmpty() && editTextDescription.text.isNotEmpty() && editTextCode.text.isNotEmpty()) {
+            if(editTextName.text.isNotEmpty() && editTextDescription.text.isNotEmpty()) {
                 buttonNext.isEnabled = true
             } else {
                 buttonNext.isEnabled = false
@@ -84,7 +74,6 @@ class CreateGroupInfoFragment : Fragment() {
     fun initView() {
         binding.run {
             buttonNext.isEnabled = false
-            textViewCodeError.visibility = View.INVISIBLE
 
             mainActivity.hideBottomNavigation(true)
 

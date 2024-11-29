@@ -38,7 +38,7 @@ class CreateGroupCompleteFragment : Fragment() {
                 transaction.commit()
             }
             buttonMyGroup.setOnClickListener {
-
+                mainActivity.binding.bottomNavigation.selectedItemId = R.id.menu_group
             }
         }
 
