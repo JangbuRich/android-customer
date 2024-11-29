@@ -13,6 +13,7 @@ data class GetHomeDataResponse(
 data class Team(
     val teamId: Int,
     val storeId: Int,
+    val dDay: Int,
     val storeImgUrl: String,
     val isLikedAtStore: Boolean,
     val teamName: String,

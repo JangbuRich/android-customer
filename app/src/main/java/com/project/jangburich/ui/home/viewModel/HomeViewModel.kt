@@ -57,6 +57,7 @@ class HomeViewModel : ViewModel() {
                         for (i in 0 until result?.data?.teams?.size!!) {
                             var teamId = result.data.teams[i].teamId
                             var storeId = result.data.teams[i].storeId
+                            var dDay = result.data.teams[i].dDay
                             var storeImage = result.data.teams[i].storeImgUrl
                             var isLike = result.data.teams[i].isLikedAtStore
                             var teamName = result.data.teams[i].teamName
@@ -68,6 +69,7 @@ class HomeViewModel : ViewModel() {
                             var t1 = Team(
                                 teamId,
                                 storeId,
+                                dDay,
                                 storeImage,
                                 isLike,
                                 teamName,

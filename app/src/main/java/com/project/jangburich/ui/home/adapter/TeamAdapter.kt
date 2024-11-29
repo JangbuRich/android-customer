@@ -66,6 +66,7 @@ class TeamAdapter(
         holder.storeName.text = teamList[position].storeName
         holder.myPoint.text = "${teamList[position].currentAmount.toString()}원"
         holder.totalPoint.text = "/ ${teamList[position].totalAmount.toString()}원"
+        holder.dDay.text = "D-${teamList[position].dDay}"
 
         Glide.with(activity).load(teamList[position].storeImgUrl).into(holder.storeImage)
 
@@ -77,7 +78,8 @@ class TeamAdapter(
         RecyclerView.ViewHolder(binding.root) {
         val groupName = binding.textViewGroupName
         val storeName = binding.textViewStoreName
-        val storeImage = binding.profileImage
+        val storeImage = binding.imageViewStore
+        val dDay = binding.textViewDday
         val myPoint= binding.textViewMyPoint
         val layoutPoint = binding.progressIndicatorSelected
         val totalPoint= binding.textViewTotalPoint
