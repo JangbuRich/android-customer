@@ -8,11 +8,11 @@
     android:paddingHorizontal="20dp"
     android:paddingVertical="15dp"
     android:layout_marginRight="10dp"
-    android:background="@drawable/background_home_jangbu">
+    android:background="@drawable/background_gray100_round10">
 
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile_image"
+        android:id="@+id/imageView_store"
         android:layout_width="44dp"
         android:layout_height="44dp"
         android:src="@drawable/example"
@@ -29,8 +29,8 @@
         android:layout_marginStart="7dp"
         android:text="그룹"
         android:textColor="@color/gray_10"
-        app:layout_constraintStart_toEndOf="@+id/profile_image"
-        app:layout_constraintTop_toTopOf="@+id/profile_image" />
+        app:layout_constraintStart_toEndOf="@+id/imageView_store"
+        app:layout_constraintTop_toTopOf="@+id/imageView_store" />
 
     <ImageView
         android:id="@+id/imageView_star"
@@ -55,10 +55,9 @@
         android:id="@+id/button_open"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_store"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintTop_toTopOf="@+id/imageView_store"
         app:srcCompat="@drawable/ic_arrow_right_gray60" />
 
     <TextView
@@ -69,7 +68,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="15dp"
         android:background="@drawable/background_progress_indicator_unselected"
-        app:layout_constraintTop_toBottomOf="@+id/profile_image" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView_store" />
 
     <TextView
         android:id="@+id/progress_indicator_selected"
@@ -80,7 +79,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_image"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_store"
         app:layout_constraintWidth_percent="0.5" />
 
     <TextView

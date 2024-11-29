@@ -115,7 +115,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
         android:layout_marginEnd="20dp"
-        android:background="@drawable/background_home_menu"
+        android:background="@drawable/background_gray100_round10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button_map"
         app:layout_constraintTop_toTopOf="@+id/button_map">
@@ -157,7 +157,7 @@
         android:layout_marginStart="14dp"
         android:layout_marginTop="13dp"
         android:layout_marginEnd="20dp"
-        android:background="@drawable/background_home_menu"
+        android:background="@drawable/background_gray100_round10"
         app:layout_constraintBottom_toBottomOf="@+id/button_point"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button_map"
