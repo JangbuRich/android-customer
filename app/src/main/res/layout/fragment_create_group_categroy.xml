@@ -317,7 +317,7 @@
                 style="@style/Detail1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/group4"
+                android:text="@string/group8"
                 android:textColor="@color/gray_60"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
