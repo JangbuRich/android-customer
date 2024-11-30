@@ -8,6 +8,7 @@ import com.project.jangburich.api.response.group.CreateGroupResponse
 import com.project.jangburich.api.response.group.GetGroupInfoWithCodeResponse
 import com.project.jangburich.api.response.group.GetGroupResponse
 import com.project.jangburich.api.response.home.GetHomeDataResponse
+import com.project.jangburich.api.response.home.GetWalletDataResponse
 import com.project.jangburich.api.response.login.LoginResponse
 import com.project.jangburich.api.response.login.MessageResponse
 import com.project.jangburich.api.response.store.GetStoreDetailResponse
@@ -43,6 +44,11 @@ interface ApiService {
         @Header("Authorization") token: String
     ): Call<BaseResponse<GetHomeDataResponse>>
 
+    // 지갑 내역 조회
+    @GET("/user/wallet")
+    fun getWalletData(
+        @Header("Authorization") token: String
+    ): Call<BaseResponse<GetWalletDataResponse>>
     // 그룹 생성
     @POST("/teams")
     fun createGroup(

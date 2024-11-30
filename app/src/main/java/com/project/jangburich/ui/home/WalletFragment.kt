@@ -33,6 +33,8 @@ class WalletFragment : Fragment() {
         mainActivity = activity as MainActivity
         viewModel = ViewModelProvider(mainActivity)[WalletViewModel::class.java]
 
+        initAdapter()
+        observeViewModel()
 
         binding.run {
             buttonCharge.setOnClickListener {
@@ -47,6 +49,27 @@ class WalletFragment : Fragment() {
         initView()
     }
 
+    fun initAdapter() {
+        walletAdapter = WalletAdapter(mainActivity, getPaymentHistory)
+
+        binding.recyclerViewPayment.apply {
+            adapter = walletAdapter
+            layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        }
+    }
+
+    fun observeViewModel() {
+        viewModel.run {
+            userPoint.observe(mainActivity) {
+                binding.textViewUserPoint.text = "${it}원"
+            }
+
+            purchaseHistoryList.observe(mainActivity) {
+                getPaymentHistory = it
+                walletAdapter.updateList(getPaymentHistory)
+            }
+        }
+    }
 
     fun initView() {
         viewModel.getWalletData(mainActivity)
