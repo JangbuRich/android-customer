@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.project.jangburich.MyApplication
 import com.project.jangburich.R
 import com.project.jangburich.api.response.home.Team
 import com.project.jangburich.databinding.FragmentHomeBinding
@@ -48,6 +49,7 @@ class HomeFragment : Fragment(), HomeGroupBottomSheetListener {
         viewModel.run {
             userName.observe(mainActivity) {
                 binding.run {
+                    MyApplication.userName = it
                     textViewName.text = "${it}님 반가워요!"
                 }
             }
@@ -86,7 +88,14 @@ class HomeFragment : Fragment(), HomeGroupBottomSheetListener {
             buttonGroup.setOnClickListener { mainActivity.binding.bottomNavigation.selectedItemId = R.id.menu_group }
 //            buttonReserve.setOnClickListener { mainActivity.binding.bottomNavigation.selectedItemId = R.id.menu_reserve }
 
+            toolbar.buttonWallet.setOnClickListener {
+                val nextFragment = WalletFragment()
 
+                val transaction = mainActivity.manager.beginTransaction()
+                transaction.replace(R.id.fragmentContainerView_main, nextFragment)
+                transaction.addToBackStack("")
+                transaction.commit()
+            }
         }
 
         return binding.root

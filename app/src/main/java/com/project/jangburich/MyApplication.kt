@@ -14,6 +14,9 @@ class MyApplication: Application() {
         var agreement4 = false
         var agreement5 = false
 
+        // 유저 정보
+        var userName = ""
+
         // 그룹 생성
         var groupType = ""
         var groupName = ""
