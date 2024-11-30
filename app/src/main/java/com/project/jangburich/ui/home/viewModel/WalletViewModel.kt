@@ -20,6 +20,7 @@ import retrofit2.Response
 class WalletViewModel: ViewModel() {
 
     var userPoint = MutableLiveData<Int>()
+    var kakaoPayUrl = MutableLiveData<String>()
 
     var purchaseHistoryList = MutableLiveData<MutableList<PurchaseHistory>>()
 
@@ -76,6 +77,47 @@ class WalletViewModel: ViewModel() {
             }
 
             override fun onFailure(call: Call<BaseResponse<GetWalletDataResponse>>, t: Throwable) {
+                // 통신 실패
+                Log.d("##", "onFailure 에러: " + t.message.toString())
+            }
+        })
+    }
+
+    fun readyKakaoPay(activity: MainActivity) {
+
+        val apiClient = ApiClient(activity)
+        val tokenManager = TokenManager(activity)
+
+        apiClient.apiService.readyKakaoPay("Bearer ${tokenManager.getAccessToken()}", ReadyKakaoPayRequest("kakao", "100000")).enqueue(object :
+            Callback<BaseResponse<ReadyKakaoPayResponse>> {
+            override fun onResponse(
+                call: Call<BaseResponse<ReadyKakaoPayResponse>>,
+                response: Response<BaseResponse<ReadyKakaoPayResponse>>
+            ) {
+                Log.d("##", "onResponse 성공: " + response.body().toString())
+                if (response.isSuccessful) {
+                    // 정상적으로 통신이 성공된 경우
+                    val result: BaseResponse<ReadyKakaoPayResponse>? = response.body()
+                    Log.d("##", "onResponse 성공: " + result?.toString())
+
+                    kakaoPayUrl.value = result?.data?.next_redirect_mobile_url
+
+                    // pc url로 테스트
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(result?.data?.next_redirect_pc_url))
+                    activity.startActivity(intent)
+                } else {
+                    // 통신이 실패한 경우(응답코드 3xx, 4xx 등)
+                    var result: BaseResponse<ReadyKakaoPayResponse>? = response.body()
+                    Log.d("##", "onResponse 실패")
+                    Log.d("##", "onResponse 실패: " + response.code())
+                    Log.d("##", "onResponse 실패: " + response.body())
+                    val errorBody = response.errorBody()?.string() // 에러 응답 데이터를 문자열로 얻음
+                    Log.d("##", "Error Response: $errorBody")
+
+                }
+            }
+
+            override fun onFailure(call: Call<BaseResponse<ReadyKakaoPayResponse>>, t: Throwable) {
                 // 통신 실패
                 Log.d("##", "onFailure 에러: " + t.message.toString())
             }

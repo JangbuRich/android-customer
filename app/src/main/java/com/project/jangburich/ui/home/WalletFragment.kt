@@ -38,6 +38,7 @@ class WalletFragment : Fragment() {
 
         binding.run {
             buttonCharge.setOnClickListener {
+                viewModel.readyKakaoPay(mainActivity)
             }
         }
 
