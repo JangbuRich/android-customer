@@ -47,7 +47,7 @@ class StoreViewModel : ViewModel() {
 
         val params = HashMap<String, RequestBody>()
         params["searchRadius"] = 3.toString().toRequestBody("text/plain".toMediaTypeOrNull())
-        params["category"] = MyApplication.category.toRequestBody("text/plain".toMediaTypeOrNull())
+        params["category"] = category.toRequestBody("text/plain".toMediaTypeOrNull())
         params["lat"] = MyApplication.lat.toString().toRequestBody("text/plain".toMediaTypeOrNull())
         params["lon"] = MyApplication.long.toString().toRequestBody("text/plain".toMediaTypeOrNull())
         params["size"] = 10.toString().toRequestBody("text/plain".toMediaTypeOrNull())
