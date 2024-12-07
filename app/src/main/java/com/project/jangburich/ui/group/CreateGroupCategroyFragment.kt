@@ -108,7 +108,7 @@ class CreateGroupCategroyFragment : Fragment() {
 
                 val transaction = mainActivity.manager.beginTransaction()
                 transaction.replace(R.id.fragmentContainerView_main, nextFragment)
-                transaction.addToBackStack("")
+                transaction.addToBackStack(null)
                 transaction.commit()
             }
         }
