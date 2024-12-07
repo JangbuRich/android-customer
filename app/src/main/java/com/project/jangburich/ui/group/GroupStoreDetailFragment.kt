@@ -39,6 +39,12 @@ class GroupStoreDetailFragment : Fragment() {
 
         binding.run {
             buttonStoreDetail.setOnClickListener {
+                val nextFragment = StoreDetailOrderFragment()
+
+                val transaction = mainActivity.manager.beginTransaction()
+                transaction.replace(R.id.fragmentContainerView_main, nextFragment)
+                transaction.addToBackStack(null)
+                transaction.commit()
             }
 
             textViewStoreName.text = MyApplication.selectedGroupStoreDetail.storeName
