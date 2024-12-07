@@ -249,4 +249,118 @@ class StoreViewModel : ViewModel() {
             }
         })
     }
+
+    fun getCartData(activity: MainActivity) {
+        val apiClient = ApiClient(activity)
+        val tokenManager = TokenManager(activity)
+
+        var tempCartList = mutableListOf<CartItem>()
+
+        apiClient.apiService.getCartData("Bearer ${tokenManager.getAccessToken()}").enqueue(object :
+            Callback<BaseResponse<GetCartDataResponse>> {
+            override fun onResponse(
+                call: Call<BaseResponse<GetCartDataResponse>>,
+                response: Response<BaseResponse<GetCartDataResponse>>
+            ) {
+                Log.d("##", "onResponse 성공: " + response.body().toString())
+                if (response.isSuccessful) {
+                    // 정상적으로 통신이 성공된 경우
+                    val result: BaseResponse<GetCartDataResponse>? = response.body()
+                    Log.d("##", "onResponse 성공: " + result?.toString())
+
+                    cartTotalAmount.value = result?.data?.totalAmount
+                    cartDiscountAmount.value = result?.data?.discountAmount
+                    cartFinalAmount.value = result?.data?.finalAmount
+
+                    MyApplication.cartStoreId = result?.data?.storeId!!
+                    storeName.value = result.data.storeName
+                    storeCategory.value = result.data.storeCategory
+
+                    if (!(result.data.cartItems.isNullOrEmpty())) {
+                        for (i in 0 until result.data.cartItems?.size!!) {
+                            var menuId = result.data.cartItems[i].menuId
+                            var menuImage = result.data.cartItems[i].menuImg
+                            var menuName = result.data.cartItems[i].menuName
+                            var menuDescription = result.data.cartItems[i].menuDescription
+                            var menuQuantity = result.data.cartItems[i].quantity
+                            var menuPrice = result.data.cartItems[i].menuPrice
+
+                            var c1 = CartItem(
+                                menuId,
+                                menuImage,
+                                menuName,
+                                menuDescription,
+                                menuQuantity,
+                                menuPrice
+                            )
+
+                            tempCartList.add(c1)
+                        }
+                    }
+
+                    cartItemList.value = tempCartList
+
+                } else {
+                    // 통신이 실패한 경우(응답코드 3xx, 4xx 등)
+                    var result: BaseResponse<GetCartDataResponse>? = response.body()
+                    Log.d("##", "onResponse 실패")
+                    Log.d("##", "onResponse 실패: " + response.code())
+                    Log.d("##", "onResponse 실패: " + response.body())
+                    val errorBody = response.errorBody()?.string() // 에러 응답 데이터를 문자열로 얻음
+                    Log.d("##", "Error Response: $errorBody")
+
+                }
+            }
+
+            override fun onFailure(call: Call<BaseResponse<GetCartDataResponse>>, t: Throwable) {
+                // 통신 실패
+                Log.d("##", "onFailure 에러: " + t.message.toString())
+            }
+        })
+    }
+
+    fun order(activity: MainActivity) {
+        val apiClient = ApiClient(activity)
+        val tokenManager = TokenManager(activity)
+
+        var tempCartList = mutableListOf<CartItem>()
+
+        apiClient.apiService.order("Bearer ${tokenManager.getAccessToken()}", OrderReqeust(MyApplication.cartStoreId, MyApplication.selectedTeamId, MyApplication.cartItem)).enqueue(object :
+            Callback<BaseResponse<OrderResponse>> {
+            override fun onResponse(
+                call: Call<BaseResponse<OrderResponse>>,
+                response: Response<BaseResponse<OrderResponse>>
+            ) {
+                Log.d("##", "onResponse 성공: " + response.body().toString())
+                if (response.isSuccessful) {
+                    // 정상적으로 통신이 성공된 경우
+                    val result: BaseResponse<OrderResponse>? = response.body()
+                    Log.d("##", "onResponse 성공: " + result?.toString())
+
+                    MyApplication.orderedData = result?.data!!
+
+                    val nextFragment = OrderCompleteFragment()
+
+                    val transaction = activity.manager.beginTransaction()
+                    transaction.replace(R.id.fragmentContainerView_main, nextFragment)
+                    transaction.addToBackStack(null)
+                    transaction.commit()
+                } else {
+                    // 통신이 실패한 경우(응답코드 3xx, 4xx 등)
+                    var result: BaseResponse<OrderResponse>? = response.body()
+                    Log.d("##", "onResponse 실패")
+                    Log.d("##", "onResponse 실패: " + response.code())
+                    Log.d("##", "onResponse 실패: " + response.body())
+                    val errorBody = response.errorBody()?.string() // 에러 응답 데이터를 문자열로 얻음
+                    Log.d("##", "Error Response: $errorBody")
+
+                }
+            }
+
+            override fun onFailure(call: Call<BaseResponse<OrderResponse>>, t: Throwable) {
+                // 통신 실패
+                Log.d("##", "onFailure 에러: " + t.message.toString())
+            }
+        })
+    }
 }

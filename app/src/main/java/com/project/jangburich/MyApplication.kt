@@ -120,6 +120,9 @@ class MyApplication: Application() {
         var cartStoreId = 0L
         var cartItem = mutableListOf<OrderItem>()
 
+        // 주문 완료
+        var orderedData = OrderResponse(0, 0, null)
+
         // 코드 정보
         var code = ""
         var codeGroupInfo = GetGroupInfoWithCodeResponse("","","",0,null,"")
