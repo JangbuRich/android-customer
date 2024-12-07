@@ -16,6 +16,7 @@ import com.project.jangburich.databinding.FragmentStoreListBinding
 import com.project.jangburich.ui.MainActivity
 import com.project.jangburich.ui.home.adapter.TeamAdapter
 import com.project.jangburich.ui.login.LoginMainFragment
+import com.project.jangburich.ui.store.adapter.StoreCategoryAdapter
 import com.project.jangburich.ui.store.adapter.StoreListAdapter
 import com.project.jangburich.ui.store.viewModel.StoreViewModel
 
@@ -26,6 +27,10 @@ class StoreListFragment : Fragment() {
     lateinit var viewModel: StoreViewModel
 
     var getStoreList = mutableListOf<Store>()
+    private var storeCategoryNameList = mutableListOf<String>()
+    private var categoryPosition = 0
+
+    private lateinit var storeCategoryAdapter: StoreCategoryAdapter
 
     private lateinit var storeAdapter: StoreListAdapter
 
@@ -37,6 +42,9 @@ class StoreListFragment : Fragment() {
         binding = FragmentStoreListBinding.inflate(layoutInflater)
         mainActivity = activity as MainActivity
         viewModel = ViewModelProvider(mainActivity)[StoreViewModel::class.java]
+
+        storeCategoryNameList =
+            resources.getStringArray(R.array.store_category).toMutableList()
 
         initAdapters()
 
@@ -56,7 +64,7 @@ class StoreListFragment : Fragment() {
 
                 val transaction = mainActivity.manager.beginTransaction()
                 transaction.replace(R.id.fragmentContainerView_main, nextFragment)
-                transaction.addToBackStack("")
+                transaction.addToBackStack(null)
                 transaction.commit()
             }
         }
@@ -76,12 +84,13 @@ class StoreListFragment : Fragment() {
                     MyApplication.storeName = getStoreList[position].name
                     MyApplication.storeCategory = getStoreList[position].category
                     MyApplication.storeImage = getStoreList[position].imageUrl.toString()
+                    MyApplication.selectedStore = getStoreList[position]
 
                     val nextFragment = StoreDetailFragment()
 
                     val transaction = mainActivity.manager.beginTransaction()
                     transaction.replace(R.id.fragmentContainerView_main, nextFragment)
-                    transaction.addToBackStack("")
+                    transaction.addToBackStack(null)
                     transaction.commit()
                 }
             }
@@ -90,6 +99,25 @@ class StoreListFragment : Fragment() {
         binding.recyclerViewStoreList.apply {
             adapter = storeAdapter
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        }
+
+        // 카테고리 어댑터 초기화
+        storeCategoryAdapter = StoreCategoryAdapter(
+            mainActivity,
+            storeCategoryNameList
+        ).apply {
+            itemClickListener = object : StoreCategoryAdapter.OnItemClickListener {
+                override fun onItemClick(position: Int) {
+                    categoryPosition = position
+                    // 매장 리스트 불러오기
+                    viewModel.getStoreList(mainActivity, storeCategoryNameList[categoryPosition])
+                }
+            }
+        }
+
+        binding.recyclerViewStoreCategory.apply {
+            adapter = storeCategoryAdapter
+            layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         }
     }
 
