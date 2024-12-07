@@ -11,7 +11,6 @@
         android:layout_width="0dp"
         android:layout_height="280dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/example"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -44,6 +43,7 @@
             android:background="@drawable/background_chip_menu"
             android:paddingHorizontal="10dp"
             android:paddingVertical="2dp"
+            android:layout_marginRight="5dp"
             android:text="대표"
             android:textColor="@color/gray_100" />
 
@@ -52,7 +52,6 @@
             style="@style/body6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
             android:text="메뉴명" />
     </LinearLayout>
 
