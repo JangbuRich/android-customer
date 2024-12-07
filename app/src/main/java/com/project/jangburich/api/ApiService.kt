@@ -3,6 +3,7 @@ package com.project.jangburich.api
 import com.project.jangburich.api.request.group.CreateGroupRequest
 import com.project.jangburich.api.request.home.ReadyKakaoPayRequest
 import com.project.jangburich.api.request.login.SaveSignUpInfoRequest
+import com.project.jangburich.api.request.store.AddCartRequest
 import com.project.jangburich.api.request.store.PrepayRequest
 import com.project.jangburich.api.response.BaseResponse
 import com.project.jangburich.api.response.group.CreateGroupResponse
@@ -128,6 +129,12 @@ interface ApiService {
         @Body parameters: PrepayRequest
     ): Call<BaseResponse<MessageResponse>>
 
+    // 장바구니 추가
+    @POST("/orders/carts")
+    fun addCart(
+        @Header("Authorization") token: String,
+        @Body parameters: AddCartRequest
+    ): Call<BaseResponse<MessageResponse>>
     // 매장 정보 가져오기
     @Multipart
     @POST("/store/category")

@@ -1,11 +1,16 @@
 package com.project.jangburich
 
 import android.app.Application
+import com.project.jangburich.api.request.store.OrderItem
 import com.project.jangburich.api.response.group.GetGroupDetailResponse
 import com.project.jangburich.api.response.group.GetGroupInfoWithCodeResponse
 import com.project.jangburich.api.response.group.GetGroupStoreDetailResponse
 import com.project.jangburich.api.response.group.PrepayedStore
+import com.project.jangburich.api.response.group.StorePaymentHistory
 import com.project.jangburich.api.response.group.TodayPayment
+import com.project.jangburich.api.response.store.OrderResponse
+import com.project.jangburich.api.response.store.Store
+import com.project.jangburich.api.response.store.StoreMenu
 
 class MyApplication: Application() {
     companion object {
@@ -111,6 +116,9 @@ class MyApplication: Application() {
             imageUrl = ""
         )
 
+        // 장바구니
+        var cartStoreId = 0L
+        var cartItem = mutableListOf<OrderItem>()
 
         // 코드 정보
         var code = ""
