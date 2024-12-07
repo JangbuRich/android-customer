@@ -232,24 +232,24 @@
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
-            android:id="@+id/button_pay_before"
+            android:id="@+id/button_reserve"
             style="@style/ButtonGray70"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="@null"
-            android:text="선결제"
+            android:text="예약"
             android:textAlignment="center"
             android:textColor="@color/main_orange" />
 
         <TextView
-            android:id="@+id/button_reserve"
+            android:id="@+id/button_pay_before"
             style="@style/ButtonOrange"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_weight="1"
-            android:text="예약"
+            android:text="선결제"
             android:textAlignment="center" />
     </LinearLayout>
 

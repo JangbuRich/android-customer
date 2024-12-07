@@ -1,6 +1,7 @@
 package com.project.jangburich.api.response.group
 
 data class GetGroupResponse(
+    val teamId: Long,
     val teamName: String,
     val createdDate: String,
     val teamType: String,

@@ -12,14 +12,16 @@ import com.project.jangburich.api.request.group.CreateGroupRequest
 import com.project.jangburich.api.request.store.PrepayRequest
 import com.project.jangburich.api.response.BaseResponse
 import com.project.jangburich.api.response.group.CreateGroupResponse
+import com.project.jangburich.api.response.group.GetGroupDetailResponse
 import com.project.jangburich.api.response.group.GetGroupInfoWithCodeResponse
 import com.project.jangburich.api.response.group.GetGroupResponse
-import com.project.jangburich.api.response.home.GetHomeDataResponse
-import com.project.jangburich.api.response.home.Team
+import com.project.jangburich.api.response.group.GetGroupStoreDetailResponse
 import com.project.jangburich.api.response.login.MessageResponse
 import com.project.jangburich.ui.MainActivity
 import com.project.jangburich.ui.group.CreateGroupInviteFragment
 import com.project.jangburich.ui.group.EnterCodeGroupFragment
+import com.project.jangburich.ui.group.GroupDetailFragment
+import com.project.jangburich.ui.group.GroupStoreDetailFragment
 import com.project.jangburich.ui.group.PrePaymentCompleteFragment
 import com.project.jangburich.ui.home.HomeFragment
 import retrofit2.Call
@@ -81,14 +83,14 @@ class GroupViewModel: ViewModel() {
         })
     }
 
-    fun getGroupList(activity: MainActivity) {
+    fun getGroupList(activity: MainActivity, category: String) {
 
         var tempGroupList = mutableListOf<GetGroupResponse>()
 
         val apiClient = ApiClient(activity)
         val tokenManager = TokenManager(activity)
 
-        apiClient.apiService.getGroup("Bearer ${tokenManager.getAccessToken()}").enqueue(object :
+        apiClient.apiService.getGroup("Bearer ${tokenManager.getAccessToken()}", category).enqueue(object :
             Callback<BaseResponse<List<GetGroupResponse>>> {
             override fun onResponse(
                 call: Call<BaseResponse<List<GetGroupResponse>>>,
@@ -102,6 +104,7 @@ class GroupViewModel: ViewModel() {
 
                     if (!(result?.data.isNullOrEmpty())) {
                         for (i in 0 until result?.data?.size!!) {
+                            var teamId = result.data[i].teamId
                             var teamName = result.data[i].teamName
                             var teamType = result.data[i].teamType
                             var date = result.data[i].createdDate
@@ -109,14 +112,23 @@ class GroupViewModel: ViewModel() {
                             var peopleCount = result.data[i].peopleCount
                             var isLeader = result.data[i].isMeLeader
 
+                            var imageList = result.data[i].profileImageUrl
+
+                            var tempImageList = mutableListOf<String>()
+                            for(j in 0 until imageList?.size!!) {
+                                tempImageList.add(imageList[j])
+                            }
+
                             var g1 = GetGroupResponse(
+                                teamId,
                                 teamName,
-                                teamType,
                                 date,
+                                teamType,
                                 isLike,
                                 peopleCount,
                                 isLeader,
-                                null)
+                                tempImageList
+                                )
 
                             tempGroupList.add(g1)
                         }
@@ -137,6 +149,96 @@ class GroupViewModel: ViewModel() {
             }
 
             override fun onFailure(call: Call<BaseResponse<List<GetGroupResponse>>>, t: Throwable) {
+                // 통신 실패
+                Log.d("##", "onFailure 에러: " + t.message.toString())
+            }
+        })
+    }
+
+    fun getGroupDetail(activity: MainActivity) {
+
+        var tempGroupList = mutableListOf<GetGroupResponse>()
+
+        val apiClient = ApiClient(activity)
+        val tokenManager = TokenManager(activity)
+
+        apiClient.apiService.getGroupDetail("Bearer ${tokenManager.getAccessToken()}", MyApplication.selectedTeamId.toString()).enqueue(object :
+            Callback<BaseResponse<GetGroupDetailResponse>> {
+            override fun onResponse(
+                call: Call<BaseResponse<GetGroupDetailResponse>>,
+                response: Response<BaseResponse<GetGroupDetailResponse>>
+            ) {
+                Log.d("##", "onResponse 성공: " + response.body().toString())
+                if (response.isSuccessful) {
+                    // 정상적으로 통신이 성공된 경우
+                    val result: BaseResponse<GetGroupDetailResponse>? = response.body()
+                    Log.d("##", "onResponse 성공: " + result?.toString())
+
+                    MyApplication.selectedGroupDetail = result?.data!!
+
+                    val nextFragment = GroupDetailFragment()
+
+                    val transaction = activity.manager.beginTransaction()
+                    transaction.replace(R.id.fragmentContainerView_main, nextFragment)
+                    transaction.addToBackStack(null)
+                    transaction.commit()
+                } else {
+                    // 통신이 실패한 경우(응답코드 3xx, 4xx 등)
+                    var result: BaseResponse<GetGroupDetailResponse>? = response.body()
+                    Log.d("##", "onResponse 실패")
+                    Log.d("##", "onResponse 실패: " + response.code())
+                    Log.d("##", "onResponse 실패: " + response.body())
+                    val errorBody = response.errorBody()?.string() // 에러 응답 데이터를 문자열로 얻음
+                    Log.d("##", "Error Response: $errorBody")
+
+                }
+            }
+
+            override fun onFailure(call: Call<BaseResponse<GetGroupDetailResponse>>, t: Throwable) {
+                // 통신 실패
+                Log.d("##", "onFailure 에러: " + t.message.toString())
+            }
+        })
+    }
+
+    fun getGroupStoreDetail(activity: MainActivity) {
+
+        val apiClient = ApiClient(activity)
+        val tokenManager = TokenManager(activity)
+
+        apiClient.apiService.getGroupStoreDetail("Bearer ${tokenManager.getAccessToken()}", MyApplication.selectedTeamId, MyApplication.selectedGroupStoreId).enqueue(object :
+            Callback<BaseResponse<GetGroupStoreDetailResponse>> {
+            override fun onResponse(
+                call: Call<BaseResponse<GetGroupStoreDetailResponse>>,
+                response: Response<BaseResponse<GetGroupStoreDetailResponse>>
+            ) {
+                Log.d("##", "onResponse 성공: " + response.body().toString())
+                if (response.isSuccessful) {
+                    // 정상적으로 통신이 성공된 경우
+                    val result: BaseResponse<GetGroupStoreDetailResponse>? = response.body()
+                    Log.d("##", "onResponse 성공: " + result?.toString())
+
+                    MyApplication.selectedGroupStoreDetail = result?.data!!
+
+                    val nextFragment = GroupStoreDetailFragment()
+
+                    val transaction = activity.manager.beginTransaction()
+                    transaction.replace(R.id.fragmentContainerView_main, nextFragment)
+                    transaction.addToBackStack(null)
+                    transaction.commit()
+                } else {
+                    // 통신이 실패한 경우(응답코드 3xx, 4xx 등)
+                    var result: BaseResponse<GetGroupStoreDetailResponse>? = response.body()
+                    Log.d("##", "onResponse 실패")
+                    Log.d("##", "onResponse 실패: " + response.code())
+                    Log.d("##", "onResponse 실패: " + response.body())
+                    val errorBody = response.errorBody()?.string() // 에러 응답 데이터를 문자열로 얻음
+                    Log.d("##", "Error Response: $errorBody")
+
+                }
+            }
+
+            override fun onFailure(call: Call<BaseResponse<GetGroupStoreDetailResponse>>, t: Throwable) {
                 // 통신 실패
                 Log.d("##", "onFailure 에러: " + t.message.toString())
             }
