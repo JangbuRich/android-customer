@@ -10,16 +10,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.project.jangburich.MyApplication
 import com.project.jangburich.R
-import com.project.jangburich.databinding.FragmentGroupStoreDetailBinding
+import com.project.jangburich.databinding.FragmentGroupStoreDetailLeaderBinding
 import com.project.jangburich.ui.MainActivity
-import com.project.jangburich.ui.group.adapter.GroupAdapter
 import com.project.jangburich.ui.group.adapter.GroupStorePaymentAdapter
 import com.project.jangburich.ui.group.viewModel.GroupViewModel
 import com.project.jangburich.ui.store.StoreDetailOrderFragment
 
-class GroupStoreDetailFragment : Fragment() {
+class GroupStoreDetailLeaderFragment : Fragment() {
 
-    lateinit var binding: FragmentGroupStoreDetailBinding
+    lateinit var binding: FragmentGroupStoreDetailLeaderBinding
     lateinit var mainActivity: MainActivity
     lateinit var viewModel: GroupViewModel
 
@@ -30,7 +29,7 @@ class GroupStoreDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = FragmentGroupStoreDetailBinding.inflate(layoutInflater)
+        binding = FragmentGroupStoreDetailLeaderBinding.inflate(layoutInflater)
         mainActivity = activity as MainActivity
         viewModel = ViewModelProvider(mainActivity)[GroupViewModel::class.java]
 
