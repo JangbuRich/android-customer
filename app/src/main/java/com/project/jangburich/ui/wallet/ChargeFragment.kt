@@ -46,6 +46,7 @@ class ChargeFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+        initView()
         if(isKakaoPayComplete) {
             val nextFragment = ChargeCompleteFragment()
 
