@@ -70,6 +70,7 @@ class GroupStoreDetailFragment : Fragment() {
                     fragmentManager?.popBackStack()
                 }
                 buttonCharge.setOnClickListener {
+                    viewModel.getPrepayData(mainActivity, MyApplication.selectedGroupStoreId, MyApplication.selectedTeamId)
                 }
             }
         }

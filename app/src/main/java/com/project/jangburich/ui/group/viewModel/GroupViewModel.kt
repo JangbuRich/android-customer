@@ -16,6 +16,7 @@ import com.project.jangburich.api.response.group.GetGroupDetailResponse
 import com.project.jangburich.api.response.group.GetGroupInfoWithCodeResponse
 import com.project.jangburich.api.response.group.GetGroupResponse
 import com.project.jangburich.api.response.group.GetGroupStoreDetailResponse
+import com.project.jangburich.api.response.group.GetPrepayData
 import com.project.jangburich.api.response.login.MessageResponse
 import com.project.jangburich.ui.MainActivity
 import com.project.jangburich.ui.group.CreateGroupInviteFragment
@@ -23,6 +24,7 @@ import com.project.jangburich.ui.group.EnterCodeGroupFragment
 import com.project.jangburich.ui.group.GroupDetailFragment
 import com.project.jangburich.ui.group.GroupStoreDetailFragment
 import com.project.jangburich.ui.group.PrePaymentCompleteFragment
+import com.project.jangburich.ui.group.PrePaymentTotalFragment
 import com.project.jangburich.ui.home.HomeFragment
 import retrofit2.Call
 import retrofit2.Callback
@@ -32,6 +34,8 @@ class GroupViewModel: ViewModel() {
 
     var groupList = MutableLiveData<MutableList<GetGroupResponse>>()
     var groupInfo = MutableLiveData<GetGroupInfoWithCodeResponse?>()
+
+    var prepayData = MutableLiveData<GetPrepayData>()
 
     init {
         groupList.value = mutableListOf<GetGroupResponse>()
@@ -337,12 +341,56 @@ class GroupViewModel: ViewModel() {
         })
     }
 
+    fun getPrepayData(activity: MainActivity, storeId: Long, teamId: Long) {
+
+        val apiClient = ApiClient(activity)
+        val tokenManager = TokenManager(activity)
+
+        apiClient.apiService.getPrepayData("Bearer ${tokenManager.getAccessToken()}", storeId, teamId).enqueue(object :
+            Callback<BaseResponse<GetPrepayData>> {
+            override fun onResponse(
+                call: Call<BaseResponse<GetPrepayData>>,
+                response: Response<BaseResponse<GetPrepayData>>
+            ) {
+                Log.d("##", "onResponse 성공: " + response.body().toString())
+                if (response.isSuccessful) {
+                    // 정상적으로 통신이 성공된 경우
+                    val result: BaseResponse<GetPrepayData>? = response.body()
+                    Log.d("##", "onResponse 성공: " + result?.toString())
+
+                    val nextFragment = PrePaymentTotalFragment()
+
+                    val transaction = activity.manager.beginTransaction()
+                    transaction.replace(R.id.fragmentContainerView_main, nextFragment)
+                    transaction.addToBackStack(null)
+                    transaction.commit()
+
+                    prepayData.value = result?.data!!
+
+                } else {
+                    // 통신이 실패한 경우(응답코드 3xx, 4xx 등)
+                    var result: BaseResponse<GetPrepayData>? = response.body()
+                    Log.d("##", "onResponse 실패")
+                    Log.d("##", "onResponse 실패: " + response.code())
+                    Log.d("##", "onResponse 실패: " + response.body())
+                    val errorBody = response.errorBody()?.string() // 에러 응답 데이터를 문자열로 얻음
+                    Log.d("##", "Error Response: $errorBody")
+                }
+            }
+
+            override fun onFailure(call: Call<BaseResponse<GetPrepayData>>, t: Throwable) {
+                // 통신 실패
+                Log.d("##", "onFailure 에러: " + t.message.toString())
+            }
+        })
+    }
+
     fun prepay(activity: MainActivity) {
 
         val apiClient = ApiClient(activity)
         val tokenManager = TokenManager(activity)
 
-        apiClient.apiService.prepay("Bearer ${tokenManager.getAccessToken()}", PrepayRequest(MyApplication.storeId, MyApplication.prepaymentGroupId, MyApplication.prepaymentTotalPrice, MyApplication.prepaymentIndividualPrice)).enqueue(object :
+        apiClient.apiService.prepay("Bearer ${tokenManager.getAccessToken()}", PrepayRequest(MyApplication.selectedStore.storeId.toLong(), MyApplication.prepaymentGroupId, MyApplication.prepaymentTotalPrice, MyApplication.prepaymentIndividualPrice)).enqueue(object :
             Callback<BaseResponse<MessageResponse>> {
             override fun onResponse(
                 call: Call<BaseResponse<MessageResponse>>,

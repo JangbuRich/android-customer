@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.project.jangburich.MyApplication
 import com.project.jangburich.R
 import com.project.jangburich.databinding.FragmentHomeGroupBottomSheetBinding
 import com.project.jangburich.ui.MainActivity
@@ -31,6 +32,8 @@ class HomeGroupBottomSheetFragment : BottomSheetDialogFragment() {
     ): View? {
         binding = FragmentHomeGroupBottomSheetBinding.inflate(inflater, container, false)
         mainActivity = activity as MainActivity
+
+        MyApplication.isFirst = false
 
         binding.run {
             buttonEnterGroup.setOnClickListener { onItemClicked(0) }

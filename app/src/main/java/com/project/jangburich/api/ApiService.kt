@@ -10,6 +10,7 @@ import com.project.jangburich.api.response.group.GetGroupDetailResponse
 import com.project.jangburich.api.response.group.GetGroupInfoWithCodeResponse
 import com.project.jangburich.api.response.group.GetGroupResponse
 import com.project.jangburich.api.response.group.GetGroupStoreDetailResponse
+import com.project.jangburich.api.response.group.GetPrepayData
 import com.project.jangburich.api.response.home.GetHomeDataResponse
 import com.project.jangburich.api.response.home.GetWalletDataResponse
 import com.project.jangburich.api.response.home.ReadyKakaoPayResponse
@@ -111,6 +112,14 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Path("joinCode") joinCode: String
     ): Call<BaseResponse<MessageResponse>>
+
+    // 선결제 조회
+    @GET("/prepay")
+    fun getPrepayData(
+        @Header("Authorization") token: String,
+        @Query("storeId") storeId: Long,
+        @Query("teamId") teamId: Long
+    ): Call<BaseResponse<GetPrepayData>>
 
     // 선결제
     @POST("/prepay")
