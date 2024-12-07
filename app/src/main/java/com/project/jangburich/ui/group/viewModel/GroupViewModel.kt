@@ -81,14 +81,14 @@ class GroupViewModel: ViewModel() {
         })
     }
 
-    fun getGroupList(activity: MainActivity) {
+    fun getGroupList(activity: MainActivity, category: String) {
 
         var tempGroupList = mutableListOf<GetGroupResponse>()
 
         val apiClient = ApiClient(activity)
         val tokenManager = TokenManager(activity)
 
-        apiClient.apiService.getGroup("Bearer ${tokenManager.getAccessToken()}").enqueue(object :
+        apiClient.apiService.getGroup("Bearer ${tokenManager.getAccessToken()}", category).enqueue(object :
             Callback<BaseResponse<List<GetGroupResponse>>> {
             override fun onResponse(
                 call: Call<BaseResponse<List<GetGroupResponse>>>,
@@ -102,6 +102,7 @@ class GroupViewModel: ViewModel() {
 
                     if (!(result?.data.isNullOrEmpty())) {
                         for (i in 0 until result?.data?.size!!) {
+                            var teamId = result.data[i].teamId
                             var teamName = result.data[i].teamName
                             var teamType = result.data[i].teamType
                             var date = result.data[i].createdDate
@@ -109,14 +110,23 @@ class GroupViewModel: ViewModel() {
                             var peopleCount = result.data[i].peopleCount
                             var isLeader = result.data[i].isMeLeader
 
+                            var imageList = result.data[i].profileImageUrl
+
+                            var tempImageList = mutableListOf<String>()
+                            for(j in 0 until imageList?.size!!) {
+                                tempImageList.add(imageList[j])
+                            }
+
                             var g1 = GetGroupResponse(
+                                teamId,
                                 teamName,
-                                teamType,
                                 date,
+                                teamType,
                                 isLike,
                                 peopleCount,
                                 isLeader,
-                                null)
+                                tempImageList
+                                )
 
                             tempGroupList.add(g1)
                         }

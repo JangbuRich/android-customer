@@ -12,11 +12,13 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import com.project.jangburich.MyApplication
 import com.project.jangburich.R
 import com.project.jangburich.api.response.group.GetGroupResponse
 import com.project.jangburich.databinding.FragmentGroupBinding
 import com.project.jangburich.ui.MainActivity
 import com.project.jangburich.ui.group.adapter.GroupAdapter
+import com.project.jangburich.ui.group.adapter.GroupFilterAdapter
 import com.project.jangburich.ui.group.viewModel.GroupViewModel
 import com.project.jangburich.ui.home.adapter.TeamAdapter
 import com.project.jangburich.ui.home.viewModel.HomeViewModel
@@ -27,6 +29,7 @@ class GroupFragment : Fragment() {
     lateinit var mainActivity: MainActivity
     lateinit var viewModel: GroupViewModel
 
+    private lateinit var groupFilterAdapter: GroupFilterAdapter
     private lateinit var groupAdapter: GroupAdapter
 
     var getGroupList = mutableListOf<GetGroupResponse>()
@@ -34,35 +37,54 @@ class GroupFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         binding = FragmentGroupBinding.inflate(layoutInflater)
         mainActivity = activity as MainActivity
         viewModel = ViewModelProvider(mainActivity)[GroupViewModel::class.java]
 
-        viewModel.getGroupList(mainActivity)
         mainActivity.hideBottomNavigation(false)
+
+        viewModel.getGroupList(mainActivity, "ALL")
 
         initAdapters()
-
-        viewModel.run {
-            groupList.observe(mainActivity) {
-                getGroupList = it
-                groupAdapter.updateList(getGroupList)
-            }
-        }
-
-        mainActivity.hideBottomNavigation(false)
-
-        binding.run {
-
-        }
+        observeViewModel()
 
         return binding.root
     }
 
     private fun initAdapters() {
         // 어댑터 초기화
+        groupFilterAdapter = GroupFilterAdapter(
+            mainActivity,
+            MyApplication.groupFilterList
+        ).apply {
+            itemClickListener = object : GroupFilterAdapter.OnItemClickListener {
+                override fun onItemClick(position: Int) {
+                    when(position) {
+                        0 -> {
+                            viewModel.getGroupList(mainActivity, "ALL")
+                            MyApplication.groupFilterCategory = "ALL"
+                        }
+                        1 -> {
+                            viewModel.getGroupList(mainActivity, "LEADER")
+                            MyApplication.groupFilterCategory = "LEADER"
+                        }
+                        2 -> {
+                            viewModel.getGroupList(mainActivity, "MEMBER")
+                            MyApplication.groupFilterCategory = "MEMBER"
+                        }
+                    }
+                    updateSelectedPosition(position) // 어댑터에 선택 상태 전달
+                }
+            }
+        }
+
+        binding.recyclerViewGroupFilter.apply {
+            adapter = groupFilterAdapter
+            layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+        }
+
         groupAdapter = GroupAdapter(
             mainActivity,
             getGroupList
@@ -77,6 +99,16 @@ class GroupFragment : Fragment() {
         binding.recyclerViewGroup.apply {
             adapter = groupAdapter
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        }
+    }
+
+    private fun observeViewModel() {
+        viewModel.run {
+            groupList.observe(viewLifecycleOwner) {
+                getGroupList = it
+
+                groupAdapter.updateList(getGroupList)
+            }
         }
     }
 }

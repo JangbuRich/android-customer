@@ -26,6 +26,11 @@ class MyApplication: Application() {
         var groupAccountNumber = ""
         var groupBankName = ""
 
+        // 내 그룹
+        var groupFilterList = listOf("전체", "그룹장", "그룹원")
+        var groupFilterCategory = "ALL"
+
+        var selectedTeamId = 0L
         // 내 위치
         var lat = 37.49757415
         var long = 127.0278389

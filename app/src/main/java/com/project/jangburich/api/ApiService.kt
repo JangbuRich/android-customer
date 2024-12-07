@@ -24,6 +24,7 @@ import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.PartMap
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiService {
     // 로그인
@@ -69,7 +70,8 @@ interface ApiService {
     // 그룹 정보 가져오기
     @GET("/teams")
     fun getGroup(
-        @Header("Authorization") token: String
+        @Header("Authorization") token: String,
+        @Query("category") category: String
     ): Call<BaseResponse<List<GetGroupResponse>>>
 
     // 매장 상세 페이지
