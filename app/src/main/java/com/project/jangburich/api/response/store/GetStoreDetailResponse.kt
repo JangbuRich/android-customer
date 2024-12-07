@@ -13,6 +13,7 @@ data class GetStoreDetailResponse(
 )
 
 data class StoreMenu(
+    val menuId: Long,
     val menuName: String,
     val isSignatureMenu: Boolean?, // null 허용
     val description: String,

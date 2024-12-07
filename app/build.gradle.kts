@@ -82,7 +82,7 @@ dependencies {
     annotationProcessor("com.github.bumptech.glide:compiler:4.13.0")
 
     // 카카오 map
-    implementation("com.kakao.maps.open:android:2.9.5")
+    implementation("com.kakao.maps.open:android:2.12.8")
 
     // 카카오 로그인
     implementation("com.kakao.sdk:v2-user:2.20.6")

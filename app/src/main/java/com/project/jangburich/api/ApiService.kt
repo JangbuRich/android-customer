@@ -3,6 +3,8 @@ package com.project.jangburich.api
 import com.project.jangburich.api.request.group.CreateGroupRequest
 import com.project.jangburich.api.request.home.ReadyKakaoPayRequest
 import com.project.jangburich.api.request.login.SaveSignUpInfoRequest
+import com.project.jangburich.api.request.store.AddCartRequest
+import com.project.jangburich.api.request.store.OrderReqeust
 import com.project.jangburich.api.request.store.PrepayRequest
 import com.project.jangburich.api.response.BaseResponse
 import com.project.jangburich.api.response.group.CreateGroupResponse
@@ -16,8 +18,10 @@ import com.project.jangburich.api.response.home.GetWalletDataResponse
 import com.project.jangburich.api.response.home.ReadyKakaoPayResponse
 import com.project.jangburich.api.response.login.LoginResponse
 import com.project.jangburich.api.response.login.MessageResponse
+import com.project.jangburich.api.response.store.GetCartDataResponse
 import com.project.jangburich.api.response.store.GetStoreDetailResponse
 import com.project.jangburich.api.response.store.GetStoreListResponse
+import com.project.jangburich.api.response.store.OrderResponse
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.Body
@@ -126,6 +130,33 @@ interface ApiService {
     fun prepay(
         @Header("Authorization") token: String,
         @Body parameters: PrepayRequest
+    ): Call<BaseResponse<MessageResponse>>
+
+    // 장바구니 추가
+    @POST("/orders/carts")
+    fun addCart(
+        @Header("Authorization") token: String,
+        @Body parameters: AddCartRequest
+    ): Call<BaseResponse<MessageResponse>>
+
+    // 장바구니 조회
+    @GET("/orders/carts")
+    fun getCartData(
+        @Header("Authorization") token: String
+    ): Call<BaseResponse<GetCartDataResponse>>
+
+    // 주문하기
+    @POST("/orders")
+    fun order(
+        @Header("Authorization") token: String,
+        @Body parameters: OrderReqeust
+    ): Call<BaseResponse<OrderResponse>>
+
+    // 식권 사용
+    @POST("/orders/tickets/{orderId}")
+    fun useTicket(
+        @Header("Authorization") token: String,
+        @Path("orderId") orderId: Long
     ): Call<BaseResponse<MessageResponse>>
 
     // 매장 정보 가져오기

@@ -3,27 +3,34 @@ package com.project.jangburich.ui.store
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.res.ResourcesCompat
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.gms.maps.model.Marker
 import com.kakao.vectormap.KakaoMap
 import com.kakao.vectormap.KakaoMapReadyCallback
 import com.kakao.vectormap.KakaoMapSdk
 import com.kakao.vectormap.LatLng
 import com.kakao.vectormap.MapLifeCycleCallback
 import com.kakao.vectormap.MapView
+import com.kakao.vectormap.camera.CameraUpdateFactory
+import com.kakao.vectormap.label.LabelLayer
+import com.kakao.vectormap.label.LabelOptions
+import com.kakao.vectormap.label.LabelStyle
+import com.kakao.vectormap.label.LabelStyles
 import com.project.jangburich.BuildConfig.KAKAO_MAP_KEY
+import com.project.jangburich.MyApplication
 import com.project.jangburich.R
 import com.project.jangburich.api.response.store.Store
 import com.project.jangburich.databinding.FragmentStoreMapBinding
 import com.project.jangburich.ui.MainActivity
-import com.project.jangburich.ui.login.viewModel.LoginViewModel
+import com.project.jangburich.ui.group.PrePaymentTotalFragment
+import com.project.jangburich.ui.group.viewModel.GroupViewModel
+import com.project.jangburich.ui.home.HomeGroupBottomSheetFragment
 import com.project.jangburich.ui.store.adapter.StoreCategoryAdapter
 import com.project.jangburich.ui.store.viewModel.StoreViewModel
 import com.skydoves.balloon.ArrowOrientation
@@ -33,16 +40,23 @@ import com.skydoves.balloon.BalloonAnimation
 import com.skydoves.balloon.BalloonSizeSpec
 import com.skydoves.balloon.showAlignStart
 
-class StoreMapFragment : Fragment() {
+
+class StoreMapFragment : Fragment(), StoreMapBottomSheetListener, PrepayGroupBottomSheetListener {
 
     lateinit var binding: FragmentStoreMapBinding
     lateinit var mainActivity: MainActivity
     lateinit var viewModel: StoreViewModel
+    lateinit var groupViewModel: GroupViewModel
+    private var labelLayer: LabelLayer? = null
 
     private lateinit var storeCategoryAdapter: StoreCategoryAdapter
 
     private var storeCategoryNameList = mutableListOf<String>()
     private var categoryPosition = 0
+    private var getStoreList = mutableListOf<Store>()
+
+    val storeBottomSheet = StoreMapBottomSheetFragment()
+    val prepayGroupBottomSheet = PrepayGroupBottomSheetFragment()
 
     private lateinit var mapView : MapView
     private var kakaoMap : KakaoMap? = null
@@ -54,6 +68,7 @@ class StoreMapFragment : Fragment() {
         binding = FragmentStoreMapBinding.inflate(layoutInflater)
         mainActivity = activity as MainActivity
         viewModel = ViewModelProvider(mainActivity)[StoreViewModel::class.java]
+        groupViewModel = ViewModelProvider(mainActivity)[GroupViewModel::class.java]
 
         mainActivity.hideBottomNavigation(false)
 
@@ -64,13 +79,22 @@ class StoreMapFragment : Fragment() {
 
         binding.run {
 
-            viewModel.getStoreList(mainActivity, "ALL")
+            viewModel.getStoreList(mainActivity, storeCategoryNameList[0])
+
+            viewModel.run {
+                storeList.observe(mainActivity) {
+                    getStoreList = it
+
+                    addMarkersAndSetupClickListener(getStoreList)
+                }
+            }
+
             buttonList.setOnClickListener {
                 val nextFragment = StoreListFragment()
 
                 val transaction = mainActivity.manager.beginTransaction()
-                transaction.replace(R.id.fragmentContainerView_main, nextFragment)
-                transaction.addToBackStack("")
+                transaction.replace(com.project.jangburich.R.id.fragmentContainerView_main, nextFragment)
+                transaction.addToBackStack(null)
                 transaction.commit()
             }
         }
@@ -94,6 +118,7 @@ class StoreMapFragment : Fragment() {
                 override fun onItemClick(position: Int) {
                     categoryPosition = position
                     // 매장 리스트 불러오기
+                    viewModel.getStoreList(mainActivity, storeCategoryNameList[categoryPosition])
                 }
             }
         }
@@ -113,7 +138,7 @@ class StoreMapFragment : Fragment() {
                 .setText("리스트로 매장을 확인할 수 있어요")
                 .setTextColorResource(R.color.gray_100)
                 .setTextSize(14f)
-                .setTextTypeface(ResourcesCompat.getFont(mainActivity, R.font.pretendard_medium)!!)
+                .setTextTypeface(ResourcesCompat.getFont(mainActivity,R.font.pretendard_medium)!!)
                 .setArrowPositionRules(ArrowPositionRules.ALIGN_ANCHOR)
                 .setArrowOrientation(ArrowOrientation.END)
                 .setArrowSize(5)
@@ -150,12 +175,111 @@ class StoreMapFragment : Fragment() {
             }
 
         }, object : KakaoMapReadyCallback() {
+            override fun getPosition(): LatLng {
+                return LatLng.from(37.49757415, 127.0278389)
+            }
+
             override fun onMapReady(kakaomap: KakaoMap) {
                 kakaoMap = kakaomap
 
-                // 마커 추가
+//                setupMap()
+                addMarkersAndSetupClickListener(getStoreList)
 
+
+                Log.d("##", "onMapReady")
             }
         })
     }
+
+    /*
+    private fun settingLabel() {
+        val styles = kakaoMap?.labelManager?.addLabelStyles(
+            LabelStyles.from(LabelStyle.from(R.drawable.ic_marker))
+        )
+
+        val options = LabelOptions.from(
+            LatLng.from(37.6114538, 126.938461)
+        ).setStyles(styles)
+
+        val labelManager = kakaoMap?.labelManager
+        val layer = labelManager?.layer
+
+        if (layer != null) {
+            // 레이어가 null이 아니라면
+            val label = layer.addLabel(options)
+            label.show()
+            Log.d("##", "label : $label")
+        } else {
+            // 레이어가 null이라면 처리
+        }
+    }
+
+    private fun setupMap() {
+        // 인증 후 API가 정상적으로 실행될 때 호출됨
+        // 좌표값은 추후 수정 예정
+        val position = LatLng.from(37.6114538, 126.938461)
+        val cameraUpdate = CameraUpdateFactory.newCenterPosition(position,20)
+        kakaoMap?.moveCamera(cameraUpdate)
+
+        // 라벨 추가
+        settingLabel()
+    }
+     */
+
+    private fun addMarkersAndSetupClickListener(storeList: List<Store>) {
+        val labelManager = kakaoMap?.labelManager
+        val layer = labelManager?.layer
+
+        val position = LatLng.from(37.49757415, 127.0278389)
+        val cameraUpdate = CameraUpdateFactory.newCenterPosition(position,15)
+        kakaoMap?.moveCamera(cameraUpdate)
+
+        if (layer != null) {
+            storeList.forEach { store ->
+                // 라벨 옵션 설정
+                val options = LabelOptions.from(LatLng.from(store.latitude, store.longitude))
+                    .setStyles(
+                        kakaoMap?.labelManager?.addLabelStyles(
+                            LabelStyles.from(LabelStyle.from(R.drawable.ic_marker))
+                        )
+                    )
+
+                // 라벨 추가
+                val label = layer.addLabel(options)
+                label.isClickable = true
+                label.tag = store.storeId // storeId를 라벨의 태그로 설정
+                label.show()
+
+                Log.d("##", "Added label for store: ${store.name}")
+            }
+
+            // 라벨 클릭 리스너 설정
+            kakaoMap?.setOnLabelClickListener { _, _, clickedLabel ->
+                val clickedStoreId = clickedLabel.tag as? Int // 라벨 태그에서 storeId 가져오기
+                val clickedStore = storeList.find { it.storeId == clickedStoreId }
+
+                if (clickedStore != null) {
+                    Log.d("##", "Clicked on store: ${clickedStore.name}")
+                    MyApplication.selectedStore = clickedStore
+                    storeBottomSheet.show(childFragmentManager, storeBottomSheet.tag)
+                } else {
+                    Log.e("##", "Store not found for clicked label.")
+                }
+                true // 클릭 이벤트 소비
+            }
+        } else {
+            Log.e("KakaoMap", "Label layer is null. Unable to add markers.")
+        }
+    }
+
+
+    override fun onButtonClicked() {
+        prepayGroupBottomSheet.show(childFragmentManager, prepayGroupBottomSheet.tag)
+    }
+
+    override fun onGroupButtonClicked() {
+        groupViewModel.getPrepayData(mainActivity, MyApplication.selectedStore.storeId.toLong(), MyApplication.prepaymentGroupId)
+    }
+
+
 }

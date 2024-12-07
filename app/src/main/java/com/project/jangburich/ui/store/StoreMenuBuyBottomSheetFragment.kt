@@ -7,13 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.project.jangburich.MyApplication
 import com.project.jangburich.R
 import com.project.jangburich.databinding.FragmentHomeGroupBottomSheetBinding
 import com.project.jangburich.databinding.FragmentStoreMenuBuyBottomSheetBinding
 import com.project.jangburich.ui.MainActivity
 
 interface StoreMenuBuyBottomSheetListener {
-    fun onButtonClicked(position: Int)
+    fun onButtonClicked(position: Int, quantity: Int)
 }
 class StoreMenuBuyBottomSheetFragment : BottomSheetDialogFragment() {
     private lateinit var listener: StoreMenuBuyBottomSheetListener
@@ -34,25 +35,29 @@ class StoreMenuBuyBottomSheetFragment : BottomSheetDialogFragment() {
 
         binding.run {
 
+            textViewPriceValue.text = "${MyApplication.selectedMenuList.price}원"
+
             var num = 1
 
             buttonMinus.setOnClickListener {
                 num -= 1
                 textViewCountNum.text = num.toString()
+                textViewPriceValue.text = "${MyApplication.selectedMenuList.price * num}원"
             }
             buttonPlus.setOnClickListener {
                 num += 1
                 textViewCountNum.text = num.toString()
+                textViewPriceValue.text = "${MyApplication.selectedMenuList.price * num}원"
             }
-            buttonCart.setOnClickListener {onItemClicked(0) }
-            buttonOrder.setOnClickListener { onItemClicked(1) }
+            buttonCart.setOnClickListener {onItemClicked(0, num) }
+            buttonOrder.setOnClickListener { onItemClicked(1, num) }
         }
 
         return binding.root
     }
 
-    private fun onItemClicked(position: Int) {
-        listener.onButtonClicked(position)
+    private fun onItemClicked(position: Int, quantity: Int) {
+        listener.onButtonClicked(position, quantity)
 
         dismiss()
     }
