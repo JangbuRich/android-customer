@@ -1,4 +1,4 @@
-package com.project.jangburich.ui.home
+package com.project.jangburich.ui.wallet
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,11 +9,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.project.jangburich.MyApplication
+import com.project.jangburich.R
 import com.project.jangburich.api.response.home.PurchaseHistory
 import com.project.jangburich.databinding.FragmentWalletBinding
 import com.project.jangburich.ui.MainActivity
-import com.project.jangburich.ui.home.adapter.WalletAdapter
-import com.project.jangburich.ui.home.viewModel.WalletViewModel
+import com.project.jangburich.ui.wallet.adapter.WalletAdapter
+import com.project.jangburich.ui.wallet.viewModel.WalletViewModel
 
 class WalletFragment : Fragment() {
 
@@ -38,7 +39,13 @@ class WalletFragment : Fragment() {
 
         binding.run {
             buttonCharge.setOnClickListener {
-                viewModel.readyKakaoPay(mainActivity)
+                MyApplication.isKakaoPayComplete = false
+                val nextFragment = ChargeFragment()
+
+                val transaction = mainActivity.manager.beginTransaction()
+                transaction.replace(R.id.fragmentContainerView_main, nextFragment)
+                transaction.addToBackStack(null)
+                transaction.commit()
             }
         }
 
@@ -62,6 +69,7 @@ class WalletFragment : Fragment() {
     fun observeViewModel() {
         viewModel.run {
             userPoint.observe(mainActivity) {
+                MyApplication.preChargeAmount = it
                 binding.textViewUserPoint.text = "${it}원"
             }
 
@@ -74,6 +82,8 @@ class WalletFragment : Fragment() {
 
     fun initView() {
         viewModel.getWalletData(mainActivity)
+
+        mainActivity.hideBottomNavigation(false)
 
         binding.run {
             textViewUserName.text = "${MyApplication.userName}님의 보유 금액"

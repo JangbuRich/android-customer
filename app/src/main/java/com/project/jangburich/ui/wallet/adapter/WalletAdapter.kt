@@ -1,10 +1,9 @@
-package com.project.jangburich.ui.home.adapter
+package com.project.jangburich.ui.wallet.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.project.jangburich.api.response.home.PurchaseHistory
 import com.project.jangburich.databinding.RowWalletPaymentBinding
 import com.project.jangburich.ui.MainActivity

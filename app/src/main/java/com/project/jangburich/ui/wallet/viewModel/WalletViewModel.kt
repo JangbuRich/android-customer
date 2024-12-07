@@ -1,10 +1,11 @@
-package com.project.jangburich.ui.home.viewModel
+package com.project.jangburich.ui.wallet.viewModel
 
 import android.content.Intent
 import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.project.jangburich.MyApplication
 import com.project.jangburich.api.ApiClient
 import com.project.jangburich.api.TokenManager
 import com.project.jangburich.api.request.home.ReadyKakaoPayRequest
@@ -83,12 +84,12 @@ class WalletViewModel: ViewModel() {
         })
     }
 
-    fun readyKakaoPay(activity: MainActivity) {
+    fun readyKakaoPay(activity: MainActivity, payment: String) {
 
         val apiClient = ApiClient(activity)
         val tokenManager = TokenManager(activity)
 
-        apiClient.apiService.readyKakaoPay("Bearer ${tokenManager.getAccessToken()}", ReadyKakaoPayRequest("kakao", "100000")).enqueue(object :
+        apiClient.apiService.readyKakaoPay("Bearer ${tokenManager.getAccessToken()}", ReadyKakaoPayRequest("kakao", payment)).enqueue(object :
             Callback<BaseResponse<ReadyKakaoPayResponse>> {
             override fun onResponse(
                 call: Call<BaseResponse<ReadyKakaoPayResponse>>,
@@ -103,8 +104,10 @@ class WalletViewModel: ViewModel() {
                     kakaoPayUrl.value = result?.data?.next_redirect_mobile_url
 
                     // pc url로 테스트
-                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(result?.data?.next_redirect_pc_url))
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(result?.data?.next_redirect_mobile_url))
                     activity.startActivity(intent)
+
+                    MyApplication.isKakaoPayComplete = true
                 } else {
                     // 통신이 실패한 경우(응답코드 3xx, 4xx 등)
                     var result: BaseResponse<ReadyKakaoPayResponse>? = response.body()
