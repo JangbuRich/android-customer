@@ -9,6 +9,7 @@ import com.project.jangburich.api.response.group.CreateGroupResponse
 import com.project.jangburich.api.response.group.GetGroupDetailResponse
 import com.project.jangburich.api.response.group.GetGroupInfoWithCodeResponse
 import com.project.jangburich.api.response.group.GetGroupResponse
+import com.project.jangburich.api.response.group.GetGroupStoreDetailResponse
 import com.project.jangburich.api.response.home.GetHomeDataResponse
 import com.project.jangburich.api.response.home.GetWalletDataResponse
 import com.project.jangburich.api.response.home.ReadyKakaoPayResponse
@@ -81,6 +82,15 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Path("teamId") teamId: String
     ): Call<BaseResponse<GetGroupDetailResponse>>
+
+    // 그룹 - 스토어 상세 정보 가져오기
+    @GET("/teams/{teamId}/{storeId}")
+    fun getGroupStoreDetail(
+        @Header("Authorization") token: String,
+        @Path("teamId") teamId: Long,
+        @Path("storeId") storeId: Long
+    ): Call<BaseResponse<GetGroupStoreDetailResponse>>
+
     // 매장 상세 페이지
     @GET("/store/{storeId}")
     fun getStoreDetail(
