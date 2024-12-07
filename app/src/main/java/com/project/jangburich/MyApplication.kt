@@ -8,6 +8,7 @@ class MyApplication: Application() {
 
         lateinit var preferences: PreferenceUtil
 
+        var isKakaoPayComplete = false
         // 회원가입
         var signUpName = ""
         var signUpPhoneNum = ""
