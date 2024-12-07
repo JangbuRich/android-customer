@@ -30,9 +30,11 @@ class PrePaymentIndividualFragment : Fragment() {
         intiView()
 
         binding.run {
-            textViewTotalPriceValue.text = MyApplication.prepaymentTotalPrice.toString()
-            textViewStoreName.text = MyApplication.storeName
-            textViewStoreCategory.text = MyApplication.storeCategory
+            textViewRemainPrepaymentValue.text = MyApplication.remainPrepayAmount.toString()
+            textViewStoreName.text = MyApplication.selectedStore.name
+            textViewStoreCategory.text = MyApplication.selectedStore.category
+            editTextIndividualPrice.hint = MyApplication.prepaymentTotalPrice.toString()
+
 
             buttonNext.setOnClickListener {
                 MyApplication.prepaymentIndividualPrice = editTextIndividualPrice.text.toString().toInt()
@@ -44,6 +46,8 @@ class PrePaymentIndividualFragment : Fragment() {
     }
 
     fun intiView() {
+        mainActivity.hideBottomNavigation(true)
+
         binding.run {
             toolbar.run {
                 buttonBack.setOnClickListener {

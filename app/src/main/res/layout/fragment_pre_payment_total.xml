@@ -56,6 +56,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider" />
 
+    <TextView
+        android:id="@+id/textView_description"
+        style="@style/body7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="최소 00원부터 결제 가능해요"
+        android:textColor="@color/main_orange"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_intro" />
+
     <EditText
         android:id="@+id/editText_price"
         style="@style/OneLineEditTextUnderLine"
@@ -70,7 +80,42 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_intro" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_description" />
+
+    <TextView
+        android:id="@+id/textView_wallet_title"
+        style="@style/Detail4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="지갑 보유 금액: "
+        android:textColor="@color/gray_60"
+        android:layout_marginRight="5dp"
+        app:layout_constraintEnd_toStartOf="@+id/textView_remain_wallet_value"
+        app:layout_constraintTop_toTopOf="@+id/textView_remain_wallet_value"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_remain_wallet_value"/>
+
+    <TextView
+        android:id="@+id/textView_remain_wallet_value"
+        style="@style/Detail1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="000,000"
+        android:textColor="@color/gray_40"
+        app:layout_constraintEnd_toStartOf="@+id/textView_remain_wallet_description"
+        app:layout_constraintTop_toTopOf="@+id/textView_remain_wallet_description"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_remain_wallet_description"/>
+
+
+    <TextView
+        android:id="@+id/textView_remain_wallet_description"
+        style="@style/Detail4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="원"
+        android:textColor="@color/gray_60"
+        app:layout_constraintEnd_toEndOf="@+id/editText_price"
+        app:layout_constraintTop_toBottomOf="@+id/editText_price" />
 
     <TextView
         android:id="@+id/textView_price"

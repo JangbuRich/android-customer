@@ -22,6 +22,8 @@ class PrePaymentCompleteFragment : Fragment() {
         binding = FragmentPrePaymentCompleteBinding.inflate(layoutInflater)
         mainActivity = activity as MainActivity
 
+        mainActivity.hideBottomNavigation(true)
+
         binding.run {
             buttonAccept.setOnClickListener {
                 mainActivity.binding.bottomNavigation.selectedItemId = R.id.menu_home

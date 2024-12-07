@@ -1,7 +1,11 @@
 package com.project.jangburich
 
 import android.app.Application
+import com.project.jangburich.api.response.group.GetGroupDetailResponse
 import com.project.jangburich.api.response.group.GetGroupInfoWithCodeResponse
+import com.project.jangburich.api.response.group.GetGroupStoreDetailResponse
+import com.project.jangburich.api.response.group.PrepayedStore
+import com.project.jangburich.api.response.group.TodayPayment
 
 class MyApplication: Application() {
     companion object {
@@ -31,6 +35,39 @@ class MyApplication: Application() {
         var groupFilterCategory = "ALL"
 
         var selectedTeamId = 0L
+        var selectedGroupStoreId = 0L
+        var selectedGroupDetail = GetGroupDetailResponse(
+            teamId = 0,
+            isMeLeader = false,
+            storeName = "",
+            teamName = "",
+            description = "",
+            totalPrepaidAmount = 0,
+            remainingAmount = 0,
+            personalAllocatedAmount = 0,
+            userUsedAmount = 0,
+            prepayedStores = mutableListOf<PrepayedStore>(),
+            teamMemberImgUrl = mutableListOf<String>(),
+            totalMemberCount = 0,
+            todayPayments = mutableListOf<TodayPayment>(),
+            totalTodayTransactionCount = 0
+        )
+        var selectedGroupStoreDetail = GetGroupStoreDetailResponse(
+            storeId = 0,
+            isMeLeader = false,
+            storeName = "",
+            isLiked = false,
+            remainingAmount = null,
+            availableAmount = null,
+            myUsedAmount = null,
+            totalPrepayedAmount = null,
+            remainingPrepayedAmount = null,
+            personalUsableAmount = null,
+            usageStartDate = "",
+            usageEndDate = "",
+            myPaymentHistories = mutableListOf<StorePaymentHistory>()
+        )
+
         // 내 위치
         var lat = 37.49757415
         var long = 127.0278389
@@ -41,10 +78,35 @@ class MyApplication: Application() {
         var storeCategory = ""
         var storeImage = ""
 
+        // 충전
+        var preChargeAmount = 0
+
         // 선결제
-        var prepaymentGroupId = 2L
+        var prepaymentGroupId = 0L
         var prepaymentTotalPrice = 0
         var prepaymentIndividualPrice = 0
+        var remainPrepayAmount = 0
+
+        var selectedPrepayStoreName = ""
+        var selectedStoreCategory = ""
+        var selectedStoreId = 0
+
+        var selectedMenuList = StoreMenu(0,"", false, "", 0, "")
+        
+        var selectedStore = Store(
+            storeId = 0,
+            name = "",
+            latitude = 0.0,
+            longitude = 0.0,
+            isFavorite = false,
+            category = "",
+            distance = 1.0,
+            businessStatus = "",
+            closeTime = "",
+            phoneNumber = "",
+            imageUrl = ""
+        )
+
 
         // 코드 정보
         var code = ""
