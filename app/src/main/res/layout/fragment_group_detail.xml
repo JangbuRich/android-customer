@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_95"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.group.GroupDetailFragment">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_back"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/layout_group_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/imageView_leader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="5dp"
+                    app:srcCompat="@drawable/ic_group_leader" />
+
+                <TextView
+                    android:id="@+id/textView_group_name"
+                    style="@style/Detail2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="그룹"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView_leader"
+                    app:layout_constraintStart_toEndOf="@+id/imageView_leader"
+                    app:layout_constraintTop_toTopOf="@+id/imageView_leader" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView_group_description"
+                style="@style/Detail1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="20dp"
+                android:text="그룹 설명"
+                android:textColor="@color/gray_60"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/layout_group_info"
+                app:layout_constraintTop_toBottomOf="@+id/layout_group_info" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_payment"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/background_gray100_round10"
+                android:padding="20dp"
+                app:layout_constraintEnd_toEndOf="@+id/textView_group_description"
+                app:layout_constraintStart_toStartOf="@+id/textView_group_description"
+                app:layout_constraintTop_toBottomOf="@+id/textView_group_description">
+
+                <TextView
+                    android:id="@+id/textView_group_favorite_store_name"
+                    style="@style/Detail1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="매장명"
+                    android:textColor="@color/gray_60"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/gray_90"
+                    app:layout_constraintEnd_toEndOf="@+id/layout_group_payment"
+                    app:layout_constraintStart_toStartOf="@+id/layout_group_payment"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_group_payment" />
+
+                <TextView
+                    android:id="@+id/textView_my_payment_title"
+                    style="@style/Label3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:text="내가 사용한 금액"
+                    android:textColor="@color/gray_60"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+                <TextView
+                    android:id="@+id/textView_my_payment_value"
+                    style="@style/Headline2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="0원"
+                    app:layout_constraintStart_toStartOf="@+id/textView_my_payment_title"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_my_payment_title" />
+
+                <TextView
+                    android:id="@+id/button_show_my_payment"
+                    style="@style/body5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/background_gray90_round4"
+                    android:paddingHorizontal="5dp"
+                    android:paddingVertical="3dp"
+                    android:text="이용내역"
+                    android:textColor="@color/gray_60"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView_my_payment_value"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintTop_toTopOf="@+id/textView_my_payment_value" />
+
+                <LinearLayout
+                    android:id="@+id/layout_group_payment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="7dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toStartOf="@+id/textView_group_favorite_store_name"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_group_favorite_store_name">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView_group_remain_payment_title"
+                            style="@style/Detail6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:text="남은 선결제 금액"
+                            android:textColor="@color/gray_40" />
+
+                        <TextView
+                            android:id="@+id/textView_group_remain_payment_value"
+                            style="@style/Headline2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:text="0원" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView_group_total_payment_title"
+                            style="@style/Detail6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:text="전체 선결제 금액"
+                            android:textColor="@color/gray_40" />
+
+                        <TextView
+                            android:id="@+id/textView_group_total_payment_value"
+                            style="@style/Headline2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:text="0원" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/textView_group_store_title"
+                style="@style/Headline4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="제휴 매장"
+                android:layout_marginTop="25dp"
+                app:layout_constraintStart_toStartOf="@+id/layout_payment"
+                app:layout_constraintTop_toBottomOf="@+id/layout_payment" />
+
+            <TextView
+                android:id="@+id/button_show_group_store_more"
+                style="@style/body3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="더보기"
+                android:textColor="@color/gray_60"
+                app:layout_constraintEnd_toEndOf="@+id/layout_payment"
+                app:layout_constraintTop_toTopOf="@+id/textView_group_store_title"
+                app:layout_constraintBottom_toBottomOf="@+id/textView_group_store_title"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView_group_store"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                app:layout_constraintEnd_toEndOf="@+id/button_show_group_store_more"
+                app:layout_constraintStart_toStartOf="@+id/textView_group_store_title"
+                app:layout_constraintTop_toBottomOf="@+id/textView_group_store_title" />
+
+            <TextView
+                android:id="@+id/textView_group_member_title"
+                style="@style/Headline4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="그룹원"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toStartOf="@+id/recyclerView_group_store"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerView_group_store" />
+
+            <TextView
+                android:id="@+id/button_show_group_member_more"
+                style="@style/body3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="더보기"
+                android:textColor="@color/gray_60"
+                app:layout_constraintEnd_toEndOf="@+id/recyclerView_group_store"
+                app:layout_constraintTop_toTopOf="@+id/textView_group_member_title"
+                app:layout_constraintBottom_toBottomOf="@+id/textView_group_member_title"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_group_member"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/background_gray100_round10"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="15dp"
+                app:layout_constraintEnd_toEndOf="@+id/button_show_group_member_more"
+                app:layout_constraintStart_toStartOf="@+id/textView_group_member_title"
+                app:layout_constraintTop_toBottomOf="@+id/textView_group_member_title">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imageView_group_member_profile1"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:src="@drawable/example"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imageView_group_member_profile2"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginStart="17dp"
+                    android:src="@drawable/example"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView_group_member_profile1"
+                    app:layout_constraintStart_toStartOf="@+id/imageView_group_member_profile1"
+                    app:layout_constraintTop_toTopOf="@+id/imageView_group_member_profile1"
+                    app:layout_constraintVertical_bias="0.0" />
+
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imageView_group_member_profile3"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginStart="17dp"
+                    android:src="@drawable/example"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView_group_member_profile2"
+                    app:layout_constraintStart_toStartOf="@+id/imageView_group_member_profile2"
+                    app:layout_constraintTop_toTopOf="@+id/imageView_group_member_profile2"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imageView_group_member_profile_more"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginStart="17dp"
+                    android:src="@drawable/img_group_member_more"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView_group_member_profile3"
+                    app:layout_constraintStart_toStartOf="@+id/imageView_group_member_profile3"
+                    app:layout_constraintTop_toTopOf="@+id/imageView_group_member_profile3"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/textView_group_member_num"
+                    style="@style/body1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:text="0명"
+                    android:textColor="@color/gray_40"
+                    app:layout_constraintBottom_toBottomOf="@id/imageView_group_member_profile_more"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/imageView_group_member_profile_more" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="30dp"
+                android:paddingHorizontal="20dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="91dp"
+                android:background="@color/gray_100"
+                app:layout_constraintTop_toBottomOf="@+id/layout_group_member">
+
+                <TextView
+                    android:id="@+id/textView_today_payment_title"
+                    style="@style/Headline4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="오늘의 결제 내역"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/button_show_today_payment_more"
+                    style="@style/body3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="더보기"
+                    android:textColor="@color/gray_60"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView_today_payment_title"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView_today_payment_title"/>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_today_payment_title"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/background_gray95_round10"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="15dp"
+                    tools:layout_editor_absoluteX="20dp">
+
+                    <TextView
+                        android:id="@+id/textView_today_date"
+                        style="@style/Detail1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2024.12.08"
+                        android:textColor="@color/gray_50"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/textView_today_payment_amount"
+                        style="@style/Detail1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="총 0건"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                    <View
+                        android:id="@+id/divider2"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@color/gray_80"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView_today_date" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerView_today_payment"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="15dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/divider2" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

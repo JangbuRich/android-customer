@@ -12,6 +12,7 @@ import com.project.jangburich.api.request.group.CreateGroupRequest
 import com.project.jangburich.api.request.store.PrepayRequest
 import com.project.jangburich.api.response.BaseResponse
 import com.project.jangburich.api.response.group.CreateGroupResponse
+import com.project.jangburich.api.response.group.GetGroupDetailResponse
 import com.project.jangburich.api.response.group.GetGroupInfoWithCodeResponse
 import com.project.jangburich.api.response.group.GetGroupResponse
 import com.project.jangburich.api.response.home.GetHomeDataResponse
@@ -20,6 +21,7 @@ import com.project.jangburich.api.response.login.MessageResponse
 import com.project.jangburich.ui.MainActivity
 import com.project.jangburich.ui.group.CreateGroupInviteFragment
 import com.project.jangburich.ui.group.EnterCodeGroupFragment
+import com.project.jangburich.ui.group.GroupDetailFragment
 import com.project.jangburich.ui.group.PrePaymentCompleteFragment
 import com.project.jangburich.ui.home.HomeFragment
 import retrofit2.Call
@@ -153,6 +155,51 @@ class GroupViewModel: ViewModel() {
         })
     }
 
+    fun getGroupDetail(activity: MainActivity) {
+
+        var tempGroupList = mutableListOf<GetGroupResponse>()
+
+        val apiClient = ApiClient(activity)
+        val tokenManager = TokenManager(activity)
+
+        apiClient.apiService.getGroupDetail("Bearer ${tokenManager.getAccessToken()}", MyApplication.selectedTeamId.toString()).enqueue(object :
+            Callback<BaseResponse<GetGroupDetailResponse>> {
+            override fun onResponse(
+                call: Call<BaseResponse<GetGroupDetailResponse>>,
+                response: Response<BaseResponse<GetGroupDetailResponse>>
+            ) {
+                Log.d("##", "onResponse 성공: " + response.body().toString())
+                if (response.isSuccessful) {
+                    // 정상적으로 통신이 성공된 경우
+                    val result: BaseResponse<GetGroupDetailResponse>? = response.body()
+                    Log.d("##", "onResponse 성공: " + result?.toString())
+
+                    MyApplication.selectedGroupDetail = result?.data!!
+
+                    val nextFragment = GroupDetailFragment()
+
+                    val transaction = activity.manager.beginTransaction()
+                    transaction.replace(R.id.fragmentContainerView_main, nextFragment)
+                    transaction.addToBackStack(null)
+                    transaction.commit()
+                } else {
+                    // 통신이 실패한 경우(응답코드 3xx, 4xx 등)
+                    var result: BaseResponse<GetGroupDetailResponse>? = response.body()
+                    Log.d("##", "onResponse 실패")
+                    Log.d("##", "onResponse 실패: " + response.code())
+                    Log.d("##", "onResponse 실패: " + response.body())
+                    val errorBody = response.errorBody()?.string() // 에러 응답 데이터를 문자열로 얻음
+                    Log.d("##", "Error Response: $errorBody")
+
+                }
+            }
+
+            override fun onFailure(call: Call<BaseResponse<GetGroupDetailResponse>>, t: Throwable) {
+                // 통신 실패
+                Log.d("##", "onFailure 에러: " + t.message.toString())
+            }
+        })
+    }
     fun getGroupInfoWithCode(activity: MainActivity, code: String) {
 
         val apiClient = ApiClient(activity)

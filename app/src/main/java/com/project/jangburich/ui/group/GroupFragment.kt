@@ -91,7 +91,8 @@ class GroupFragment : Fragment() {
         ).apply {
             itemClickListener = object : GroupAdapter.OnItemClickListener {
                 override fun onItemClick(position: Int) {
-
+                    MyApplication.selectedTeamId = getGroupList[position].teamId
+                    viewModel.getGroupDetail(mainActivity)
                 }
             }
         }

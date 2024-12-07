@@ -6,6 +6,7 @@ import com.project.jangburich.api.request.login.SaveSignUpInfoRequest
 import com.project.jangburich.api.request.store.PrepayRequest
 import com.project.jangburich.api.response.BaseResponse
 import com.project.jangburich.api.response.group.CreateGroupResponse
+import com.project.jangburich.api.response.group.GetGroupDetailResponse
 import com.project.jangburich.api.response.group.GetGroupInfoWithCodeResponse
 import com.project.jangburich.api.response.group.GetGroupResponse
 import com.project.jangburich.api.response.home.GetHomeDataResponse
@@ -74,6 +75,12 @@ interface ApiService {
         @Query("category") category: String
     ): Call<BaseResponse<List<GetGroupResponse>>>
 
+    // 그룹 정보 가져오기
+    @GET("/teams/{teamId}")
+    fun getGroupDetail(
+        @Header("Authorization") token: String,
+        @Path("teamId") teamId: String
+    ): Call<BaseResponse<GetGroupDetailResponse>>
     // 매장 상세 페이지
     @GET("/store/{storeId}")
     fun getStoreDetail(
