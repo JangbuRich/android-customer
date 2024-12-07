@@ -151,6 +151,14 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Body parameters: OrderReqeust
     ): Call<BaseResponse<OrderResponse>>
+
+    // 식권 사용
+    @POST("/orders/tickets/{orderId}")
+    fun useTicket(
+        @Header("Authorization") token: String,
+        @Path("orderId") orderId: Long
+    ): Call<BaseResponse<MessageResponse>>
+
     // 매장 정보 가져오기
     @Multipart
     @POST("/store/category")
