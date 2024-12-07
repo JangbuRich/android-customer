@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">JangbuRich</string>
+    <string name="app_name">장부리치</string>
 
     <!-- onboarding -->
     <string name="onboarding1">장부를 함께 사용할 그룹을\n개설하거나 참여해요!</string>
@@ -29,4 +29,6 @@
     <string name="group6">동호회</string>
     <string name="group7">학생회</string>
     <string name="group8">기타</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

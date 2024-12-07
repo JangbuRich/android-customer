@@ -47,7 +47,7 @@ class GroupStorePaymentAdapter (
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         holder.menuName.text = paymentList[position].menuName
-//        holder.memberName.text = paymentList[position]
+        holder.memberName.text = paymentList[position].userName
         holder.orderTime.text = paymentList[position].paymentDate
         holder.price.text = "${-paymentList[position].price}원"
 

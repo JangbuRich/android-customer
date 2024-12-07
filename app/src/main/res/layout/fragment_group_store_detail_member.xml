@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.group.GroupStoreDetailFragment">
+    tools:context=".ui.group.GroupStoreDetailMemberFragment">
+
 
     <include
         android:id="@+id/toolbar"
@@ -86,7 +87,7 @@
                     android:id="@+id/imageView_group_leader"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_payment_leader"
+                    android:src="@drawable/ic_payment_member"
                     app:layout_constraintBottom_toBottomOf="@+id/layout_my_payment"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/layout_my_payment" />
@@ -107,11 +108,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="사용 가능 금액 (1인)"
+                        android:text="내가 사용한 금액"
                         android:textColor="@color/gray_60" />
 
                     <TextView
-                        android:id="@+id/textView_personal_allocated_value"
+                        android:id="@+id/textView_my_payment_value"
                         style="@style/Headline2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -136,17 +137,17 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/textView_group_total_payment_title"
+                            android:id="@+id/textView_group_remain_payment_title"
                             style="@style/Detail6"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:text="전체 선결제 금액"
+                            android:text="남은 금액"
                             android:textColor="@color/gray_40" />
 
                         <TextView
-                            android:id="@+id/textView_group_total_payment_value"
+                            android:id="@+id/textView_group_remain_payment_value"
                             style="@style/Headline2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -162,17 +163,17 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/textView_group_remain_payment_title"
+                            android:id="@+id/textView_group_personal_allocated_title"
                             style="@style/Detail6"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:text="남은 선결제 금액"
+                            android:text="사용 가능 금액 (1인)"
                             android:textColor="@color/gray_40" />
 
                         <TextView
-                            android:id="@+id/textView_group_remain_payment_value"
+                            android:id="@+id/textView_group_personal_allocated_value"
                             style="@style/Headline2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

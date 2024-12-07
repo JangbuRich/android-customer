@@ -20,5 +20,6 @@ data class StorePaymentHistory(
     val paymentDate: String,
     val paymentTime: String,
     val menuName: String,
-    val price: Int
+    val price: Int,
+    val userName: String
 )

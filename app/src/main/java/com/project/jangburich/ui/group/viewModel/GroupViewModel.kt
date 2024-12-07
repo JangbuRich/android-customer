@@ -22,7 +22,8 @@ import com.project.jangburich.ui.MainActivity
 import com.project.jangburich.ui.group.CreateGroupInviteFragment
 import com.project.jangburich.ui.group.EnterCodeGroupFragment
 import com.project.jangburich.ui.group.GroupDetailFragment
-import com.project.jangburich.ui.group.GroupStoreDetailFragment
+import com.project.jangburich.ui.group.GroupStoreDetailLeaderFragment
+import com.project.jangburich.ui.group.GroupStoreDetailMemberFragment
 import com.project.jangburich.ui.group.PrePaymentCompleteFragment
 import com.project.jangburich.ui.group.PrePaymentTotalFragment
 import com.project.jangburich.ui.home.HomeFragment
@@ -224,12 +225,21 @@ class GroupViewModel: ViewModel() {
 
                     MyApplication.selectedGroupStoreDetail = result?.data!!
 
-                    val nextFragment = GroupStoreDetailFragment()
+                    if(MyApplication.selectedGroupStoreDetail.isMeLeader) {
+                        val nextFragment = GroupStoreDetailLeaderFragment()
 
-                    val transaction = activity.manager.beginTransaction()
-                    transaction.replace(R.id.fragmentContainerView_main, nextFragment)
-                    transaction.addToBackStack(null)
-                    transaction.commit()
+                        val transaction = activity.manager.beginTransaction()
+                        transaction.replace(R.id.fragmentContainerView_main, nextFragment)
+                        transaction.addToBackStack(null)
+                        transaction.commit()
+                    } else {
+                        val nextFragment = GroupStoreDetailMemberFragment()
+
+                        val transaction = activity.manager.beginTransaction()
+                        transaction.replace(R.id.fragmentContainerView_main, nextFragment)
+                        transaction.addToBackStack(null)
+                        transaction.commit()
+                    }
                 } else {
                     // 통신이 실패한 경우(응답코드 3xx, 4xx 등)
                     var result: BaseResponse<GetGroupStoreDetailResponse>? = response.body()

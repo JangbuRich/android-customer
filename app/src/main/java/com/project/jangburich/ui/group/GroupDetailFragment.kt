@@ -88,13 +88,15 @@ class GroupDetailFragment : Fragment() {
                         // 이미지가 없거나 크기를 초과한 경우 기본 이미지 숨김
                         it.setImageResource(R.drawable.img_profile_default)
                         it.visibility = if (i < profileImages.size) View.VISIBLE else View.GONE
-                        if(MyApplication.selectedGroupDetail.totalMemberCount > 3) {
-                            imageViewGroupMemberProfileMore.visibility = View.VISIBLE
-                        } else {
-                            imageViewGroupMemberProfileMore.visibility = View.INVISIBLE
-                        }
                     }
                 }
+            }
+
+
+            if(MyApplication.selectedGroupDetail.totalMemberCount > 3) {
+                imageViewGroupMemberProfileMore.visibility = View.VISIBLE
+            } else {
+                imageViewGroupMemberProfileMore.visibility = View.INVISIBLE
             }
 
             // 오늘의 결제 내역
