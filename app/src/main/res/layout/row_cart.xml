@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_marginTop="11dp"
     android:background="@color/gray_100">
 
@@ -11,8 +11,8 @@
         android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/gray_90"
         android:layout_marginTop="20dp"
+        android:background="@color/gray_90"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layout_cart" />
@@ -45,7 +45,7 @@
             app:srcCompat="@drawable/ic_delete" />
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imageView_cart_menu"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginTop="10dp"
@@ -63,8 +63,8 @@
             android:layout_marginStart="15dp"
             android:text="메뉴명"
             android:textColor="@color/gray_30"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toTopOf="@+id/imageView" />
+            app:layout_constraintStart_toEndOf="@+id/imageView_cart_menu"
+            app:layout_constraintTop_toTopOf="@+id/imageView_cart_menu" />
 
         <TextView
             android:id="@+id/textView_menu_description"
@@ -85,11 +85,11 @@
             android:id="@+id/layout_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginTop="12dp"
-            app:layout_constraintTop_toBottomOf="@+id/textView_menu_description"
+            android:orientation="horizontal"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/textView_menu_description">
+            app:layout_constraintStart_toStartOf="@+id/textView_menu_description"
+            app:layout_constraintTop_toBottomOf="@+id/textView_menu_description">
 
             <ImageView
                 android:id="@+id/button_minus"

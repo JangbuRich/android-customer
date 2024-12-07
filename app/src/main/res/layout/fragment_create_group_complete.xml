@@ -40,34 +40,34 @@
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/imageView_gif"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_description"
         app:lottie_autoPlay="true"
-        app:lottie_repeatMode="restart"
         app:lottie_loop="true"
-        app:lottie_rawRes="@raw/create_group" />
+        app:lottie_rawRes="@raw/group_complete"
+        app:lottie_repeatMode="restart" />
 
     <LinearLayout
+        android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintStart_toStartOf="parent">
 
         <TextView
             android:id="@+id/button_my_group"
             style="@style/ButtonGray70"
-            android:backgroundTint="@null"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textAlignment="center"
-            android:text="내 그룹 보기" />
+            android:backgroundTint="@null"
+            android:text="내 그룹 보기"
+            android:textAlignment="center" />
 
         <TextView
             android:id="@+id/button_accept"
@@ -76,7 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="12dp"
             android:layout_weight="1"
-            android:textAlignment="center"
-            android:text="확인" />
+            android:text="확인"
+            android:textAlignment="center" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

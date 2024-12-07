@@ -65,7 +65,7 @@
             app:layout_constraintTop_toTopOf="@+id/chip_ongoing" />
 
         <LinearLayout
-            android:id="@+id/linearLayout2"
+            android:id="@+id/layout_group_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -104,9 +104,9 @@
             android:layout_height="1dp"
             android:layout_marginTop="20dp"
             android:background="@color/gray_90"
-            app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
-            app:layout_constraintStart_toStartOf="@+id/linearLayout2"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+            app:layout_constraintEnd_toEndOf="@+id/layout_group_name"
+            app:layout_constraintStart_toStartOf="@+id/layout_group_name"
+            app:layout_constraintTop_toBottomOf="@+id/layout_group_name" />
 
         <TextView
             android:id="@+id/textView_group_type"

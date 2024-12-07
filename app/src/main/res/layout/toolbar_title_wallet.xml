@@ -4,24 +4,26 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="20dp"
-    android:background="@color/gray_100"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
 
     <TextView
         android:id="@+id/textView_title"
         style="@style/Headline3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="내 그룹"
+        android:text="마이페이지"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/button_search"
+        android:id="@+id/button_wallet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/textView_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView_title"
-        app:srcCompat="@drawable/ic_search_gray20" />
+        app:srcCompat="@drawable/ic_wallet" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
