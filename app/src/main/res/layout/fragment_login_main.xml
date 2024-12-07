@@ -49,7 +49,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="108dp"
         app:layout_constraintBottom_toTopOf="@+id/button_kakao"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -80,14 +81,14 @@
             android:id="@+id/imageView_gif"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="74dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_slogan"
             app:lottie_autoPlay="true"
-            app:lottie_repeatMode="restart"
             app:lottie_loop="true"
-            app:lottie_rawRes="@raw/login" />
+            app:lottie_rawRes="@raw/login"
+            app:lottie_repeatMode="restart" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
