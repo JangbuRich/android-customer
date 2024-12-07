@@ -9,6 +9,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.project.jangburich.MyApplication
+import com.project.jangburich.MyApplication.Companion.isFirst
+import com.project.jangburich.MyApplication.Companion.isKakaoPayComplete
 import com.project.jangburich.R
 import com.project.jangburich.api.response.home.Team
 import com.project.jangburich.databinding.FragmentHomeBinding
@@ -17,11 +19,8 @@ import com.project.jangburich.ui.group.CreateGroupCategroyFragment
 import com.project.jangburich.ui.group.EnterGroupCodeFragment
 import com.project.jangburich.ui.home.adapter.TeamAdapter
 import com.project.jangburich.ui.home.viewModel.HomeViewModel
-import com.project.jangburich.ui.login.viewModel.LoginViewModel
-import com.project.jangburich.ui.onboarding.Onboarding3Fragment
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
+import com.project.jangburich.ui.wallet.ChargeCompleteFragment
+import com.project.jangburich.ui.wallet.WalletFragment
 
 class HomeFragment : Fragment(), HomeGroupBottomSheetListener {
 
@@ -44,8 +43,6 @@ class HomeFragment : Fragment(), HomeGroupBottomSheetListener {
         mainActivity = activity as MainActivity
         viewModel = ViewModelProvider(mainActivity)[HomeViewModel::class.java]
 
-        initAdapters()
-
         viewModel.run {
             userName.observe(mainActivity) {
                 binding.run {
@@ -55,6 +52,7 @@ class HomeFragment : Fragment(), HomeGroupBottomSheetListener {
             }
             currentDate.observe(mainActivity) {
                 binding.run {
+                    MyApplication.todayDate = it
                     textViewDate.text = it
                 }
             }
@@ -75,7 +73,7 @@ class HomeFragment : Fragment(), HomeGroupBottomSheetListener {
             }
             teamList.observe(mainActivity) {
                 getTeamlist = it
-                teamAdapter.updateList(getTeamlist)
+                initAdapters()
             }
         }
 
@@ -87,15 +85,6 @@ class HomeFragment : Fragment(), HomeGroupBottomSheetListener {
             buttonMap.setOnClickListener { mainActivity.binding.bottomNavigation.selectedItemId = R.id.menu_store }
             buttonGroup.setOnClickListener { mainActivity.binding.bottomNavigation.selectedItemId = R.id.menu_group }
 //            buttonReserve.setOnClickListener { mainActivity.binding.bottomNavigation.selectedItemId = R.id.menu_reserve }
-
-            toolbar.buttonWallet.setOnClickListener {
-                val nextFragment = WalletFragment()
-
-                val transaction = mainActivity.manager.beginTransaction()
-                transaction.replace(R.id.fragmentContainerView_main, nextFragment)
-                transaction.addToBackStack("")
-                transaction.commit()
-            }
         }
 
         return binding.root
@@ -104,6 +93,10 @@ class HomeFragment : Fragment(), HomeGroupBottomSheetListener {
     override fun onResume() {
         super.onResume()
         viewModel.getHomeData(mainActivity)
+
+        if(isFirst) {
+            groupBottomSheet.show(childFragmentManager, groupBottomSheet.tag)
+        }
     }
 
     private fun initAdapters() {
@@ -126,13 +119,18 @@ class HomeFragment : Fragment(), HomeGroupBottomSheetListener {
     }
 
     fun initView() {
-        groupBottomSheet.show(childFragmentManager, groupBottomSheet.tag)
         mainActivity.hideBottomNavigation(false)
 
         binding.run {
             toolbar.run {
                 buttonWallet.setOnClickListener {
                     // 나의 지갑 화면
+                    val nextFragment = WalletFragment()
+
+                    val transaction = mainActivity.manager.beginTransaction()
+                    transaction.replace(R.id.fragmentContainerView_main, nextFragment)
+                    transaction.addToBackStack(null)
+                    transaction.commit()
                 }
             }
         }
@@ -144,14 +142,14 @@ class HomeFragment : Fragment(), HomeGroupBottomSheetListener {
 
             val transaction = mainActivity.manager.beginTransaction()
             transaction.replace(R.id.fragmentContainerView_main, nextFragment)
-            transaction.addToBackStack("")
+            transaction.addToBackStack(null)
             transaction.commit()
         } else {
             val nextFragment = CreateGroupCategroyFragment()
 
             val transaction = mainActivity.manager.beginTransaction()
             transaction.replace(R.id.fragmentContainerView_main, nextFragment)
-            transaction.addToBackStack("")
+            transaction.addToBackStack(null)
             transaction.commit()
         }
     }

@@ -12,7 +12,11 @@ class MyApplication: Application() {
 
         lateinit var preferences: PreferenceUtil
 
+        var todayDate = ""
+
         var isKakaoPayComplete = false
+        var isFirst = true
+
         // 회원가입
         var signUpName = ""
         var signUpPhoneNum = ""
