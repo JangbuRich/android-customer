@@ -23,15 +23,17 @@ import com.project.jangburich.ui.group.viewModel.GroupViewModel
 import com.project.jangburich.ui.store.adapter.StoreListAdapter
 import com.project.jangburich.ui.store.viewModel.StoreViewModel
 
-class StoreDetailFragment : Fragment() {
+class StoreDetailFragment : Fragment(), PrepayGroupBottomSheetListener {
 
     lateinit var binding: FragmentStoreDetailBinding
     lateinit var mainActivity: MainActivity
     lateinit var viewModel: StoreViewModel
+    lateinit var groupViewModel: GroupViewModel
 
     var getMenuList = mutableListOf<StoreMenu>()
 
     private lateinit var menuAdapter: com.project.jangburich.ui.store.adapter.MenuAdapter
+    val prepayGroupBottomSheet = PrepayGroupBottomSheetFragment()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,6 +43,7 @@ class StoreDetailFragment : Fragment() {
         binding = FragmentStoreDetailBinding.inflate(layoutInflater)
         mainActivity = activity as MainActivity
         viewModel = ViewModelProvider(mainActivity)[StoreViewModel::class.java]
+        groupViewModel = ViewModelProvider(mainActivity)[GroupViewModel::class.java]
 
         viewModel.getStoreDetail(mainActivity, MyApplication.storeId)
 
@@ -71,12 +74,7 @@ class StoreDetailFragment : Fragment() {
 
         binding.run {
             buttonPayBefore.setOnClickListener {
-                val nextFragment = PrePaymentTotalFragment()
-
-                val transaction = mainActivity.manager.beginTransaction()
-                transaction.replace(R.id.fragmentContainerView_main, nextFragment)
-                transaction.addToBackStack("")
-                transaction.commit()
+                prepayGroupBottomSheet.show(childFragmentManager, prepayGroupBottomSheet.tag)
             }
             buttonReserve.setOnClickListener {
                 
@@ -115,5 +113,9 @@ class StoreDetailFragment : Fragment() {
                 }
             }
         }
+    }
+
+    override fun onGroupButtonClicked() {
+        groupViewModel.getPrepayData(mainActivity, MyApplication.selectedStore.storeId.toLong(), MyApplication.prepaymentGroupId)
     }
 }
