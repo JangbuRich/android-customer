@@ -90,14 +90,15 @@
 |:--:|:--:|:--:|:--:|
 |`주변 제휴 매장 - 카카오맵`|`주변 제휴 매장 - 리스트`|`선결제`|`매장 상세 정보`|
 
+<br>
+
 > **🔖 주문하기**
 > 
 > 매장의 메뉴를 선택하고 주문하여 장부 결제를 진행합니다. (해당 그룹의 장부 사용)
 
-|<img src="https://github.com/user-attachments/assets/9f6db589-d7bc-43b1-9031-eea12598e62e" width=220>|<img src="https://github.com/user-attachments/assets/8d021a45-08e2-4c11-834d-2c2aaf92abca" width=220>|<img src="https://github.com/user-attachments/assets/22c3aead-f907-4cc8-a1d9-cbfc8da9e311" width=220>|<img src="https://github.com/user-attachments/assets/40063d94-937f-4357-8aa1-397dbfcebaf2" width=220>|
+|<img src="https://github.com/user-attachments/assets/9f6db589-d7bc-43b1-9031-eea12598e62e" width=220>|<img src="https://github.com/user-attachments/assets/8d021a45-08e2-4c11-834d-2c2aaf92abca" width=220>|<img src="https://github.com/user-attachments/assets/22c3aead-f907-4cc8-a1d9-cbfc8da9e311" width=220>|<img src="https://github.com/user-attachments/assets/e819df7d-fe15-4507-afba-deb160afd5ef" width=220>|
 |:--:|:--:|:--:|:--:|
-|`주문 - 매장 상세 정보`|`주문 - 메뉴 상세 정보`|`주문 - 메뉴 옵션`|`주문하기`|
-
+|`주문 - 매장 상세 정보`|`주문 - 메뉴 상세 정보`|`주문하기`|`주문 - 장부 결제`|
 
 
 <br>
