@@ -7,74 +7,115 @@
 ### 💭 ADS
 > '장부리치'는 소상공인을 위한 장부 거래 디지털화 서비스로, 선결제 관리, 세금계산서 발행 및 재무 관리 기능을 통해 장부 거래의 편리성과 투명성을 높이고 사용자 간 연결성을 강화하는 서비스입니다.
 
-<br>
-
 ![todo](https://github.com/user-attachments/assets/a1c5f891-222a-473d-9835-31176324618c)
 
+![image](https://github.com/user-attachments/assets/dc85d2b8-dd29-4043-a80e-789d92da73d9)
+
+
 <br>
 
-### 📍 주요 기능 - 사장님 앱 (iPadOS)
-> ### 카카오 소셜 로그인 & 홈 화면
-> 카카오 소셜 로그인을 통해 회원가입을 할 수 있습니다. 계속해서 움직이는 로티를 통해 생동감 있는 홈화면을 구성했습니다. <br/>
-> 다양한 연령대를 고려해서 '일반 모드'와 '큰글씨 모드'를 선택 할 수 있습니다.
+### 🔎 핵심 기능
 
-|![GIF](https://github.com/user-attachments/assets/66b6e406-da84-428a-b843-acd4202fe2e6)|![GIF](https://github.com/user-attachments/assets/e0cb44c4-c68b-43a5-b8d3-12b655c8c8f7)|![GIF](https://github.com/user-attachments/assets/99e7ecff-5bcf-4078-89a3-c89b05481203)|
+![image](https://github.com/user-attachments/assets/2cdce04c-bd4b-4c3b-bf11-c4bf418b57a7)
+
+<br>
+
+### 📍 주요 기능 - 사장님(소상공인) 앱 (iPadOS)
+---
+> **👀 카카오 소셜 로그인 & 홈 화면**
+> 
+> 카카오 소셜 로그인을 통해 회원가입을 할 수 있습니다. 로티를 통해 생동감 있고 중요한 정보에 시선을 이끌 수 있도록 홈화면을 구성했습니다. <br/>
+> 소상공인의 다양한 연령대를 고려하여 화면을 간단하게 구성하고, 큰 글씨와 버튼을 사용해 가독성과 접근성을 높여 서비스를 이용하는 데 필요한 진입 장벽을 낮추었어요.
+
+|<img src = "https://github.com/user-attachments/assets/66b6e406-da84-428a-b843-acd4202fe2e6" width="300">|<img src = "https://github.com/user-attachments/assets/e0cb44c4-c68b-43a5-b8d3-12b655c8c8f7" width="300">|<img src = "https://github.com/user-attachments/assets/99e7ecff-5bcf-4078-89a3-c89b05481203" width="300">|
 |:--:|:--:|:--:|
 |`카카오 소셜 로그인`|`홈화면`|`홈화면 - 모드 선택`|
 
-> ### 주문 내역 & 주문 세부 내역
+<br>
+
+> **🎟️ 주문 내역**
+>
 > 주문 내역 탭에서는 오늘의 주문 내역과 지난 주문 내역을 확인 할 수 있습니다. <br/>
 > 오늘 주문 내역을 클릭하면 주문 세부 내역을 확인할 수 있습니다.
 
-|![image](https://github.com/user-attachments/assets/c61183d3-4688-4b63-aecb-bea87258ac1f)|![image](https://github.com/user-attachments/assets/9c9018ce-8ec7-4e23-8624-fa0c091668f9)|![image](https://github.com/user-attachments/assets/9f39fb37-fa8b-4d6b-8802-d51ad394fe48)|
+|<img src = "https://github.com/user-attachments/assets/c61183d3-4688-4b63-aecb-bea87258ac1f" width="300">|<img src = "https://github.com/user-attachments/assets/9c9018ce-8ec7-4e23-8624-fa0c091668f9" width="300">|<img src = "https://github.com/user-attachments/assets/9f39fb37-fa8b-4d6b-8802-d51ad394fe48" width="300">|
 |:--:|:--:|:--:|
 |`주문내역`|`오늘의 주문 내역`|`지난 주문 내역`|
 
-> ### 장부 관리 & 세금계산서 & 주문 내역 엑셀로 내보내기
-> 장부 관리 탭에서는 결제 그룹과 전체 결재 내역을 한 눈에 확인할 수 있습니다. <br/>
-> 그룹 별로 세금계산서 발행이 가능하고, 전체 결제 내역에 대해서 기간을 설정하여 엑셀로 다운받을 수 있습니다.
+<br>
 
-|![image](https://github.com/user-attachments/assets/3adf080a-9591-4489-ab61-3bda657fb87a)|![image](https://github.com/user-attachments/assets/80de71b1-31a2-4164-a596-b0edbd9548c9)|![image](https://github.com/user-attachments/assets/4025f13c-01ab-41ae-84dd-cf34a0ac80b2)|
+> **📒 장부 관리 (세금계산서 발행 & 주문 내역 엑셀 파일 추출)**
+> 
+> 장부 관리 탭에서는 결제 그룹과 전체 결재 내역을 한 눈에 확인할 수 있습니다. <br/>
+> 장부 그룹별 세금계산서 간편 발행 기능으로, 소상공인을 법적 테두리 내에서 보호합니다.
+> 기간을 설정하여 결제 내역을 엑셀 파일로 다운로드하는 기능으로 소상공인에게 필요한 재무 정보를 제공합니다.
+
+|<img src = "https://github.com/user-attachments/assets/3adf080a-9591-4489-ab61-3bda657fb87a" width="300">|<img src = "https://github.com/user-attachments/assets/80de71b1-31a2-4164-a596-b0edbd9548c9" width="300">|<img src = "https://github.com/user-attachments/assets/4025f13c-01ab-41ae-84dd-cf34a0ac80b2" width="300">|
 |:--:|:--:|:--:|
 |`장부관리`|`전체 결제 그룹`|`전체 결제 내역`|
 
 <br>
 
-|![GIF](https://github.com/user-attachments/assets/dafc84f9-318e-44c5-b770-1df899035662)|<img src="https://github.com/user-attachments/assets/f565ce54-d4a2-4778-a3f5-548a81ceac14" width=400>|<img src="https://github.com/user-attachments/assets/c4f5adbd-a011-4cb8-8279-51ebb4572bb7" width=400>|
+|<img src = "https://github.com/user-attachments/assets/dafc84f9-318e-44c5-b770-1df899035662" width="300">|<img src = "https://github.com/user-attachments/assets/f565ce54-d4a2-4778-a3f5-548a81ceac14" width="300">|<img src = "https://github.com/user-attachments/assets/c4f5adbd-a011-4cb8-8279-51ebb4572bb7" width="300">|
 |:--:|:--:|:--:|
 |`주문내역 엑셀로 내보내기`|`주문 내역 엑셀 기간 선택`|`엑셀 다운로드 완료`|
 
 <br>
 
-|![image](https://github.com/user-attachments/assets/65a3374f-fa3c-4983-bc14-36e9e6578a01)|![image](https://github.com/user-attachments/assets/9edfe3ed-1e82-47d8-9627-39f62cae50b2)|![image](https://github.com/user-attachments/assets/60103652-0318-40eb-925c-c4535fe6da5a)|
+|<img src = "https://github.com/user-attachments/assets/65a3374f-fa3c-4983-bc14-36e9e6578a01" width="300">|<img src = "https://github.com/user-attachments/assets/9edfe3ed-1e82-47d8-9627-39f62cae50b2" width="300">|<img src = "https://github.com/user-attachments/assets/60103652-0318-40eb-925c-c4535fe6da5a" width="300">|
 |:--:|:--:|:--:|
 |`결제 그룹 세부 내용`|`세금 계산서 발행 완료`|`마이페이지`|
 
-<br>
+<br> </br>
 
 ### 📍 주요 기능 - 소비자 앱 (Android)
-> ### 카카오페이, 카카오맵 연동 & 매장 세부 화면 & 홈 화면
-> 카카오페이 연동을 통해 선결제 금액을 충전할 수 있습니다. <br/>
-> 가게 상세 정보를 확인할 수 있습니다.
+---
+> **👀 로그인(카카오 로그인) & 홈 화면 & 나의 지갑(카카오페이)**
+>
+> 온보딩에서 로티를 활용해 장부 거래가 익숙하지 않은 소비자에게 설명해주고 돈 거래라는 딱딱하고 무거울 수 있는 분위기를 캐릭터와 로티를 이용하여 친근한 분위기를 만들고자 하였습니다.
+> 카카오 로그인을 이용하여 로그인하고 카카오페이를 통해 금액을 충전하여 사용할 수 있습니다.
 
-|![GIF](https://github.com/user-attachments/assets/9873dbb1-a94f-47d9-bd8c-865feddfd29b)|<img src="https://github.com/user-attachments/assets/cb364ed4-b881-4434-a1ad-cc6511b12a7e" width=350>|![GIF](https://github.com/user-attachments/assets/24f40815-a677-40ac-ab60-79b39e4a71bb)|![GIF](https://github.com/user-attachments/assets/147be05a-61e1-486f-8576-14f8cda84c24)|
+|<img src="https://github.com/user-attachments/assets/ac2b7582-eb3d-4443-8577-0287f9350521" width=220>|<img src="https://github.com/user-attachments/assets/0c9696b4-41d7-4d19-8d5b-ccd1efa118ca" width=220>|<img src="https://github.com/user-attachments/assets/10227d9f-39ab-4591-b443-b4f9cd1daf6b" width=220>|<img src="https://github.com/user-attachments/assets/9873dbb1-a94f-47d9-bd8c-865feddfd29b" width=220>|
 |:--:|:--:|:--:|:--:|
-|`카카오페이 결제 연동`|`가게 상세정보`|`카카오맵 연동`|`홈 화면`|
+|`온보딩 및 카카오로그인`|`홈 화면`|`나의 지갑`|`선결제 금액 충전(카카오페이)`|
+
+
+<br>
+
+> **💰 선결제**
+> 
+> 장부 결제 가능한 매장을 카카오맵과 리스트로 확인하고 선결제를 진행할 수 있습니다.
+
+|<img src="https://github.com/user-attachments/assets/d096f1be-683b-4f2f-8fbb-27b4ebd93d9a" width=220>|<img src="https://github.com/user-attachments/assets/79732b00-e828-41eb-9896-606306ec8968" width=220>|<img src="https://github.com/user-attachments/assets/24f40815-a677-40ac-ab60-79b39e4a71bb" width=220>|<img src="https://github.com/user-attachments/assets/5f5883ed-6e0c-42fb-bd91-db406559d5c2" width=220>|
+|:--:|:--:|:--:|:--:|
+|`주변 제휴 매장 - 카카오맵`|`주변 제휴 매장 - 리스트`|`선결제`|`매장 상세 정보`|
+
+> **🔖 주문하기**
+> 
+> 매장의 메뉴를 선택하고 주문하여 장부 결제를 진행합니다. (해당 그룹의 장부 사용)
+
+|<img src="https://github.com/user-attachments/assets/9f6db589-d7bc-43b1-9031-eea12598e62e" width=220>|<img src="https://github.com/user-attachments/assets/8d021a45-08e2-4c11-834d-2c2aaf92abca" width=220>|<img src="https://github.com/user-attachments/assets/22c3aead-f907-4cc8-a1d9-cbfc8da9e311" width=220>|<img src="https://github.com/user-attachments/assets/40063d94-937f-4357-8aa1-397dbfcebaf2" width=220>|
+|:--:|:--:|:--:|:--:|
+|`주문 - 매장 상세 정보`|`주문 - 메뉴 상세 정보`|`주문 - 메뉴 옵션`|`주문하기`|
+
+
 
 <br>
 
 ### 🛠️ Architecture
 ![image](https://github.com/user-attachments/assets/5e25b953-295b-4d2e-9899-3f2926284d7f)
 
-![image](https://github.com/user-attachments/assets/54b55546-e7c6-4170-9c6e-eb1cd708e78e)
+![image](https://github.com/user-attachments/assets/cf8208ba-8f6e-43c5-8874-7139088e2d7b)
+
 
 <br>
 
 ### 🙌 Team Members 
 <div align="center">
   
-| 피유진 <br/> [@PIYUJIN](https://github.com/PIYUJIN) | 변상우 <br/> [@boogios](https://github.com/boogios) | 오현우 <br/> [@HyunWoo9930](https://github.com/HyunWoo9930) | 이재혁 <br/> [@LEEJaeHyeok97](https://github.com/LEEJaeHyeok97) |
+| [피유진](https://github.com/PIYUJIN) | [변상우](https://github.com/boogios) | [오현우](https://github.com/HyunWoo9930) | [이재혁](https://github.com/LEEJaeHyeok97) |
 |:--:|:--:|:--:|:--:|
-| <img src="https://avatars.githubusercontent.com/PIYUJIN"  width=100> | <img src="https://avatars.githubusercontent.com/boogios"  width=100> | <img src="https://avatars.githubusercontent.com/HyunWoo9930"  width=100> | <img src="https://avatars.githubusercontent.com/LEEJaeHyeok97"  width=100> |
+| <img src="https://avatars.githubusercontent.com/PIYUJIN"  width=200> | <img src="https://avatars.githubusercontent.com/boogios"  width=200> | <img src="https://avatars.githubusercontent.com/HyunWoo9930"  width=200> | <img src="https://avatars.githubusercontent.com/LEEJaeHyeok97"  width=200> |
+| `프론트엔드 - Android` | `프론트엔드 - iOS` | `백엔드` | `백엔드` |
 
 </div>
