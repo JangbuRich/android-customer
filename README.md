@@ -27,7 +27,7 @@
 > 카카오 소셜 로그인을 통해 회원가입을 할 수 있습니다. 로티를 통해 생동감 있고 중요한 정보에 시선을 이끌 수 있도록 홈화면을 구성했습니다. <br/>
 > 소상공인의 다양한 연령대를 고려하여 화면을 간단하게 구성하고, 큰 글씨와 버튼을 사용해 가독성과 접근성을 높여 서비스를 이용하는 데 필요한 진입 장벽을 낮추었어요.
 
-|<img src = "https://github.com/user-attachments/assets/66b6e406-da84-428a-b843-acd4202fe2e6" width="200">|<img src = "https://github.com/user-attachments/assets/e0cb44c4-c68b-43a5-b8d3-12b655c8c8f7" width="200">|<img src = "https://github.com/user-attachments/assets/99e7ecff-5bcf-4078-89a3-c89b05481203" width="200">|
+|<img src = "https://github.com/user-attachments/assets/66b6e406-da84-428a-b843-acd4202fe2e6" width="240">|<img src = "https://github.com/user-attachments/assets/e0cb44c4-c68b-43a5-b8d3-12b655c8c8f7" width="240">|<img src = "https://github.com/user-attachments/assets/99e7ecff-5bcf-4078-89a3-c89b05481203" width="240">|
 |:--:|:--:|:--:|
 |`카카오 소셜 로그인`|`홈화면`|`홈화면 - 모드 선택`|
 
@@ -38,7 +38,7 @@
 > 주문 내역 탭에서는 오늘의 주문 내역과 지난 주문 내역을 확인 할 수 있습니다. <br/>
 > 오늘 주문 내역을 클릭하면 주문 세부 내역을 확인할 수 있습니다.
 
-|<img src = "https://github.com/user-attachments/assets/c61183d3-4688-4b63-aecb-bea87258ac1f" width="200">|<img src = "https://github.com/user-attachments/assets/9c9018ce-8ec7-4e23-8624-fa0c091668f9" width="200">|<img src = "https://github.com/user-attachments/assets/9f39fb37-fa8b-4d6b-8802-d51ad394fe48" width="200">|
+|<img src = "https://github.com/user-attachments/assets/c61183d3-4688-4b63-aecb-bea87258ac1f" width="240">|<img src = "https://github.com/user-attachments/assets/9c9018ce-8ec7-4e23-8624-fa0c091668f9" width="240">|<img src = "https://github.com/user-attachments/assets/9f39fb37-fa8b-4d6b-8802-d51ad394fe48" width="240">|
 |:--:|:--:|:--:|
 |`주문내역`|`오늘의 주문 내역`|`지난 주문 내역`|
 
@@ -50,19 +50,19 @@
 > 장부 그룹별 세금계산서 간편 발행 기능으로, 소상공인을 법적 테두리 내에서 보호합니다.
 > 기간을 설정하여 결제 내역을 엑셀 파일로 다운로드하는 기능으로 소상공인에게 필요한 재무 정보를 제공합니다.
 
-|<img src = "https://github.com/user-attachments/assets/3adf080a-9591-4489-ab61-3bda657fb87a" width="200">|<img src = "https://github.com/user-attachments/assets/80de71b1-31a2-4164-a596-b0edbd9548c9" width="200">|<img src = "https://github.com/user-attachments/assets/4025f13c-01ab-41ae-84dd-cf34a0ac80b2" width="200">|
+|<img src = "https://github.com/user-attachments/assets/3adf080a-9591-4489-ab61-3bda657fb87a" width="240">|<img src = "https://github.com/user-attachments/assets/80de71b1-31a2-4164-a596-b0edbd9548c9" width="240">|<img src = "https://github.com/user-attachments/assets/4025f13c-01ab-41ae-84dd-cf34a0ac80b2" width="240">|
 |:--:|:--:|:--:|
 |`장부관리`|`전체 결제 그룹`|`전체 결제 내역`|
 
 <br>
 
-|<img src = "https://github.com/user-attachments/assets/dafc84f9-318e-44c5-b770-1df899035662" width="200">|<img src = "https://github.com/user-attachments/assets/f565ce54-d4a2-4778-a3f5-548a81ceac14" width="200">|<img src = "https://github.com/user-attachments/assets/c4f5adbd-a011-4cb8-8279-51ebb4572bb7" width="200">|
+|<img src = "https://github.com/user-attachments/assets/dafc84f9-318e-44c5-b770-1df899035662" width="240">|<img src = "https://github.com/user-attachments/assets/f565ce54-d4a2-4778-a3f5-548a81ceac14" width="240">|<img src = "https://github.com/user-attachments/assets/c4f5adbd-a011-4cb8-8279-51ebb4572bb7" width="240">|
 |:--:|:--:|:--:|
 |`주문내역 엑셀로 내보내기`|`주문 내역 엑셀 기간 선택`|`엑셀 다운로드 완료`|
 
 <br>
 
-|<img src = "https://github.com/user-attachments/assets/65a3374f-fa3c-4983-bc14-36e9e6578a01" width="200">|<img src = "https://github.com/user-attachments/assets/9edfe3ed-1e82-47d8-9627-39f62cae50b2" width="200">|<img src = "https://github.com/user-attachments/assets/60103652-0318-40eb-925c-c4535fe6da5a" width="200">|
+|<img src = "https://github.com/user-attachments/assets/65a3374f-fa3c-4983-bc14-36e9e6578a01" width="240">|<img src = "https://github.com/user-attachments/assets/9edfe3ed-1e82-47d8-9627-39f62cae50b2" width="240">|<img src = "https://github.com/user-attachments/assets/60103652-0318-40eb-925c-c4535fe6da5a" width="240">|
 |:--:|:--:|:--:|
 |`결제 그룹 세부 내용`|`세금 계산서 발행 완료`|`마이페이지`|
 
@@ -75,7 +75,7 @@
 > 온보딩에서 로티를 활용해 장부 거래가 익숙하지 않은 소비자에게 설명해주고 돈 거래라는 딱딱하고 무거울 수 있는 분위기를 캐릭터와 로티를 이용하여 친근한 분위기를 만들고자 하였습니다.
 > 카카오 로그인을 이용하여 로그인하고 카카오페이를 통해 금액을 충전하여 사용할 수 있습니다.
 
-|<img src="https://github.com/user-attachments/assets/ac2b7582-eb3d-4443-8577-0287f9350521" width=150>|<img src="https://github.com/user-attachments/assets/0c9696b4-41d7-4d19-8d5b-ccd1efa118ca" width=150>|<img src="https://github.com/user-attachments/assets/10227d9f-39ab-4591-b443-b4f9cd1daf6b" width=150>|<img src="https://github.com/user-attachments/assets/9873dbb1-a94f-47d9-bd8c-865feddfd29b" width=150>|
+|<img src="https://github.com/user-attachments/assets/ac2b7582-eb3d-4443-8577-0287f9350521" width=180>|<img src="https://github.com/user-attachments/assets/0c9696b4-41d7-4d19-8d5b-ccd1efa118ca" width=180>|<img src="https://github.com/user-attachments/assets/10227d9f-39ab-4591-b443-b4f9cd1daf6b" width=180>|<img src="https://github.com/user-attachments/assets/9873dbb1-a94f-47d9-bd8c-865feddfd29b" width=180>|
 |:--:|:--:|:--:|:--:|
 |`온보딩 및 카카오로그인`|`홈 화면`|`나의 지갑`|`선결제 금액 충전(카카오페이)`|
 
@@ -86,7 +86,7 @@
 > 
 > 장부 결제 가능한 매장을 카카오맵과 리스트로 확인하고 선결제를 진행할 수 있습니다.
 
-|<img src="https://github.com/user-attachments/assets/d096f1be-683b-4f2f-8fbb-27b4ebd93d9a" width=150>|<img src="https://github.com/user-attachments/assets/79732b00-e828-41eb-9896-606306ec8968" width=150>|<img src="https://github.com/user-attachments/assets/24f40815-a677-40ac-ab60-79b39e4a71bb" width=150>|<img src="https://github.com/user-attachments/assets/5f5883ed-6e0c-42fb-bd91-db406559d5c2" width=150>|
+|<img src="https://github.com/user-attachments/assets/d096f1be-683b-4f2f-8fbb-27b4ebd93d9a" width=180>|<img src="https://github.com/user-attachments/assets/79732b00-e828-41eb-9896-606306ec8968" width=180>|<img src="https://github.com/user-attachments/assets/24f40815-a677-40ac-ab60-79b39e4a71bb" width=180>|<img src="https://github.com/user-attachments/assets/5f5883ed-6e0c-42fb-bd91-db406559d5c2" width=180>|
 |:--:|:--:|:--:|:--:|
 |`주변 제휴 매장 - 카카오맵`|`주변 제휴 매장 - 리스트`|`선결제`|`매장 상세 정보`|
 
@@ -96,7 +96,7 @@
 > 
 > 매장의 메뉴를 선택하고 주문하여 장부 결제를 진행합니다. (해당 그룹의 장부 사용)
 
-|<img src="https://github.com/user-attachments/assets/9f6db589-d7bc-43b1-9031-eea12598e62e" width=150>|<img src="https://github.com/user-attachments/assets/8d021a45-08e2-4c11-834d-2c2aaf92abca" width=150>|<img src="https://github.com/user-attachments/assets/22c3aead-f907-4cc8-a1d9-cbfc8da9e311" width=150>|<img src="https://github.com/user-attachments/assets/e819df7d-fe15-4507-afba-deb160afd5ef" width=150>|
+|<img src="https://github.com/user-attachments/assets/9f6db589-d7bc-43b1-9031-eea12598e62e" width=180>|<img src="https://github.com/user-attachments/assets/8d021a45-08e2-4c11-834d-2c2aaf92abca" width=180>|<img src="https://github.com/user-attachments/assets/0923d76f-cdf6-45bc-9856-32763fdc8301" width=180>|<img src="https://github.com/user-attachments/assets/e819df7d-fe15-4507-afba-deb160afd5ef" width=180>|
 |:--:|:--:|:--:|:--:|
 |`주문 - 매장 상세 정보`|`주문 - 메뉴 상세 정보`|`주문하기`|`주문 - 장부 결제`|
 
