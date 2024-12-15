@@ -113,10 +113,20 @@
 
 ### 🙌 Team Members 
 <div align="center">
-  
-| [피유진](https://github.com/PIYUJIN) | [변상우](https://github.com/boogios) | [오현우](https://github.com/HyunWoo9930) | [이재혁](https://github.com/LEEJaeHyeok97) |
-|:--:|:--:|:--:|:--:|
-| <img src="https://avatars.githubusercontent.com/PIYUJIN"  width=200> | <img src="https://avatars.githubusercontent.com/boogios"  width=200> | <img src="https://avatars.githubusercontent.com/HyunWoo9930"  width=200> | <img src="https://avatars.githubusercontent.com/LEEJaeHyeok97"  width=200> |
-| `프론트엔드 - Android` | `프론트엔드 - iOS` | `백엔드` | `백엔드` |
+
+| 고주연 | 김가현 |
+|:--:|:--:|
+| <img src="https://github.com/user-attachments/assets/ba3bedf4-c0e6-440e-8895-de4e88c52211"  width=400> | <img src="https://github.com/user-attachments/assets/24e0d286-a665-4683-b105-37338839bb57"  width=400> |
+| `기획` | `디자인` |
+
+| [피유진](https://github.com/PIYUJIN) | [변상우](https://github.com/boogios) |
+|:--:|:--:|
+| <img src="https://github.com/user-attachments/assets/3682bfbe-d2ec-45ff-8b4e-11e1940f033d"  width=400> | <img src="https://github.com/user-attachments/assets/534d327d-e051-4ae6-a349-35cbac723c85"  width=400> |
+| `프론트엔드 - Android` | `프론트엔드 - iOS` |
+
+|[오현우](https://github.com/HyunWoo9930) | [이재혁](https://github.com/LEEJaeHyeok97) |
+|:--:|:--:|
+| <img src="https://github.com/user-attachments/assets/afa1a366-1900-4b47-858e-0143ce989891"  width=400> | <img src="https://github.com/user-attachments/assets/204650ed-679b-4f9f-be05-7d0d250c9d28"  width=400> |
+| `백엔드` | `백엔드` |
 
 </div>
