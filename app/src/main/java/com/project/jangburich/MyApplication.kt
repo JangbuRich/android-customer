@@ -23,8 +23,6 @@ class MyApplication: Application() {
         var isFirst = true
 
         // 회원가입
-        var signUpName = ""
-        var signUpPhoneNum = ""
         var agreement4 = false
         var agreement5 = false
 
