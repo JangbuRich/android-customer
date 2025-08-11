@@ -28,14 +28,14 @@ class Onboarding2Fragment : Fragment() {
             buttonNext.setOnClickListener {
                 mainActivity.supportFragmentManager.beginTransaction()
                     .replace(R.id.fragmentContainerView_main, Onboarding3Fragment())
-                    .addToBackStack(null)
+                    .setReorderingAllowed(true)
                     .commit()
             }
 
             buttonSkip.setOnClickListener {
                 mainActivity.supportFragmentManager.beginTransaction()
                     .replace(R.id.fragmentContainerView_main, LoginMainFragment())
-                    .addToBackStack(null)
+                    .setReorderingAllowed(true)
                     .commit()
             }
         }

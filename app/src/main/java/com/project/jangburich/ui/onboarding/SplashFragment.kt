@@ -29,6 +29,7 @@ class SplashFragment : Fragment() {
         Handler().postDelayed({
             mainActivity.supportFragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainerView_main, Onboarding1Fragment())
+                .setReorderingAllowed(true)
                 .commit()
         }, 1000)
 

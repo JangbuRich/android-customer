@@ -28,7 +28,7 @@ class Onboarding4Fragment : Fragment() {
             buttonNext.setOnClickListener {
                 mainActivity.supportFragmentManager.beginTransaction()
                     .replace(R.id.fragmentContainerView_main, LoginMainFragment())
-                    .addToBackStack(null)
+                    .setReorderingAllowed(true)
                     .commit()
             }
         }
