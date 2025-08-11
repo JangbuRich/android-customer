@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:padding="20dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.onboarding.Onboarding3Fragment">
+    tools:context=".ui.onboarding.Onboarding4Fragment">
 
     <TextView
         android:id="@+id/textView_onboarding"
@@ -60,7 +60,7 @@
             android:id="@+id/indicator2"
             android:layout_width="wrap_content"
             android:layout_height="5dp"
-            android:layout_marginLeft="9dp"
+            android:layout_marginStart="9dp"
             android:layout_weight="1"
             android:background="@drawable/background_indicator_selected" />
 
@@ -68,7 +68,15 @@
             android:id="@+id/indicator3"
             android:layout_width="wrap_content"
             android:layout_height="5dp"
-            android:layout_marginLeft="9dp"
+            android:layout_marginStart="9dp"
+            android:layout_weight="1"
+            android:background="@drawable/background_indicator_selected" />
+
+        <TextView
+            android:id="@+id/indicator4"
+            android:layout_width="wrap_content"
+            android:layout_height="5dp"
+            android:layout_marginStart="9dp"
             android:layout_weight="1"
             android:background="@drawable/background_indicator_selected" />
     </LinearLayout>
