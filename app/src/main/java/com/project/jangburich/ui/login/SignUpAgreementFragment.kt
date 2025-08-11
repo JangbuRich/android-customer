@@ -9,15 +9,19 @@ import android.widget.ImageView
 import androidx.lifecycle.ViewModelProvider
 import com.project.jangburich.MyApplication
 import com.project.jangburich.R
+import com.project.jangburich.api.request.login.SaveSignUpInfoRequest
 import com.project.jangburich.databinding.FragmentSignUpAgreementBinding
 import com.project.jangburich.ui.MainActivity
+import com.project.jangburich.ui.home.HomeFragment
 import com.project.jangburich.ui.login.viewModel.LoginViewModel
 
 class SignUpAgreementFragment : Fragment() {
 
     lateinit var binding: FragmentSignUpAgreementBinding
     lateinit var mainActivity: MainActivity
-    lateinit var viewModel: LoginViewModel
+    private val viewModel: LoginViewModel by lazy {
+        ViewModelProvider(requireActivity())[LoginViewModel::class.java]
+    }
 
     val isAgree = MutableList(6) { false }
 
@@ -28,7 +32,6 @@ class SignUpAgreementFragment : Fragment() {
 
         binding = FragmentSignUpAgreementBinding.inflate(layoutInflater)
         mainActivity = activity as MainActivity
-        viewModel = ViewModelProvider(mainActivity)[LoginViewModel::class.java]
 
         initView()
 
@@ -45,14 +48,13 @@ class SignUpAgreementFragment : Fragment() {
             buttonAgreement4Open.setOnClickListener {
 
             }
-            buttonAgreement5Open.setOnClickListener {
-
-            }
 
             buttonNext.setOnClickListener {
-                MyApplication.agreement4 = isAgree[4]
-                MyApplication.agreement5 = isAgree[5]
-                viewModel.saveSignUpInfo(mainActivity)
+                // 회원가입 API
+                val signUpInfo = SaveSignUpInfoRequest(arguments?.getString("name").toString(), arguments?.getString("phone").toString(), isAgree[4], isAgree[5])
+                viewModel.saveSignUpInfo(mainActivity, signUpInfo) {
+                    mainActivity.setBottomNavigationHome()
+                }
             }
 
             checkboxAgreementAll.setOnClickListener {
@@ -73,11 +75,9 @@ class SignUpAgreementFragment : Fragment() {
             }
             checkboxAgreement4.setOnClickListener {
                 isAgree[4] = !isAgree[4]
-                checkAgree(4, checkboxAgreement4)
-            }
-            checkboxAgreement5.setOnClickListener {
                 isAgree[5] = !isAgree[5]
-                checkAgree(5, checkboxAgreement5)
+                checkOptionalAgreementAll()
+                checkAgree(4, checkboxAgreement4)
             }
         }
 
@@ -99,14 +99,26 @@ class SignUpAgreementFragment : Fragment() {
         checkEnable()
     }
 
+    fun checkOptionalAgreementAll() {
+        binding.run {
+            if(isAgree[4] && isAgree[5]) {
+                checkboxAgreement4.setImageResource(R.drawable.ic_check_selected)
+                checkAgreementAllWithOthers()
+            } else {
+                checkboxAgreement4.setImageResource(R.drawable.ic_check_unselected)
+                checkAgreementAllWithOthers()
+            }
+        }
+        checkEnable()
+    }
+
     fun checkAgreementAllWithOthers() {
         binding.run {
             listOf(
                 checkboxAgreement1,
                 checkboxAgreement2,
                 checkboxAgreement3,
-                checkboxAgreement4,
-                checkboxAgreement5
+                checkboxAgreement4
             ).forEachIndexed { index, checkbox ->
                 checkAgree(index + 1, checkbox)
             }

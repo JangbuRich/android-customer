@@ -22,10 +22,6 @@ class MyApplication: Application() {
         var isKakaoPayComplete = false
         var isFirst = true
 
-        // 회원가입
-        var agreement4 = false
-        var agreement5 = false
-
         // 유저 정보
         var userName = ""
 
