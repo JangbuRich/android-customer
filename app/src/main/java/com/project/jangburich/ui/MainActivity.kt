@@ -33,9 +33,6 @@ class MainActivity : AppCompatActivity() {
 
         binding.run {
             buttonJangbu.run {
-                bringToFront()
-                invalidate()
-
                 // 내 장부 탭
                 setOnClickListener {
 
@@ -62,14 +59,6 @@ class MainActivity : AppCompatActivity() {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.fragmentContainerView_main, StoreMapFragment())
                         .commit()
-                    true
-                }
-
-                // 내 장부 탭
-                R.id.menu_jangbu -> {
-//                    supportFragmentManager.beginTransaction()
-//                        .replace(R.id.fragmentContainerView_main, StoreMapFragment())
-//                        .commit()
                     true
                 }
 
