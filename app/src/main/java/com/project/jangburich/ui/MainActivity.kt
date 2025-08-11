@@ -30,7 +30,18 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
 
         setBottomNavigationView()
-        getKeyHash()
+
+        binding.run {
+            buttonJangbu.run {
+                bringToFront()
+                invalidate()
+
+                // 내 장부 탭
+                setOnClickListener {
+
+                }
+            }
+        }
 
         setContentView(binding.root)
     }
@@ -51,6 +62,14 @@ class MainActivity : AppCompatActivity() {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.fragmentContainerView_main, StoreMapFragment())
                         .commit()
+                    true
+                }
+
+                // 내 장부 탭
+                R.id.menu_jangbu -> {
+//                    supportFragmentManager.beginTransaction()
+//                        .replace(R.id.fragmentContainerView_main, StoreMapFragment())
+//                        .commit()
                     true
                 }
 
@@ -97,8 +116,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun hideBottomNavigation(state: Boolean) {
-        if (state) binding.bottomNavigation.visibility =
-            View.GONE else binding.bottomNavigation.visibility = View.VISIBLE
+        binding.run {
+            if (state) {
+                bottomNavigation.visibility = View.GONE
+                buttonJangbu.visibility = View.GONE
+            } else {
+                bottomNavigation.visibility = View.VISIBLE
+                buttonJangbu.visibility = View.VISIBLE
+            }
+        }
     }
 
     @RequiresApi(Build.VERSION_CODES.P)

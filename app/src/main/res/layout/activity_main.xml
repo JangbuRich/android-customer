@@ -9,7 +9,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView_main"
-        android:name="com.project.jangburich.ui.onboarding.SplashFragment"
+        android:name="com.project.jangburich.ui.login.SignUpAgreementFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
@@ -33,4 +33,36 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_bottom_nav" />
+
+    <LinearLayout
+        android:id="@+id/button_jangbu"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="visible"
+        app:layout_constraintDimensionRatio="1:1"
+        android:elevation="4dp"
+        android:layout_marginBottom="25dp"
+        android:background="@drawable/background_main_circle"
+        app:layout_constraintBottom_toBottomOf="@+id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="@+id/bottom_navigation"
+        app:layout_constraintStart_toStartOf="@+id/bottom_navigation">
+
+        <ImageView
+            android:id="@+id/imageView_jangbu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_menu_jangbu" />
+
+        <TextView
+            android:id="@+id/textView_jangbu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pretendard_medium"
+            android:text="내 장부"
+            android:textColor="@color/gray_100"
+            android:textSize="12sp"
+            android:lineSpacingExtra="18dp" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
