@@ -29,8 +29,8 @@ class SignUpUserInfoFragment : Fragment() {
         binding.run {
             buttonNext.setOnClickListener {
                 val bundle = Bundle().apply {
-                    putString("name", editTextName.text.toString())
-                    putString("phone", editTextPhoneNumber.text.toString())
+                    putString("name", editTextName.text.toString().trim())
+                    putString("phone", editTextPhoneNumber.text.toString().trim())
                 }
 
                 var nextFragment = SignUpAgreementFragment().apply {

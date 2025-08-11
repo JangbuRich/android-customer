@@ -51,7 +51,13 @@ class SignUpAgreementFragment : Fragment() {
 
             buttonNext.setOnClickListener {
                 // 회원가입 API
-                val signUpInfo = SaveSignUpInfoRequest(arguments?.getString("name").toString(), arguments?.getString("phone").toString(), isAgree[4], isAgree[5])
+                val name = requireArguments().getString("name")
+                val phone = requireArguments().getString("phone")
+                if (name.isNullOrBlank() || phone.isNullOrBlank()) {
+                    return@setOnClickListener
+                }
+
+                val signUpInfo = SaveSignUpInfoRequest(name, phone, isAgree[4], isAgree[5])
                 viewModel.saveSignUpInfo(mainActivity, signUpInfo) {
                     mainActivity.setBottomNavigationHome()
                 }
@@ -78,6 +84,18 @@ class SignUpAgreementFragment : Fragment() {
                 isAgree[5] = !isAgree[5]
                 checkOptionalAgreementAll()
                 checkAgree(4, checkboxAgreement4)
+            }
+
+            layoutAgreement41.setOnClickListener {
+                isAgree[4] = !isAgree[4]
+                checkOptionalAgreementAll()
+                checkAgree(4, binding.checkboxAgreement41)
+            }
+
+            layoutAgreement42.setOnClickListener {
+                isAgree[5] = !isAgree[5]
+                checkOptionalAgreementAll()
+                checkAgree(5, binding.checkboxAgreement42)
             }
         }
 
@@ -118,7 +136,8 @@ class SignUpAgreementFragment : Fragment() {
                 checkboxAgreement1,
                 checkboxAgreement2,
                 checkboxAgreement3,
-                checkboxAgreement4
+                checkboxAgreement41,
+                checkboxAgreement42
             ).forEachIndexed { index, checkbox ->
                 checkAgree(index + 1, checkbox)
             }
@@ -132,6 +151,11 @@ class SignUpAgreementFragment : Fragment() {
             view.setImageResource(R.drawable.ic_check_unselected)
         }
         checkEnable()
+        if(isAgree[4] && isAgree[5]) {
+            binding.checkboxAgreement4.setImageResource(R.drawable.ic_check_selected)
+        } else {
+            binding.checkboxAgreement4.setImageResource(R.drawable.ic_check_unselected)
+        }
         if(isAgree[1] && isAgree[2] && isAgree[3] && isAgree[4] && isAgree[5]) {
             binding.checkboxAgreementAll.setImageResource(R.drawable.ic_check_circle_selected)
         } else {
