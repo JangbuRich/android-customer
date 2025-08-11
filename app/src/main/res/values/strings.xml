@@ -4,17 +4,19 @@
     <!-- onboarding -->
     <string name="onboarding1">장부를 함께 사용할 그룹을\n개설하거나 참여해요!</string>
     <string name="onboarding2">원하는 제휴 매장을 선택 후\n간편한 선결제부터 예약까지!</string>
-    <string name="onboarding3">쉽고 빠른 장부 결제,\n장부리치와 함께 시작해요!</string>
+    <string name="onboarding3">매장에서 직접 주문 후에는\n금액권 사용하기!</string>
+    <string name="onboarding4">쉽고 빠른 장부 결제,\n장부리치와 함께 시작해요!</string>
 
     <!-- slogan -->
-    <string name="slogan">소상공인과 소비자를 위한\n손쉬운 장부 관리의 시작!</string>
+    <string name="slogan">함께 참여하는 선결제 장부\n손쉬운 관리로 시작하기!</string>
 
     <!-- 약관 동의 -->
     <string name="agreement1">[필수] 장부리치 이용약관</string>
     <string name="agreement2">[필수] 개인정보 수집 및 이용 동의</string>
     <string name="agreement3">[필수] 위치기반서비스 이용 약관</string>
-    <string name="agreement4">[선택] 마케팅 활용 동의</string>
-    <string name="agreement5">[선택] 광고성 정보 수신 동의</string>
+    <string name="agreement4">[선택] 광고성 정보 수신 동의</string>
+    <string name="agreement4_1">[선택] E-mail 광고성 정보 수신 동의</string>
+    <string name="agreement4_2">[선택] SMS 광고성 정보 수신 동의</string>
 
     <!-- 그룹 생성 bottomsheet -->
     <string name="bottomsheet_title">장부리치에 오신 것을 환영해요!</string>
@@ -29,6 +31,4 @@
     <string name="group6">동호회</string>
     <string name="group7">학생회</string>
     <string name="group8">기타</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

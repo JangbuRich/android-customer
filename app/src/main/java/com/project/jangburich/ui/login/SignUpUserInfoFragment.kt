@@ -28,15 +28,19 @@ class SignUpUserInfoFragment : Fragment() {
 
         binding.run {
             buttonNext.setOnClickListener {
-                MyApplication.signUpName = editTextName.text.toString()
-                MyApplication.signUpPhoneNum = editTextPhoneNumber.text.toString()
+                val bundle = Bundle().apply {
+                    putString("name", editTextName.text.toString().trim())
+                    putString("phone", editTextPhoneNumber.text.toString().trim())
+                }
 
-                val nextFragment = SignUpAgreementFragment()
+                var nextFragment = SignUpAgreementFragment().apply {
+                    arguments = bundle
+                }
 
-                val transaction = mainActivity.supportFragmentManager.beginTransaction()
-                transaction.replace(R.id.fragmentContainerView_main, nextFragment)
-                transaction.addToBackStack(null)
-                transaction.commit()
+                mainActivity.supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragmentContainerView_main, nextFragment)
+                    .addToBackStack(null)
+                    .commit()
             }
 
             editTextName.addTextChangedListener {

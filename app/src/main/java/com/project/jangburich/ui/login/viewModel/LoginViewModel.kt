@@ -12,7 +12,9 @@ import com.project.jangburich.api.response.login.LoginResponse
 import com.project.jangburich.api.response.login.MessageResponse
 import com.project.jangburich.ui.MainActivity
 import com.project.jangburich.ui.home.HomeFragment
+import com.project.jangburich.ui.login.LoginMainFragment
 import com.project.jangburich.ui.login.SignUpUserInfoFragment
+import com.project.jangburich.ui.onboarding.Onboarding3Fragment
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -43,20 +45,13 @@ class LoginViewModel : ViewModel() {
                         Log.d("##", "onResponse 성공: " + result?.toString())
                         tokenManager.saveTokens(result?.data?.accessToken!!, result.data.refreshToken!!)
 
-                        if(result?.data.alreadyExists) {
-                            val nextFragment = HomeFragment()
-
-                            val transaction = activity.supportFragmentManager.beginTransaction()
-                            transaction.replace(R.id.fragmentContainerView_main, nextFragment)
-                            transaction.addToBackStack(null)
-                            transaction.commit()
+                        if(result.data.alreadyExists == true) {
+                            activity.setBottomNavigationHome()
                         } else {
-                            val nextFragment = SignUpUserInfoFragment()
-
-                            val transaction = activity.supportFragmentManager.beginTransaction()
-                            transaction.replace(R.id.fragmentContainerView_main, nextFragment)
-                            transaction.addToBackStack(null)
-                            transaction.commit()
+                            activity.supportFragmentManager.beginTransaction()
+                                .replace(R.id.fragmentContainerView_main, SignUpUserInfoFragment())
+                                .addToBackStack(null)
+                                .commit()
                         }
 
                     } else {
@@ -78,17 +73,9 @@ class LoginViewModel : ViewModel() {
             })
     }
 
-    fun saveSignUpInfo(activity: MainActivity) {
+    fun saveSignUpInfo(activity: MainActivity, signUpInfo: SaveSignUpInfoRequest, onSuccess: () -> Unit) {
         val apiClient = ApiClient(activity)
         val tokenManager = TokenManager(activity)
-
-        val params = HashMap<String, RequestBody>()
-        params["name"] = MyApplication.signUpName.toRequestBody("text/plain".toMediaTypeOrNull())
-        params["phoneNum"] = MyApplication.signUpPhoneNum.toRequestBody("text/plain".toMediaTypeOrNull())
-        params["agreeMarketing"] = MyApplication.agreement4.toString().toRequestBody("text/plain".toMediaTypeOrNull())
-        params["agreeAdvertisement"] = MyApplication.agreement5.toString().toRequestBody("text/plain".toMediaTypeOrNull())
-
-        var signUpInfo = SaveSignUpInfoRequest(MyApplication.signUpName, MyApplication.signUpPhoneNum, MyApplication.agreement4, MyApplication.agreement5)
 
         apiClient.apiService.saveSignUpInfo("Bearer ${tokenManager.getAccessToken()}", signUpInfo).enqueue(object :
             Callback<BaseResponse<MessageResponse>> {
@@ -102,13 +89,7 @@ class LoginViewModel : ViewModel() {
                     val result: BaseResponse<MessageResponse>? = response.body()
                     Log.d("##", "onResponse 성공: " + result?.toString())
 
-                    val nextFragment = HomeFragment()
-
-                    val transaction = activity.supportFragmentManager.beginTransaction()
-                    transaction.replace(R.id.fragmentContainerView_main, nextFragment)
-                    transaction.addToBackStack(null)
-                    transaction.commit()
-
+                    onSuccess()
                 } else {
                     // 통신이 실패한 경우(응답코드 3xx, 4xx 등)
                     var result: BaseResponse<MessageResponse>? = response.body()

@@ -38,28 +38,33 @@ class MainActivity : AppCompatActivity() {
     private fun setBottomNavigationView() {
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
+                // 홈 탭
                 R.id.menu_home -> {
-                    val nextFragment = HomeFragment()
-
-                    val transaction = supportFragmentManager.beginTransaction()
-                    transaction.replace(R.id.fragmentContainerView_main, nextFragment)
-                    transaction.addToBackStack(null)
-                    transaction.commit()
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainerView_main, HomeFragment())
+                        .commit()
                     true
                 }
 
+                // 매장 찾기 탭
                 R.id.menu_store -> {
-                    val nextFragment = StoreMapFragment()
-
-                    val transaction = supportFragmentManager.beginTransaction()
-                    transaction.replace(R.id.fragmentContainerView_main, nextFragment)
-                    transaction.addToBackStack(null)
-                    transaction.commit()
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainerView_main, StoreMapFragment())
+                        .commit()
                     true
                 }
 
+                // 내 그룹 탭
                 R.id.menu_group -> {
-                    val nextFragment = GroupFragment()
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainerView_main, GroupFragment())
+                        .commit()
+                    true
+                }
+
+                // 마이페이지 탭
+                R.id.menu_mypage -> {
+                    val nextFragment = MypageFragment()
 
                     val transaction = supportFragmentManager.beginTransaction()
                     transaction.replace(R.id.fragmentContainerView_main, nextFragment)
@@ -81,19 +86,14 @@ class MainActivity : AppCompatActivity() {
                 }
                 */
 
-                R.id.menu_mypage -> {
-                    val nextFragment = MypageFragment()
-
-                    val transaction = supportFragmentManager.beginTransaction()
-                    transaction.replace(R.id.fragmentContainerView_main, nextFragment)
-                    transaction.addToBackStack(null)
-                    transaction.commit()
-                    true
-                }
-
                 else -> false
             }
         }
+    }
+
+    // Bottom Navigation을 "Home"으로 설정하는 함수
+    fun setBottomNavigationHome() {
+        binding.bottomNavigation.selectedItemId = R.id.menu_home
     }
 
     fun hideBottomNavigation(state: Boolean) {

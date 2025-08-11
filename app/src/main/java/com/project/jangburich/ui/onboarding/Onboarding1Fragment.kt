@@ -28,21 +28,17 @@ class Onboarding1Fragment : Fragment() {
 
         binding.run {
             buttonNext.setOnClickListener {
-                val nextFragment = Onboarding2Fragment()
-
-                val transaction = mainActivity.manager.beginTransaction()
-                transaction.replace(R.id.fragmentContainerView_main, nextFragment)
-                transaction.addToBackStack("")
-                transaction.commit()
+                mainActivity.supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragmentContainerView_main, Onboarding2Fragment())
+                    .setReorderingAllowed(true)
+                    .commit()
             }
 
             buttonSkip.setOnClickListener {
-                val nextFragment = LoginMainFragment()
-
-                val transaction = mainActivity.manager.beginTransaction()
-                transaction.replace(R.id.fragmentContainerView_main, nextFragment)
-                transaction.addToBackStack("")
-                transaction.commit()
+                mainActivity.supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragmentContainerView_main, LoginMainFragment())
+                    .setReorderingAllowed(true)
+                    .commit()
             }
         }
 

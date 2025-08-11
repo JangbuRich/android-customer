@@ -9,6 +9,7 @@ import com.project.jangburich.R
 import com.project.jangburich.databinding.FragmentOnboarding3Binding
 import com.project.jangburich.ui.MainActivity
 import com.project.jangburich.ui.login.LoginMainFragment
+import kotlin.text.replace
 
 class Onboarding3Fragment : Fragment() {
     lateinit var binding: FragmentOnboarding3Binding
@@ -26,12 +27,17 @@ class Onboarding3Fragment : Fragment() {
 
         binding.run {
             buttonNext.setOnClickListener {
-                val nextFragment = LoginMainFragment()
+                mainActivity.supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragmentContainerView_main, Onboarding4Fragment())
+                    .setReorderingAllowed(true)
+                    .commit()
+            }
 
-                val transaction = mainActivity.manager.beginTransaction()
-                transaction.replace(R.id.fragmentContainerView_main, nextFragment)
-                transaction.addToBackStack("")
-                transaction.commit()
+            buttonSkip.setOnClickListener {
+                mainActivity.supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragmentContainerView_main, LoginMainFragment())
+                    .setReorderingAllowed(true)
+                    .commit()
             }
         }
 

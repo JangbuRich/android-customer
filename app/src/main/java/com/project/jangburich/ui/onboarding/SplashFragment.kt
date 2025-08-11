@@ -6,9 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
 import com.project.jangburich.R
 import com.project.jangburich.databinding.FragmentSplashBinding
 import com.project.jangburich.ui.MainActivity
+import com.project.jangburich.ui.login.LoginMainFragment
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class SplashFragment : Fragment() {
 
@@ -25,13 +29,13 @@ class SplashFragment : Fragment() {
 
         mainActivity.hideBottomNavigation(true)
 
-        Handler().postDelayed({
-            val nextFragment = Onboarding1Fragment()
-
-            val transaction = mainActivity.manager.beginTransaction()
-            transaction.replace(R.id.fragmentContainerView_main, nextFragment)
-            transaction.commit()
-        }, 1000)
+        viewLifecycleOwner.lifecycleScope.launch {
+            delay(1000)
+            if (!isAdded) return@launch
+            mainActivity.supportFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainerView_main, Onboarding1Fragment())
+                .commit()
+        }
 
         return binding.root
     }
