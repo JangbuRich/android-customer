@@ -19,6 +19,7 @@ import com.project.jangburich.ui.group.CreateGroupCategroyFragment
 import com.project.jangburich.ui.group.EnterGroupCodeFragment
 import com.project.jangburich.ui.home.adapter.TeamAdapter
 import com.project.jangburich.ui.home.viewModel.HomeViewModel
+import com.project.jangburich.ui.login.viewModel.LoginViewModel
 import com.project.jangburich.ui.wallet.ChargeCompleteFragment
 import com.project.jangburich.ui.wallet.WalletFragment
 
@@ -26,7 +27,9 @@ class HomeFragment : Fragment(), HomeGroupBottomSheetListener {
 
     lateinit var binding: FragmentHomeBinding
     lateinit var mainActivity: MainActivity
-    lateinit var viewModel: HomeViewModel
+    private val viewModel: HomeViewModel by lazy {
+        ViewModelProvider(requireActivity())[HomeViewModel::class.java]
+    }
 
     private lateinit var teamAdapter: TeamAdapter
 
@@ -41,7 +44,6 @@ class HomeFragment : Fragment(), HomeGroupBottomSheetListener {
 
         binding = FragmentHomeBinding.inflate(layoutInflater)
         mainActivity = activity as MainActivity
-        viewModel = ViewModelProvider(mainActivity)[HomeViewModel::class.java]
 
         viewModel.run {
             userName.observe(mainActivity) {
@@ -56,19 +58,9 @@ class HomeFragment : Fragment(), HomeGroupBottomSheetListener {
                     textViewDate.text = it
                 }
             }
-            userPoint.observe(mainActivity) {
-                binding.run {
-                    textViewPointValue.text = "${it}원"
-                }
-            }
             joinedTeamCount.observe(mainActivity) {
                 binding.run {
                     textViewGroupNumValue.text = "${it}팀"
-                }
-            }
-            reservationCount.observe(mainActivity) {
-                binding.run {
-                    textViewReserveNumValue.text = "${it}건"
                 }
             }
             teamList.observe(mainActivity) {
@@ -84,7 +76,6 @@ class HomeFragment : Fragment(), HomeGroupBottomSheetListener {
         binding.run {
             buttonMap.setOnClickListener { mainActivity.binding.bottomNavigation.selectedItemId = R.id.menu_store }
             buttonGroup.setOnClickListener { mainActivity.binding.bottomNavigation.selectedItemId = R.id.menu_group }
-//            buttonReserve.setOnClickListener { mainActivity.binding.bottomNavigation.selectedItemId = R.id.menu_reserve }
         }
 
         return binding.root
@@ -123,14 +114,8 @@ class HomeFragment : Fragment(), HomeGroupBottomSheetListener {
 
         binding.run {
             toolbar.run {
-                buttonWallet.setOnClickListener {
-                    // 나의 지갑 화면
-                    val nextFragment = WalletFragment()
-
-                    val transaction = mainActivity.manager.beginTransaction()
-                    transaction.replace(R.id.fragmentContainerView_main, nextFragment)
-                    transaction.addToBackStack(null)
-                    transaction.commit()
+                buttonNotification.setOnClickListener {
+                    // 알림 화면 전환
                 }
             }
         }
@@ -138,19 +123,15 @@ class HomeFragment : Fragment(), HomeGroupBottomSheetListener {
 
     override fun onButtonClicked(position: Int) {
         if(position == 0) {
-            val nextFragment = EnterGroupCodeFragment()
-
-            val transaction = mainActivity.manager.beginTransaction()
-            transaction.replace(R.id.fragmentContainerView_main, nextFragment)
-            transaction.addToBackStack(null)
-            transaction.commit()
+            mainActivity.supportFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainerView_main, EnterGroupCodeFragment())
+                .addToBackStack(null)
+                .commit()
         } else {
-            val nextFragment = CreateGroupCategroyFragment()
-
-            val transaction = mainActivity.manager.beginTransaction()
-            transaction.replace(R.id.fragmentContainerView_main, nextFragment)
-            transaction.addToBackStack(null)
-            transaction.commit()
+            mainActivity.supportFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainerView_main, CreateGroupCategroyFragment())
+                .addToBackStack(null)
+                .commit()
         }
     }
 }
