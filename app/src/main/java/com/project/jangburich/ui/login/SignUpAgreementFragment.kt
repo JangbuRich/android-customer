@@ -24,6 +24,7 @@ class SignUpAgreementFragment : Fragment() {
     }
 
     val isAgree = MutableList(6) { false }
+    var isAgreeOptional = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -80,8 +81,9 @@ class SignUpAgreementFragment : Fragment() {
                 checkAgree(3, checkboxAgreement3)
             }
             checkboxAgreement4.setOnClickListener {
-                isAgree[4] = !isAgree[4]
-                isAgree[5] = !isAgree[5]
+                isAgreeOptional = !isAgreeOptional
+                isAgree[4] = isAgreeOptional
+                isAgree[5] = isAgreeOptional
                 checkOptionalAgreementAll()
                 checkAgree(4, checkboxAgreement4)
             }
@@ -108,10 +110,12 @@ class SignUpAgreementFragment : Fragment() {
                 checkboxAgreementAll.setImageResource(R.drawable.ic_check_circle_selected)
                 isAgree.fill(true)
                 checkAgreementAllWithOthers()
+                checkOptionalAgreementAll()
             } else {
                 checkboxAgreementAll.setImageResource(R.drawable.ic_check_circle_unselected)
                 isAgree.fill(false)
                 checkAgreementAllWithOthers()
+                checkOptionalAgreementAll()
             }
         }
         checkEnable()
@@ -120,9 +124,11 @@ class SignUpAgreementFragment : Fragment() {
     fun checkOptionalAgreementAll() {
         binding.run {
             if(isAgree[4] && isAgree[5]) {
+                isAgreeOptional = true
                 checkboxAgreement4.setImageResource(R.drawable.ic_check_selected)
                 checkAgreementAllWithOthers()
             } else {
+                isAgreeOptional = false
                 checkboxAgreement4.setImageResource(R.drawable.ic_check_unselected)
                 checkAgreementAllWithOthers()
             }
@@ -151,11 +157,6 @@ class SignUpAgreementFragment : Fragment() {
             view.setImageResource(R.drawable.ic_check_unselected)
         }
         checkEnable()
-        if(isAgree[4] && isAgree[5]) {
-            binding.checkboxAgreement4.setImageResource(R.drawable.ic_check_selected)
-        } else {
-            binding.checkboxAgreement4.setImageResource(R.drawable.ic_check_unselected)
-        }
         if(isAgree[1] && isAgree[2] && isAgree[3] && isAgree[4] && isAgree[5]) {
             binding.checkboxAgreementAll.setImageResource(R.drawable.ic_check_circle_selected)
         } else {
