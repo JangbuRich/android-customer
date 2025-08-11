@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import com.project.jangburich.R
 import com.project.jangburich.databinding.FragmentSplashBinding
 import com.project.jangburich.ui.MainActivity
+import com.project.jangburich.ui.login.LoginMainFragment
 
 class SplashFragment : Fragment() {
 
@@ -26,11 +27,9 @@ class SplashFragment : Fragment() {
         mainActivity.hideBottomNavigation(true)
 
         Handler().postDelayed({
-            val nextFragment = Onboarding1Fragment()
-
-            val transaction = mainActivity.manager.beginTransaction()
-            transaction.replace(R.id.fragmentContainerView_main, nextFragment)
-            transaction.commit()
+            mainActivity.supportFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainerView_main, Onboarding1Fragment())
+                .commit()
         }, 1000)
 
         return binding.root

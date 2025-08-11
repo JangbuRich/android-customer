@@ -6,12 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.project.jangburich.R
-import com.project.jangburich.databinding.FragmentOnboarding2Binding
+import com.project.jangburich.databinding.FragmentOnboarding4Binding
 import com.project.jangburich.ui.MainActivity
 import com.project.jangburich.ui.login.LoginMainFragment
 
-class Onboarding2Fragment : Fragment() {
-    lateinit var binding: FragmentOnboarding2Binding
+class Onboarding4Fragment : Fragment() {
+    lateinit var binding: FragmentOnboarding4Binding
     lateinit var mainActivity: MainActivity
 
     override fun onCreateView(
@@ -19,20 +19,13 @@ class Onboarding2Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = FragmentOnboarding2Binding.inflate(layoutInflater)
+        binding = FragmentOnboarding4Binding.inflate(layoutInflater)
         mainActivity = activity as MainActivity
 
         mainActivity.hideBottomNavigation(true)
 
         binding.run {
             buttonNext.setOnClickListener {
-                mainActivity.supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragmentContainerView_main, Onboarding3Fragment())
-                    .addToBackStack(null)
-                    .commit()
-            }
-
-            buttonSkip.setOnClickListener {
                 mainActivity.supportFragmentManager.beginTransaction()
                     .replace(R.id.fragmentContainerView_main, LoginMainFragment())
                     .addToBackStack(null)
