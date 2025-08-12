@@ -13,12 +13,15 @@ import com.project.jangburich.databinding.FragmentEnterCodeGroupBinding
 import com.project.jangburich.ui.MainActivity
 import com.project.jangburich.ui.group.viewModel.GroupViewModel
 import com.project.jangburich.ui.home.HomeFragment
+import com.project.jangburich.ui.login.viewModel.LoginViewModel
 
 class EnterCodeGroupFragment : Fragment() {
 
     lateinit var binding: FragmentEnterCodeGroupBinding
     lateinit var mainActivity: MainActivity
-    lateinit var viewModel: GroupViewModel
+    private val viewModel: GroupViewModel by lazy {
+        ViewModelProvider(requireActivity())[GroupViewModel::class.java]
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,29 +30,22 @@ class EnterCodeGroupFragment : Fragment() {
 
         binding = FragmentEnterCodeGroupBinding.inflate(layoutInflater)
         mainActivity = activity as MainActivity
-        viewModel = ViewModelProvider(mainActivity)[GroupViewModel::class.java]
 
         initView()
-        mainActivity.hideBottomNavigation(true)
 
         binding.run {
-            textViewDate.text = MyApplication.codeGroupInfo.createdAt
-            textViewGroupName.text = MyApplication.codeGroupInfo.teamName
-            textViewGroupType.text = MyApplication.codeGroupInfo.teamType
+            textViewGroupName.text = viewModel.groupInfo.value?.teamName
+            textViewGroupType.text = viewModel.groupInfo.value?.teamType
 
             buttonCancel.setOnClickListener {
-                fragmentManager?.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
-
-                val nextFragment = HomeFragment()
-
-                val transaction = mainActivity.manager.beginTransaction()
-                transaction.replace(R.id.fragmentContainerView_main, nextFragment)
-                transaction.addToBackStack(null)
-                transaction.commit()
+                parentFragmentManager.popBackStack()
             }
 
             buttonEnterGroup.setOnClickListener {
-                viewModel.enterGroup(mainActivity)
+                viewModel.enterGroup(mainActivity, requireArguments().getString("code").toString()) {
+                    // 내 그룹 화면 전환
+                    mainActivity.binding.bottomNavigation.selectedItemId = R.id.menu_group
+                }
             }
         }
 
@@ -57,10 +53,12 @@ class EnterCodeGroupFragment : Fragment() {
     }
 
     fun initView() {
+        mainActivity.hideBottomNavigation(true)
+
         binding.run {
             toolbar.run {
                 buttonBack.setOnClickListener {
-                    fragmentManager?.popBackStack()
+                    parentFragmentManager.popBackStack()
                 }
                 textViewTitle.text = "그룹 입장하기"
             }

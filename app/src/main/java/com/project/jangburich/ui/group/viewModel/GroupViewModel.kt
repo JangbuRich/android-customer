@@ -298,12 +298,12 @@ class GroupViewModel: ViewModel() {
         })
     }
 
-    fun enterGroup(activity: MainActivity) {
+    fun enterGroup(activity: MainActivity, code: String, onSuccess: () -> Unit) {
 
         val apiClient = ApiClient(activity)
         val tokenManager = TokenManager(activity)
 
-        apiClient.apiService.enterGroup("Bearer ${tokenManager.getAccessToken()}", MyApplication.code).enqueue(object :
+        apiClient.apiService.enterGroup("Bearer ${tokenManager.getAccessToken()}", code).enqueue(object :
             Callback<BaseResponse<MessageResponse>> {
             override fun onResponse(
                 call: Call<BaseResponse<MessageResponse>>,
@@ -315,15 +315,7 @@ class GroupViewModel: ViewModel() {
                     val result: BaseResponse<MessageResponse>? = response.body()
                     Log.d("##", "onResponse 성공: " + result?.toString())
 
-
-                    activity.fragmentManager?.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
-
-                    val nextFragment = HomeFragment()
-
-                    val transaction = activity.manager.beginTransaction()
-                    transaction.replace(R.id.fragmentContainerView_main, nextFragment)
-                    transaction.addToBackStack("")
-                    transaction.commit()
+                    onSuccess()
                 } else {
                     // 통신이 실패한 경우(응답코드 3xx, 4xx 등)
                     var result: BaseResponse<MessageResponse>? = response.body()
