@@ -24,7 +24,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="42dp"
         android:layout_marginLeft="20dp"
-        android:text="2024.11.23"
         android:textColor="@color/gray_50"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
@@ -87,34 +86,56 @@
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
-            android:id="@+id/textView_point"
+            android:id="@+id/textView_recent_store_title"
             style="@style/Label3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="사용 가능한 포인트"
-            android:textColor="@color/gray_100"
-            app:layout_constraintStart_toStartOf="@+id/textView_point_value"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView_point_value"
-            style="@style/body6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:text="원"
+            android:text="최근 이용한 매장"
             android:textColor="@color/gray_100"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_point" />
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="6dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_recent_store_title">
+
+            <TextView
+                android:id="@+id/textView_recent_store_name"
+                style="@style/body6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:lines="1"
+                android:text="매장 찾아보기"
+                android:textColor="@color/gray_100"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView_point" />
+
+            <ImageView
+                android:id="@+id/imageView_store"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_right_gray100" />
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/button_group"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="14dp"
         android:layout_marginEnd="20dp"
         android:background="@drawable/background_gray100_round10"
+        app:layout_constraintBottom_toBottomOf="@+id/button_point"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button_map"
         app:layout_constraintTop_toTopOf="@+id/button_map">
@@ -144,53 +165,55 @@
             android:id="@+id/imageView_group"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:scaleType="fitXY"
             android:src="@drawable/img_button_group"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/button_reserve"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/background_gray100_round10"
-        app:layout_constraintBottom_toBottomOf="@+id/button_point"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button_map"
-        app:layout_constraintTop_toBottomOf="@+id/button_group">
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:id="@+id/button_reserve"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="14dp"-->
+<!--        android:layout_marginTop="13dp"-->
+<!--        android:layout_marginEnd="20dp"-->
+<!--        android:background="@drawable/background_gray100_round10"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/button_point"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/button_map"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/button_group">-->
 
-        <TextView
-            android:id="@+id/textView_reserve"
-            style="@style/Detail1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp"
-            android:text="예약 확인하기"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+<!--        <TextView-->
+<!--            android:id="@+id/textView_reserve"-->
+<!--            style="@style/Detail1"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="15dp"-->
+<!--            android:layout_marginTop="15dp"-->
+<!--            android:text="예약 확인하기"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
-        <TextView
-            android:id="@+id/textView_reserve_num_value"
-            style="@style/Headline4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="건"
-            android:textColor="@color/gray_30"
-            app:layout_constraintStart_toStartOf="@+id/textView_reserve"
-            app:layout_constraintTop_toBottomOf="@+id/textView_reserve" />
+<!--        <TextView-->
+<!--            android:id="@+id/textView_reserve_num_value"-->
+<!--            style="@style/Headline4"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="건"-->
+<!--            android:textColor="@color/gray_30"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/textView_reserve"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/textView_reserve" />-->
 
-        <ImageView
-            android:id="@+id/imageView_reserve"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/img_button_reserve"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+<!--        <ImageView-->
+<!--            android:id="@+id/imageView_reserve"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/img_button_reserve"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent" />-->
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/imageView_gif"
