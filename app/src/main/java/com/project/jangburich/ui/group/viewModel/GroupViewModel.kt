@@ -39,12 +39,12 @@ class GroupViewModel: ViewModel() {
         groupList.value = mutableListOf<GetGroupResponse>()
     }
 
-    fun createGroup(activity: MainActivity) {
+    fun createGroup(activity: MainActivity, type: String, groupName: String, groupDescription: String?, onSuccess: (code: String) -> Unit) {
 
         val apiClient = ApiClient(activity)
         val tokenManager = TokenManager(activity)
 
-        var groupInfo = CreateGroupRequest(MyApplication.groupType, MyApplication.groupName, MyApplication.groupDescription, MyApplication.groupAccountNumber, MyApplication.groupBankName)
+        var groupInfo = CreateGroupRequest(type, groupName, groupDescription)
 
         apiClient.apiService.createGroup("Bearer ${tokenManager.getAccessToken()}", groupInfo).enqueue(object :
             Callback<BaseResponse<CreateGroupResponse>> {
@@ -58,14 +58,7 @@ class GroupViewModel: ViewModel() {
                     val result: BaseResponse<CreateGroupResponse>? = response.body()
                     Log.d("##", "onResponse 성공: " + result?.toString())
 
-                    MyApplication.groupSecretCode = result?.data?.uuid!!
-
-                    val nextFragment = CreateGroupInviteFragment()
-
-                    val transaction = activity.manager.beginTransaction()
-                    transaction.replace(R.id.fragmentContainerView_main, nextFragment)
-                    transaction.addToBackStack("")
-                    transaction.commit()
+                    onSuccess(result?.data?.uuid.toString())
                 } else {
                     // 통신이 실패한 경우(응답코드 3xx, 4xx 등)
                     var result: BaseResponse<CreateGroupResponse>? = response.body()

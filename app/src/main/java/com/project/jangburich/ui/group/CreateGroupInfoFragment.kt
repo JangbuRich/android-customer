@@ -6,15 +6,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
+import androidx.lifecycle.ViewModelProvider
 import com.project.jangburich.MyApplication
 import com.project.jangburich.R
 import com.project.jangburich.databinding.FragmentCreateGroupInfoBinding
 import com.project.jangburich.ui.MainActivity
+import com.project.jangburich.ui.group.viewModel.GroupViewModel
 
 class CreateGroupInfoFragment : Fragment() {
 
     lateinit var binding: FragmentCreateGroupInfoBinding
     lateinit var mainActivity: MainActivity
+    private val viewModel: GroupViewModel by lazy {
+        ViewModelProvider(requireActivity())[GroupViewModel::class.java]
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,20 +38,25 @@ class CreateGroupInfoFragment : Fragment() {
                 textViewNameCount.text = "${editTextName.length()}/15"
             }
             editTextDescription.addTextChangedListener {
-                checkEnable()
                 textViewDescriptionCount.text = "${editTextDescription.length()}/100"
             }
 
             buttonNext.setOnClickListener {
-                MyApplication.groupName = editTextName.text.toString()
-                MyApplication.groupDescription = editTextDescription.text.toString()
+                // 그룹 생성 API
+                viewModel.createGroup(mainActivity, requireArguments().getString("category").toString(), editTextName.text.toString(), editTextDescription.text.toString()) { code ->
+                    val bundle = Bundle().apply {
+                        putString("code", code)
+                    }
 
-                val nextFragment = CreateGroupAccountFragment()
+                    var nextFragment = CreateGroupInviteFragment().apply {
+                        arguments = bundle
+                    }
 
-                val transaction = mainActivity.manager.beginTransaction()
-                transaction.replace(R.id.fragmentContainerView_main, nextFragment)
-                transaction.addToBackStack(null)
-                transaction.commit()
+                    mainActivity.supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainerView_main, nextFragment)
+                        .addToBackStack(null)
+                        .commit()
+                }
             }
 
         }
@@ -56,19 +66,12 @@ class CreateGroupInfoFragment : Fragment() {
 
     fun checkEnable() {
         binding.run {
-            if(editTextName.text.isNotEmpty() && editTextDescription.text.isNotEmpty()) {
+            if(editTextName.text.isNotEmpty()) {
                 buttonNext.isEnabled = true
             } else {
                 buttonNext.isEnabled = false
             }
         }
-    }
-
-    fun isValidInput(input: String): Boolean {
-        // 정규식: 영문, 숫자 포함 5~10자
-        val regex = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{5,10}$".toRegex()
-
-        return regex.matches(input)
     }
 
     fun initView() {
