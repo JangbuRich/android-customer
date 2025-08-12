@@ -21,13 +21,13 @@
         style="@style/Headline4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="그룹에 함께할 그룹원에게\n비밀 코드를 보내 초대해주세요!"
+        android:text="랜덤 생성된 비밀 코드를\n함께할 그룹원에게 보내 초대해주세요!"
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <TextView
-        android:id="@+id/textView_title_name"
+        android:id="@+id/textView_code_title"
         style="@style/Detail1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
         android:background="@drawable/selector_edittext"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_title_name" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_code_title" />
 
     <TextView
         android:id="@+id/button_copy"
@@ -63,6 +63,133 @@
         app:layout_constraintBottom_toBottomOf="@+id/textView_code"
         app:layout_constraintEnd_toEndOf="@+id/textView_code"
         app:layout_constraintTop_toTopOf="@+id/textView_code" />
+
+    <TextView
+        android:id="@+id/textView_invite_title"
+        style="@style/Detail1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="그룹원 초대하기"
+        android:layout_marginTop="30dp"
+        android:textColor="@color/gray_40"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_code" />
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_invite_title">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/button_link_kakao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/background_group_unselected"
+            android:paddingHorizontal="5dp"
+            android:paddingVertical="10dp">
+
+            <ImageView
+                android:id="@+id/imageView_link_kakao"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/ic_link_kakao"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView_link_kakao"
+                style="@style/body5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="카카오톡"
+                android:textAlignment="center"
+                android:textColor="@color/gray_30"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageView_link_kakao"
+                app:layout_constraintVertical_bias="0.0" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="match_parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/button_link_basic"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/background_group_unselected"
+            android:paddingHorizontal="5dp"
+            android:paddingVertical="10dp">
+
+            <ImageView
+                android:id="@+id/imageView_link_basic"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/ic_link_basic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView_link_basic"
+                style="@style/body5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="링크 복사"
+                android:textAlignment="center"
+                android:textColor="@color/gray_30"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageView_link_basic" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="match_parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/button_link_code"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/background_group_unselected"
+            android:paddingHorizontal="5dp"
+            android:paddingVertical="10dp">
+
+            <ImageView
+                android:id="@+id/imageView_link_code"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/ic_link_code"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView_link_code"
+                style="@style/body5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="비밀코드 복사"
+                android:textAlignment="center"
+                android:textColor="@color/gray_30"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageView_link_code" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
     <Button
         android:id="@+id/button_next"

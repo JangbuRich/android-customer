@@ -25,14 +25,6 @@ class MyApplication: Application() {
         // 유저 정보
         var userName = ""
 
-        // 그룹 생성
-        var groupType = ""
-        var groupName = ""
-        var groupDescription = ""
-        var groupSecretCode = ""
-        var groupAccountNumber = ""
-        var groupBankName = ""
-
         // 내 그룹
         var groupFilterList = listOf("전체", "그룹장", "그룹원")
         var groupFilterCategory = "ALL"
@@ -90,10 +82,6 @@ class MyApplication: Application() {
         var prepaymentIndividualPrice = 0
         var remainPrepayAmount = 0
 
-        var selectedPrepayStoreName = ""
-        var selectedStoreCategory = ""
-        var selectedStoreId = 0
-
         var selectedMenuList = StoreMenu(0,"", false, "", 0, "")
         
         var selectedStore = Store(
@@ -116,8 +104,5 @@ class MyApplication: Application() {
 
         // 주문 완료
         var orderedData = OrderResponse(0, 0, null)
-
-        // 코드 정보
-        var codeGroupInfo = GetGroupInfoWithCodeResponse("","","",0,null,"")
     }
 }
