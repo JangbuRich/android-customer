@@ -124,7 +124,7 @@ class CreateGroupCategroyFragment : Fragment() {
 
             toolbar.run {
                 buttonBack.setOnClickListener {
-                    fragmentManager?.popBackStack()
+                    parentFragmentManager.popBackStack()
                 }
             }
         }

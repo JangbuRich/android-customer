@@ -66,7 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="@null"
-            android:text="내 그룹 보기"
+            android:text="생성한 그룹으로"
             android:textAlignment="center" />
 
         <TextView

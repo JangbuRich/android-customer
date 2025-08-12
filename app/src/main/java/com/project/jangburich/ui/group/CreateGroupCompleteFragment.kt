@@ -28,14 +28,13 @@ class CreateGroupCompleteFragment : Fragment() {
 
         binding.run {
             buttonAccept.setOnClickListener {
-                fragmentManager?.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+                // 내 그룹 상세 화면 전환
+                parentFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
 
-                val nextFragment = HomeFragment()
-
-                val transaction = mainActivity.manager.beginTransaction()
-                transaction.replace(R.id.fragmentContainerView_main, nextFragment)
-                transaction.addToBackStack(null)
-                transaction.commit()
+                mainActivity.supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragmentContainerView_main, GroupDetailFragment())
+                    .addToBackStack(null)
+                    .commit()
             }
             buttonMyGroup.setOnClickListener {
                 mainActivity.binding.bottomNavigation.selectedItemId = R.id.menu_group
@@ -51,7 +50,7 @@ class CreateGroupCompleteFragment : Fragment() {
 
             toolbar.run {
                 buttonBack.setOnClickListener {
-                    fragmentManager?.popBackStack()
+                    parentFragmentManager.popBackStack()
                 }
             }
         }
