@@ -118,7 +118,6 @@ class MyApplication: Application() {
         var orderedData = OrderResponse(0, 0, null)
 
         // 코드 정보
-        var code = ""
         var codeGroupInfo = GetGroupInfoWithCodeResponse("","","",0,null,"")
     }
 }

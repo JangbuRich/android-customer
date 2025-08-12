@@ -259,7 +259,7 @@ class GroupViewModel: ViewModel() {
         })
     }
 
-    fun getGroupInfoWithCode(activity: MainActivity, code: String) {
+    fun getGroupInfoWithCode(activity: MainActivity, code: String, onSuccess: () -> Unit) {
 
         val apiClient = ApiClient(activity)
         val tokenManager = TokenManager(activity)
@@ -276,17 +276,9 @@ class GroupViewModel: ViewModel() {
                     val result: BaseResponse<GetGroupInfoWithCodeResponse>? = response.body()
                     Log.d("##", "onResponse 성공: " + result?.toString())
 
-                    MyApplication.codeGroupInfo = result?.data!!
-
                     groupInfo.value =  result?.data
 
-                    val nextFragment = EnterCodeGroupFragment()
-
-                    val transaction = activity.manager.beginTransaction()
-                    transaction.replace(R.id.fragmentContainerView_main, nextFragment)
-                    transaction.addToBackStack("")
-                    transaction.commit()
-
+                    onSuccess()
                 } else {
                     // 통신이 실패한 경우(응답코드 3xx, 4xx 등)
                     var result: BaseResponse<GetGroupInfoWithCodeResponse>? = response.body()
