@@ -86,7 +86,7 @@
         android:maxLines="3"
         android:minLines="3"
         android:gravity="top"
-        android:hint="간단한 그룹 설명을 입력해주세요"
+        android:hint="간단한 그룹 설명을 입력해주세요 (선택)"
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
