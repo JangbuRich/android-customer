@@ -1,7 +1,6 @@
 package com.project.jangburich.ui.group.viewModel
 
 import android.util.Log
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.project.jangburich.MyApplication
@@ -20,13 +19,11 @@ import com.project.jangburich.api.response.group.GetPrepayData
 import com.project.jangburich.api.response.login.MessageResponse
 import com.project.jangburich.ui.MainActivity
 import com.project.jangburich.ui.group.CreateGroupInviteFragment
-import com.project.jangburich.ui.group.EnterCodeGroupFragment
 import com.project.jangburich.ui.group.GroupDetailFragment
 import com.project.jangburich.ui.group.GroupStoreDetailLeaderFragment
 import com.project.jangburich.ui.group.GroupStoreDetailMemberFragment
 import com.project.jangburich.ui.group.PrePaymentCompleteFragment
 import com.project.jangburich.ui.group.PrePaymentTotalFragment
-import com.project.jangburich.ui.home.HomeFragment
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

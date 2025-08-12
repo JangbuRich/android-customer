@@ -6,7 +6,7 @@
     android:padding="20dp"
     android:background="@color/gray_95"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.group.EnterCodeGroupFragment">
+    tools:context=".ui.group.EnterGroupInfoFragment">
 
     <include
         android:id="@+id/toolbar"

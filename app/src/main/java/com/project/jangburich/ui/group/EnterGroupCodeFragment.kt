@@ -5,16 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.constraintlayout.widget.Group
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
-import com.project.jangburich.MyApplication
 import com.project.jangburich.R
 import com.project.jangburich.databinding.FragmentEnterGroupCodeBinding
 import com.project.jangburich.ui.MainActivity
 import com.project.jangburich.ui.group.viewModel.GroupViewModel
-import com.project.jangburich.ui.home.HomeFragment
-import com.project.jangburich.ui.login.SignUpAgreementFragment
 
 class EnterGroupCodeFragment : Fragment() {
 
@@ -41,7 +37,7 @@ class EnterGroupCodeFragment : Fragment() {
                         putString("code", editTextCode.text.toString().trim())
                     }
 
-                    var nextFragment = EnterCodeGroupFragment().apply {
+                    var nextFragment = EnterGroupInfoFragment().apply {
                         arguments = bundle
                     }
 

@@ -5,19 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
-import com.project.jangburich.MyApplication
 import com.project.jangburich.R
-import com.project.jangburich.databinding.FragmentEnterCodeGroupBinding
+import com.project.jangburich.databinding.FragmentEnterGroupInfoBinding
 import com.project.jangburich.ui.MainActivity
 import com.project.jangburich.ui.group.viewModel.GroupViewModel
-import com.project.jangburich.ui.home.HomeFragment
-import com.project.jangburich.ui.login.viewModel.LoginViewModel
 
-class EnterCodeGroupFragment : Fragment() {
+class EnterGroupInfoFragment : Fragment() {
 
-    lateinit var binding: FragmentEnterCodeGroupBinding
+    lateinit var binding: FragmentEnterGroupInfoBinding
     lateinit var mainActivity: MainActivity
     private val viewModel: GroupViewModel by lazy {
         ViewModelProvider(requireActivity())[GroupViewModel::class.java]
@@ -28,7 +24,7 @@ class EnterCodeGroupFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = FragmentEnterCodeGroupBinding.inflate(layoutInflater)
+        binding = FragmentEnterGroupInfoBinding.inflate(layoutInflater)
         mainActivity = activity as MainActivity
 
         initView()
