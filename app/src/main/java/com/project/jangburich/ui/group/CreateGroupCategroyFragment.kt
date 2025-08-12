@@ -102,6 +102,7 @@ class CreateGroupCategroyFragment : Fragment() {
             buttonNext.setOnClickListener {
                 val bundle = Bundle().apply {
                     putString("category", category)
+                    putBoolean("isEdit", arguments?.getBoolean("isEdit") == true)
                 }
 
                 var nextFragment = CreateGroupInfoFragment().apply {
@@ -121,6 +122,13 @@ class CreateGroupCategroyFragment : Fragment() {
     fun initView() {
         binding.run {
             mainActivity.hideBottomNavigation(true)
+
+            textViewIntro.text =
+                if(arguments?.getBoolean("isEdit") == true) {
+                    "그룹의 유형을\n수정해주세요"
+                } else {
+                    "생성할 그룹의\n유형을 선택해주세요"
+                }
 
             toolbar.run {
                 buttonBack.setOnClickListener {

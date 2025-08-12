@@ -42,20 +42,25 @@ class CreateGroupInfoFragment : Fragment() {
             }
 
             buttonNext.setOnClickListener {
-                // 그룹 생성 API
-                viewModel.createGroup(mainActivity, requireArguments().getString("category").toString(), editTextName.text.toString(), editTextDescription.text.toString()) { code ->
-                    val bundle = Bundle().apply {
-                        putString("code", code)
-                    }
+                if(arguments?.getBoolean("isEdit") == true) {
+                    // 그룹 수정 API
+                    
+                } else {
+                    // 그룹 생성 API
+                    viewModel.createGroup(mainActivity, requireArguments().getString("category").toString(), editTextName.text.toString(), editTextDescription.text.toString()) { code ->
+                        val bundle = Bundle().apply {
+                            putString("code", code)
+                        }
 
-                    var nextFragment = CreateGroupInviteFragment().apply {
-                        arguments = bundle
-                    }
+                        var nextFragment = CreateGroupInviteFragment().apply {
+                            arguments = bundle
+                        }
 
-                    mainActivity.supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragmentContainerView_main, nextFragment)
-                        .addToBackStack(null)
-                        .commit()
+                        mainActivity.supportFragmentManager.beginTransaction()
+                            .replace(R.id.fragmentContainerView_main, nextFragment)
+                            .addToBackStack(null)
+                            .commit()
+                    }
                 }
             }
 
@@ -79,6 +84,13 @@ class CreateGroupInfoFragment : Fragment() {
             buttonNext.isEnabled = false
 
             mainActivity.hideBottomNavigation(true)
+
+            textViewIntro.text =
+                if(arguments?.getBoolean("isEdit") == true) {
+                    "그룹의 기본 정보를\n수정해주세요"
+                } else {
+                    "그룹을 만들기 위한\n기본 정보를 입력해주세요"
+                }
 
             toolbar.run {
                 buttonBack.setOnClickListener {
