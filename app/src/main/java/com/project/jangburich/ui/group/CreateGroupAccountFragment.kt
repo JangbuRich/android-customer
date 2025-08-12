@@ -42,10 +42,7 @@ class CreateGroupAccountFragment : Fragment(), BankBottomSheetListener {
             }
 
             buttonNext.setOnClickListener {
-                MyApplication.groupAccountNumber = editTextAccountNumber.text.toString()
-                MyApplication.groupBankName = editTextAccountBank.text.toString()
 
-                viewModel.createGroup(mainActivity)
             }
         }
         

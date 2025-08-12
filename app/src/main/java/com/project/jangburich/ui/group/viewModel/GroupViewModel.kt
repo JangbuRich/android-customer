@@ -1,7 +1,6 @@
 package com.project.jangburich.ui.group.viewModel
 
 import android.util.Log
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.project.jangburich.MyApplication
@@ -20,13 +19,11 @@ import com.project.jangburich.api.response.group.GetPrepayData
 import com.project.jangburich.api.response.login.MessageResponse
 import com.project.jangburich.ui.MainActivity
 import com.project.jangburich.ui.group.CreateGroupInviteFragment
-import com.project.jangburich.ui.group.EnterCodeGroupFragment
 import com.project.jangburich.ui.group.GroupDetailFragment
 import com.project.jangburich.ui.group.GroupStoreDetailLeaderFragment
 import com.project.jangburich.ui.group.GroupStoreDetailMemberFragment
 import com.project.jangburich.ui.group.PrePaymentCompleteFragment
 import com.project.jangburich.ui.group.PrePaymentTotalFragment
-import com.project.jangburich.ui.home.HomeFragment
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -42,12 +39,12 @@ class GroupViewModel: ViewModel() {
         groupList.value = mutableListOf<GetGroupResponse>()
     }
 
-    fun createGroup(activity: MainActivity) {
+    fun createGroup(activity: MainActivity, type: String, groupName: String, groupDescription: String?, onSuccess: (code: String) -> Unit) {
 
         val apiClient = ApiClient(activity)
         val tokenManager = TokenManager(activity)
 
-        var groupInfo = CreateGroupRequest(MyApplication.groupType, MyApplication.groupName, MyApplication.groupDescription, MyApplication.groupAccountNumber, MyApplication.groupBankName)
+        var groupInfo = CreateGroupRequest(type, groupName, groupDescription)
 
         apiClient.apiService.createGroup("Bearer ${tokenManager.getAccessToken()}", groupInfo).enqueue(object :
             Callback<BaseResponse<CreateGroupResponse>> {
@@ -61,14 +58,7 @@ class GroupViewModel: ViewModel() {
                     val result: BaseResponse<CreateGroupResponse>? = response.body()
                     Log.d("##", "onResponse 성공: " + result?.toString())
 
-                    MyApplication.groupSecretCode = result?.data?.uuid!!
-
-                    val nextFragment = CreateGroupInviteFragment()
-
-                    val transaction = activity.manager.beginTransaction()
-                    transaction.replace(R.id.fragmentContainerView_main, nextFragment)
-                    transaction.addToBackStack("")
-                    transaction.commit()
+                    onSuccess(result?.data?.uuid.toString())
                 } else {
                     // 통신이 실패한 경우(응답코드 3xx, 4xx 등)
                     var result: BaseResponse<CreateGroupResponse>? = response.body()
@@ -259,7 +249,7 @@ class GroupViewModel: ViewModel() {
         })
     }
 
-    fun getGroupInfoWithCode(activity: MainActivity, code: String) {
+    fun getGroupInfoWithCode(activity: MainActivity, code: String, onSuccess: () -> Unit) {
 
         val apiClient = ApiClient(activity)
         val tokenManager = TokenManager(activity)
@@ -276,17 +266,9 @@ class GroupViewModel: ViewModel() {
                     val result: BaseResponse<GetGroupInfoWithCodeResponse>? = response.body()
                     Log.d("##", "onResponse 성공: " + result?.toString())
 
-                    MyApplication.codeGroupInfo = result?.data!!
-
                     groupInfo.value =  result?.data
 
-                    val nextFragment = EnterCodeGroupFragment()
-
-                    val transaction = activity.manager.beginTransaction()
-                    transaction.replace(R.id.fragmentContainerView_main, nextFragment)
-                    transaction.addToBackStack("")
-                    transaction.commit()
-
+                    onSuccess()
                 } else {
                     // 통신이 실패한 경우(응답코드 3xx, 4xx 등)
                     var result: BaseResponse<GetGroupInfoWithCodeResponse>? = response.body()
@@ -306,12 +288,12 @@ class GroupViewModel: ViewModel() {
         })
     }
 
-    fun enterGroup(activity: MainActivity) {
+    fun enterGroup(activity: MainActivity, code: String, onSuccess: () -> Unit) {
 
         val apiClient = ApiClient(activity)
         val tokenManager = TokenManager(activity)
 
-        apiClient.apiService.enterGroup("Bearer ${tokenManager.getAccessToken()}", MyApplication.code).enqueue(object :
+        apiClient.apiService.enterGroup("Bearer ${tokenManager.getAccessToken()}", code).enqueue(object :
             Callback<BaseResponse<MessageResponse>> {
             override fun onResponse(
                 call: Call<BaseResponse<MessageResponse>>,
@@ -323,15 +305,7 @@ class GroupViewModel: ViewModel() {
                     val result: BaseResponse<MessageResponse>? = response.body()
                     Log.d("##", "onResponse 성공: " + result?.toString())
 
-
-                    activity.fragmentManager?.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
-
-                    val nextFragment = HomeFragment()
-
-                    val transaction = activity.manager.beginTransaction()
-                    transaction.replace(R.id.fragmentContainerView_main, nextFragment)
-                    transaction.addToBackStack("")
-                    transaction.commit()
+                    onSuccess()
                 } else {
                     // 통신이 실패한 경우(응답코드 3xx, 4xx 등)
                     var result: BaseResponse<MessageResponse>? = response.body()

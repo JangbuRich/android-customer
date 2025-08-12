@@ -5,21 +5,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.constraintlayout.widget.Group
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
-import com.project.jangburich.MyApplication
 import com.project.jangburich.R
 import com.project.jangburich.databinding.FragmentEnterGroupCodeBinding
 import com.project.jangburich.ui.MainActivity
 import com.project.jangburich.ui.group.viewModel.GroupViewModel
-import com.project.jangburich.ui.home.HomeFragment
 
 class EnterGroupCodeFragment : Fragment() {
 
     lateinit var binding: FragmentEnterGroupCodeBinding
     lateinit var mainActivity: MainActivity
-    lateinit var viewModel: GroupViewModel
+    private val viewModel: GroupViewModel by lazy {
+        ViewModelProvider(requireActivity())[GroupViewModel::class.java]
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,14 +27,25 @@ class EnterGroupCodeFragment : Fragment() {
 
         binding = FragmentEnterGroupCodeBinding.inflate(layoutInflater)
         mainActivity = activity as MainActivity
-        viewModel = ViewModelProvider(mainActivity)[GroupViewModel::class.java]
 
         initView()
 
         binding.run {
             buttonNext.setOnClickListener {
-                MyApplication.code = editTextCode.text.toString()
-                viewModel.getGroupInfoWithCode(mainActivity, MyApplication.code)
+                viewModel.getGroupInfoWithCode(mainActivity, editTextCode.text.toString().trim()) {
+                    val bundle = Bundle().apply {
+                        putString("code", editTextCode.text.toString().trim())
+                    }
+
+                    var nextFragment = EnterGroupInfoFragment().apply {
+                        arguments = bundle
+                    }
+
+                    mainActivity.supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainerView_main, nextFragment)
+                        .addToBackStack(null)
+                        .commit()
+                }
             }
 
             editTextCode.addTextChangedListener {
@@ -58,6 +68,4 @@ class EnterGroupCodeFragment : Fragment() {
             }
         }
     }
-
-
 }

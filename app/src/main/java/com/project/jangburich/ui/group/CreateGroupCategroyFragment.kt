@@ -19,9 +19,7 @@ class CreateGroupCategroyFragment : Fragment() {
     lateinit var binding: FragmentCreateGroupCategroyBinding
     lateinit var mainActivity: MainActivity
 
-    var category = ""
-
-    val isClicked = MutableList(8) { false }
+    var category: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,7 +30,6 @@ class CreateGroupCategroyFragment : Fragment() {
         mainActivity = activity as MainActivity
 
         initView()
-
 
         binding.run {
             val buttons = listOf(buttonGroup1, buttonGroup2, buttonGroup3, buttonGroup4, buttonGroup5, buttonGroup6, buttonGroup7, buttonGroup8)
@@ -69,6 +66,7 @@ class CreateGroupCategroyFragment : Fragment() {
                     isClicked.fill(false)
 
                     // 클릭한 버튼만 true로 설정
+                    buttonNext.isEnabled = true
                     isClicked[index] = true
 
                     // 모든 버튼의 배경, 이미지, 텍스트 색상 업데이트
@@ -102,14 +100,19 @@ class CreateGroupCategroyFragment : Fragment() {
             }
 
             buttonNext.setOnClickListener {
-                MyApplication.groupType = category
+                val bundle = Bundle().apply {
+                    putString("category", category)
+                    putBoolean("isEdit", arguments?.getBoolean("isEdit") == true)
+                }
 
-                val nextFragment = CreateGroupInfoFragment()
+                var nextFragment = CreateGroupInfoFragment().apply {
+                    arguments = bundle
+                }
 
-                val transaction = mainActivity.manager.beginTransaction()
-                transaction.replace(R.id.fragmentContainerView_main, nextFragment)
-                transaction.addToBackStack(null)
-                transaction.commit()
+                mainActivity.supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragmentContainerView_main, nextFragment)
+                    .addToBackStack(null)
+                    .commit()
             }
         }
 
@@ -120,9 +123,16 @@ class CreateGroupCategroyFragment : Fragment() {
         binding.run {
             mainActivity.hideBottomNavigation(true)
 
+            textViewIntro.text =
+                if(arguments?.getBoolean("isEdit") == true) {
+                    "그룹의 유형을\n수정해주세요"
+                } else {
+                    "생성할 그룹의\n유형을 선택해주세요"
+                }
+
             toolbar.run {
                 buttonBack.setOnClickListener {
-                    fragmentManager?.popBackStack()
+                    parentFragmentManager.popBackStack()
                 }
             }
         }

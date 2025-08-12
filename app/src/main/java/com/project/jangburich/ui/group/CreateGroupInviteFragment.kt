@@ -12,6 +12,7 @@ import android.widget.Toast
 import com.project.jangburich.MyApplication
 import com.project.jangburich.R
 import com.project.jangburich.databinding.FragmentCreateGroupInviteBinding
+import com.project.jangburich.ui.BasicToast
 import com.project.jangburich.ui.MainActivity
 
 class CreateGroupInviteFragment : Fragment() {
@@ -30,19 +31,30 @@ class CreateGroupInviteFragment : Fragment() {
         initView()
 
         binding.run {
-            textViewCode.text = MyApplication.groupSecretCode
+            textViewCode.text = requireArguments().getString("code").toString()
 
             buttonCopy.setOnClickListener {
-                copyTextToClipboard(mainActivity, MyApplication.groupSecretCode)
+                copyTextToClipboard(requireActivity(), requireArguments().getString("code").toString())
+            }
+
+            buttonLinkKakao.setOnClickListener {
+                // 카카오 - 그룹원 초대하기
+            }
+
+            buttonLinkBasic.setOnClickListener {
+                // 링크 복사 - 그룹원 초대하기
+            }
+
+            buttonLinkCode.setOnClickListener {
+                // 비밀 코드 복사 - 그룹원 초대하기
+                copyTextToClipboard(requireActivity(), requireArguments().getString("code").toString())
             }
 
             buttonNext.setOnClickListener {
-                val nextFragment = CreateGroupCompleteFragment()
-
-                val transaction = mainActivity.manager.beginTransaction()
-                transaction.replace(R.id.fragmentContainerView_main, nextFragment)
-                transaction.addToBackStack(null)
-                transaction.commit()
+                mainActivity.supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragmentContainerView_main, CreateGroupCompleteFragment())
+                    .addToBackStack(null)
+                    .commit()
             }
         }
         
@@ -60,7 +72,7 @@ class CreateGroupInviteFragment : Fragment() {
         clipboard.setPrimaryClip(clip)
 
         // 사용자에게 복사 알림
-        Toast.makeText(context, "텍스트가 복사되었습니다.", Toast.LENGTH_SHORT).show()
+        BasicToast.showBasicToast(requireActivity(), "복사가 완료됐어요", R.drawable.ic_check_selected, binding.buttonNext)
     }
 
     fun initView() {
@@ -69,7 +81,7 @@ class CreateGroupInviteFragment : Fragment() {
 
             toolbar.run {
                 buttonBack.setOnClickListener {
-                    fragmentManager?.popBackStack()
+                    parentFragmentManager.popBackStack()
                 }
             }
         }

@@ -51,11 +51,11 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/button_group1"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/background_group_unselected"
-            android:paddingHorizontal="25dp"
+            android:paddingHorizontal="5dp"
             android:paddingVertical="19dp">
 
             <ImageView
@@ -72,6 +72,7 @@
                 style="@style/Detail1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
                 android:text="@string/group1"
                 android:textColor="@color/gray_60"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -85,11 +86,11 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/button_group2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/background_group_unselected"
-            android:paddingHorizontal="25dp"
+            android:paddingHorizontal="5dp"
             android:paddingVertical="19dp">
 
             <ImageView
@@ -106,6 +107,7 @@
                 style="@style/Detail1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
                 android:text="@string/group2"
                 android:textColor="@color/gray_60"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -119,11 +121,11 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/button_group3"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/background_group_unselected"
-            android:paddingHorizontal="25dp"
+            android:paddingHorizontal="5dp"
             android:paddingVertical="19dp">
 
             <ImageView
@@ -140,6 +142,7 @@
                 style="@style/Detail1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
                 android:text="@string/group3"
                 android:textColor="@color/gray_60"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -153,11 +156,11 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/button_group4"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/background_group_unselected"
-            android:paddingHorizontal="25dp"
+            android:paddingHorizontal="5dp"
             android:paddingVertical="19dp">
 
             <ImageView
@@ -174,6 +177,7 @@
                 style="@style/Detail1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
                 android:text="@string/group4"
                 android:textColor="@color/gray_60"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -194,11 +198,11 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/button_group5"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/background_group_unselected"
-            android:paddingHorizontal="19dp"
+            android:paddingHorizontal="5dp"
             android:paddingVertical="18dp">
 
             <ImageView
@@ -215,6 +219,7 @@
                 style="@style/Detail1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
                 android:text="@string/group5"
                 android:textColor="@color/gray_60"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -228,11 +233,11 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/button_group6"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/background_group_unselected"
-            android:paddingHorizontal="19dp"
+            android:paddingHorizontal="5dp"
             android:paddingVertical="18dp">
 
             <ImageView
@@ -249,6 +254,7 @@
                 style="@style/Detail1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
                 android:text="@string/group6"
                 android:textColor="@color/gray_60"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -262,11 +268,11 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/button_group7"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/background_group_unselected"
-            android:paddingHorizontal="19dp"
+            android:paddingHorizontal="5dp"
             android:paddingVertical="18dp">
 
             <ImageView
@@ -283,6 +289,7 @@
                 style="@style/Detail1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
                 android:text="@string/group7"
                 android:textColor="@color/gray_60"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -296,11 +303,11 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/button_group8"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/background_group_unselected"
-            android:paddingHorizontal="25dp"
+            android:paddingHorizontal="5dp"
             android:paddingVertical="18dp">
 
             <ImageView
@@ -317,6 +324,7 @@
                 style="@style/Detail1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
                 android:text="@string/group8"
                 android:textColor="@color/gray_60"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -331,6 +339,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="다음"
+        android:enabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
